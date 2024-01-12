@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fiuva</title>
+    <link rel="stylesheet" href="style.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+</head>
+<body>
+    <section class="header">
+        <nav>
+            <a href="#" id="redirectionLink"><img src="images/OIG.jpeg" class="rounded" /></a>
+            <div class="nav-links" id="navLinks">
+                <i class="fa fa-times" onclick="hideMenu()"></i>
+                <ul>
+                    <li><a href="index.html">FIUVA</a></li>
+                    <li><a href="about.html">SOBRE MI</a></li>
+                    <li><a href="">NADA xD</a></li>
+                    <li><a href="">PROGRAMACIÓN</a></li>
+                </ul>
+            </div>
+            <i class="fa fa-bars" onclick="showMenu()" id="iconoMenu"></i>
+        </nav>
+
+        <div class="text-box">
+            <h1>Fiuva</h1>
+            <p>Tu moderador de confianza :></p>
+            <a href="https://twitch.tv/fiuva2" class="boton-twitch">Twitch</a>
+            <a href="https://www.youtube.com/channel/UC7mbICaJXdzLSLCKx6teLVg" class="boton-youtube">Youtube</a>
+            <a href="https://www.tiktok.com/@fiuva" class="boton-tiktok">Tik Tok</a>
+            <br />
+            <a href="https://twitter.com/Fiuva5" class="boton-twitter">Twitter</a>
+            <a href="https://discord.gg/NJf5ewazMk" class="boton-discord">Discord</a>
+            <br />
+            <a href="https://github.com/Fiuva" class="boton-github">GitHub</a>
+        </div>
+
+    </section>
+
+
+    <!------JavaScript------>
+    <script>
+        var navLinks = document.getElementById("navLinks");
+        var iconoMenu = document.getElementById("iconoMenu");
+
+        function showMenu() {
+            navLinks.style.right = "0";
+            iconoMenu.style.color = "Transparent";
+        }
+        function hideMenu() {
+            navLinks.style.right = "-200px";
+            iconoMenu.style.color = "White";
+        }
+
+        var redirectionLink = document.getElementById('redirectionLink');
+        var clickStartTime;
+
+        redirectionLink.addEventListener('mousedown', function () {
+            clickStartTime = new Date().getTime();
+            redirectionLink.classList.add('active');
+        });
+
+        redirectionLink.addEventListener('mouseup', function () {
+            redirectionLink.classList.remove('active');
+            var clickEndTime = new Date().getTime();
+            var clickDuration = clickEndTime - clickStartTime;
+
+            if (clickDuration >= 1000) { // Redirige solo si el clic se mantiene durante al menos 1 segundo
+                window.location.href = 'gatos.html';
+            }
+        });
+    </script>
+
+</body>
+</html>

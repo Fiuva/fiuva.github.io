@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fiuva</title>
+    <link rel="stylesheet" href="style.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+</head>
+<body>
+    <section class="sub-header">
+        <nav>
+            <a href="#" id="redirectionLink"><img src="images/OIG.jpeg" class="rounded" /></a>
+            <div class="nav-links" id="navLinks">
+                <i class="fa fa-times" onclick="hideMenu()"></i>
+                <ul>
+                    <li><a href="index.html">FIUVA</a></li>
+                    <li><a href="about.html">SOBRE MI</a></li>
+                    <li><a href="">NADA xD</a></li>
+                    <li><a href="">PROGRAMACIÓN</a></li>
+                </ul>
+            </div>
+            <i class="fa fa-bars" onclick="showMenu()" id="iconoMenu"></i>
+        </nav>
+        <h1>Sobre mí</h1>
+
+    </section>
+
+    <!-- Contenido: Sobre mí -->
+    <section class="sobre-mi">
+        <div class="row">
+            <div class="sobre-mi-col">
+                <h1>Quién soy?</h1>
+                <p>Hola, mi nombre es ....... pero me puedes llamar Fiuva, tengo <b><span id="edad"></span> años</b> y estudio 
+                el grado de <b>ingeniería informática</b> y un título de <b>desarrollo de videojuegos y aplicaciones de realidad virtual</b>. <br /><br />
+                
+                En mi tiempo libre he ganado algunos torenos de Brawl Stars pero actualmente sobre todo modero canales de Twitch y 
+                programo cosas como esta misma web :> (que por cierto, es mi primera vez con html). <br /><br />
+
+                Mi animal favorito son obviamente los mapaches... nah, en verdad son los ornitorrincos :>> no me preguntéis por qué, cosas de la vida. <br /><br />
+
+                Creo que no tengo nada más que contar, mi vida es aburrida y tal... antes solía hacer directos en Twitch pero lo dejé porque no me da la vida 
+                para moderar canales, sacarme el grado, salir con mis amigos una vez al mes y eso...
+                </p>
+
+                <a href="https://twitter.com/Fiuva5" class="boton-twitter">Besameee</a> <br />
+                <a href="https://discord.gg/NJf5ewazMk" class="boton-discord">Porfa</a>
+            </div>
+            <div class="sobre-mi-col">
+                <img src="images/ornitorrinco.jpg" alt="ornitorrinco" />
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <section class="footer">
+        <p>Si lees esto me debes un beso :></p>
+        <div class="icons">
+            <a href="https://twitter.com/Fiuva5"><i class="fa fa-twitter"></i></a>
+            <a href="https://twitch.tv/fiuva2"><i class="fa fa-twitch"></i></a>
+            <a href="https://www.youtube.com/channel/UC7mbICaJXdzLSLCKx6teLVg"><i class="fa fa-youtube-play"></i></a>
+            <i class="fa fa-instagram"></i>
+            <a href="https://github.com/Fiuva"><i class="fa fa-github"></i></a>
+        </div>
+        <p>Web hecha por Fiuva <i class="fa fa-star-o"></i></p>
+    </section>
+
+    <!------JavaScript------>
+    <script>
+        var navLinks = document.getElementById("navLinks");
+        var iconoMenu = document.getElementById("iconoMenu");
+
+        function showMenu() {
+            navLinks.style.right = "0";
+            iconoMenu.style.color = "Transparent";
+        }
+        function hideMenu() {
+            navLinks.style.right = "-200px";
+            iconoMenu.style.color = "White";
+        }
+    </script>
+
+    <script>
+        const dateNow = new Date();
+        const fechaNac = DtoD(30, 10, 2001);
+        var fechaC = DtoD(30, 10, dateNow.getFullYear());
+
+        var distance = calcularDistancia(dateNow, fechaC);
+        if (distance < 0) {
+            fechaC = DtoD(day, month, dateNow.getFullYear() + 1);
+        }
+
+        const edad = fechaC.getFullYear() - fechaNac.getFullYear() - 1;
+
+        function DtoD(day, month, year) {
+            return new Date(`${month}/${day}/${year}`);
+        }
+        function calcularDistancia(fechaOrigen = dateNow, fechaMeta = dateNow, tz = "Europe/Madrid") {
+            return addMinutes(fechaMeta, 60) - addMinutes(fechaOrigen, diferencia(tz, "UTC"));
+            function diferencia(zonaDestino, zonaOrigen) {
+                var dif = (convertTZ(dateNow, zonaDestino) - convertTZ(dateNow, zonaOrigen)) / 60000;
+                return dif;
+            }
+            function addMinutes(date, minutes) {
+                var d = new Date(date);
+                d.setMinutes(d.getMinutes() + minutes);
+                return d.getTime();
+            }
+            function convertTZ(date, tzString) {
+                return new Date((typeof date === "string" ? new Date(date) : date).toLocaleString("en-Us", { timeZone: tzString }));
+            }
+        }
+
+        document.getElementById("edad").innerHTML = edad.toString();
+    </script>
+
+</body>
+</html>

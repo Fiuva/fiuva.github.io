@@ -1,0 +1,242 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para mi bb</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 'Comfortaa', cursive;
+        }
+
+        body {
+            margin: 0;
+            overflow: hidden;
+            background: linear-gradient(midnightblue, black);
+            font-family: Arial, sans-serif;
+            transition: background 1s ease-in-out;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .star-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .star {
+            position: absolute;
+            background-color: white;
+            border-radius: 50%;
+            pointer-events: none;
+            animation: twinkling 2s infinite;
+        }
+
+        .constellation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .line {
+            position: absolute;
+            background-color: rgba(255, 255, 255, 0.3);
+            height: 1px;
+            transition: background-color 0.5s ease-in-out, filter 0.5s ease-in-out;
+            filter: blur(1px);
+        }
+
+            .line:hover {
+                background-color: rgba(255, 255, 255, 0.8);
+                filter: blur(3px);
+            }
+
+        .overlay {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 20px;
+            background-color: #CBF5FF;
+            border-radius: 10px;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out, width 0.5s ease-in-out, height 0.5s ease-in-out;
+            max-width: 90%;
+            width: 0;
+            height: 0;
+            max-height: 90%;
+            overflow-y: auto;
+        }
+
+            .overlay.active {
+                display: block;
+                opacity: 0.5;
+                width: 90%; /* Tamaño final */
+                height: 90%;
+            }
+
+        @keyframes twinkling {
+            0% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.3;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+        .overlay-gif {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            max-height: 150px; /* Ajusta la altura máxima según sea necesario */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="stars"></div>
+    <div class="star-container"></div>
+    <div class="constellation">
+        <!-- Las líneas y conexiones se crearán dinámicamente con JavaScript -->
+    </div>
+
+    <div class="overlay" id="overlay">
+        <h1 style="text-align: center">Aries</h1>
+        <p>Los gatos te persiguen 💗</p>
+        <br />
+        <p>Hola jazmincita :3</p>
+
+        <img src="https://media3.giphy.com/media/TOSI9IqgQzzrDecyCD/giphy.gif?cid=ecf05e472mywxnpvp5noy15db81cu05tuxhnw77lxkqgjv88&ep=v1_stickers_search&rid=giphy.gif&ct=s" alt="GIF" class="overlay-gif">
+    </div>
+    <audio id="miauAudio" src="./sounds/miau.mp3"></audio>
+
+    <script>
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const starsContainer = document.querySelector('.stars');
+            const starContainer = document.querySelector('.star-container');
+            const constellationContainer = document.querySelector('.constellation');
+            const overlay = document.getElementById('overlay');
+
+            const stars = [];
+            const constellationStars = [];
+            const constellationLines = [];
+
+            for (let i = 0; i < 100; i++) {
+                const star = createStar();
+                starsContainer.appendChild(star);
+                stars.push(star);
+            }
+
+            for (let i = 0; i < 5; i++) {
+                const star = createStar();
+                starContainer.appendChild(star);
+                constellationStars.push(star);
+            }
+
+            for (let i = 0; i < constellationStars.length - 1; i++) {
+                const star1 = constellationStars[i];
+                const star2 = constellationStars[i + 1];
+                const line = createLine(star1, star2);
+                constellationContainer.appendChild(line);
+                constellationLines.push(line);
+            }
+
+            constellationLines.forEach((line, index) => {
+                line.addEventListener('mouseover', function () {
+                    line.remove();
+                    if (constellationLines.every(line => !line.parentNode)) {
+                        overlay.classList.add('active');
+                        const overlayGif = document.querySelector('.overlay-gif');
+                        const miauAudio = document.getElementById('miauAudio');
+
+                        // Función para mover el GIF a una posición X aleatoria
+                        function moveGif() {
+                            const randomX = Math.floor(Math.random() * 86);
+                            overlayGif.style.left = randomX + '%';
+                        }
+
+                        // Función para reproducir el sonido de miau
+                        function playMiau() {
+                            miauAudio.currentTime = 0; // Reiniciar el sonido para reproducirlo desde el principio
+                            miauAudio.play();
+                        }
+
+                        // Establecer el intervalo para mover el GIF cada segundo
+                        setInterval(moveGif, 350);
+
+                        // Agregar un evento de clic al GIF para reproducir el sonido de miau
+                        overlayGif.addEventListener('click', playMiau);
+                    }
+                });
+            });
+        });
+
+        function createStar() {
+            const star = document.createElement('div');
+            star.className = 'star';
+            const size = Math.random() * 2 + 1;
+            const duration = Math.random() * 1 + 0.5;
+            star.style.width = size + 'px';
+            star.style.height = size + 'px';
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 100 + '%';
+            star.style.animationDuration = duration + 's';
+            return star;
+        }
+
+        function createLine(star1, star2) {
+            const line = document.createElement('div');
+            line.className = 'line';
+            updateLinePosition(line, star1, star2);
+            return line;
+        }
+
+        function updateLinePosition(line, star1, star2) {
+            const x1 = star1.offsetLeft + star1.clientWidth / 2;
+            const y1 = star1.offsetTop + star1.clientHeight / 2;
+            const x2 = star2.offsetLeft + star2.clientWidth / 2;
+            const y2 = star2.offsetTop + star2.clientHeight / 2;
+            const dx = x2 - x1;
+            const dy = y2 - y1;
+            const length = Math.sqrt(dx * dx + dy * dy);
+            const angle = Math.atan2(dy, dx) * (180 / Math.PI);
+
+            line.style.width = length + 'px';
+            line.style.transform = 'rotate(' + angle + 'deg)';
+            line.style.position = 'absolute';
+            line.style.left = x1 + 'px';
+            line.style.top = y1 + 'px';
+            line.style.transformOrigin = 'top left';
+        }
+    </script>
+</body>
+</html>

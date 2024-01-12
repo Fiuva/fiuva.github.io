@@ -1,0 +1,245 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Comfortaa', cursive;
+}
+
+.header {
+    min-height: 100vh;
+    width: 100%;
+    background-image: linear-gradient(rgb(0, 255, 144), rgb(254, 75, 237)), url(images/ornitorrinco.jpg);
+    background-position: center;
+    background-size: cover;
+    position: relative;
+}
+
+nav {
+    display: flex;
+    padding: 1% 2%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav img {
+    width: 55px;
+}
+
+.nav-links {
+    flex: 1;
+    text-align: right;
+}
+
+.nav-links ul li {
+    list-style: none;
+    display: inline-block;
+    padding: 8px 12px;
+    position: relative;
+}
+
+.nav-links ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 700;
+    text-shadow: 1px -1px 2px black;
+}
+
+.nav-links ul li::after{
+    content: '';
+    width: 0%;
+    height: 2px;
+    background: rgb(0, 0, 0);
+    display: block;
+    margin: auto;
+    transition: 0.5s;
+}
+
+.nav-links ul li:hover::after {
+    width: 100%;
+}
+
+.text-box {
+    width: 90%;
+    color: #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.text-box h1{
+    font-size: 62px;
+}
+h1 {
+    font-size: 45px;
+}
+
+.text-box p {
+    margin: 10px 0 40px;
+    font-size: 14px;
+    color: #fff;
+}
+
+.boton-twitch, .boton-youtube, .boton-tiktok, .boton-twitter, .boton-discord, .boton-github {
+    display: inline-block;
+    text-decoration: none;
+    color: #fff;
+    border: 1px solid #fff;
+    padding: 12px 34px;
+    margin-block: 7px;
+    margin-inline: 3px;
+    font-size: 13px;
+    background: transparent;
+    position: relative;
+    cursor: pointer;
+}
+.boton-twitch:hover{
+    border: 1px solid white;
+    background: #9146FF;
+    transition: 1s;
+}
+.boton-youtube:hover {
+    border: 1px solid black;
+    background: #FF0000;
+    transition: 1s;
+}
+.boton-tiktok:hover {
+    border: 1px solid #00f2ea;
+    background: #ff0050;
+    transition: 1s;
+}
+.boton-twitter:hover {
+    border: 1px solid #E1E8ED;
+    background: #1DA1F2;
+    transition: 1s;
+}
+.boton-discord:hover {
+    border: 1px solid 	#36393f;
+    background: #5865f2;
+    transition: 1s;
+}
+.boton-github:hover {
+    border: 1px solid #f5f5f5;
+    background: #333;
+    transition: 1s;
+}
+
+nav .fa{
+    display: none;
+}
+
+@media(max-width: 700px){
+    .text-box h1 {
+        font-size: 20px;
+    }
+    .nav-links ul li {
+        display: block;
+    }
+    .nav-links {
+        position: absolute;
+        background: #c105f833;
+        height: 100vh;
+        width: 200px;
+        top: 0;
+        right: -200px;
+        text-align: left;
+        z-index: 2;
+        transition: 1s;
+    }
+    nav .fa {
+        display: block;
+        color: #fff;
+        margin: 10px;
+        font-size: 22px;
+        cursor: pointer;
+        transition: 0.5s;
+    }
+
+    .nav-links ul{
+        padding: 30px;
+    }
+}
+
+.row{
+    margin-top: 5%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.rounded {
+    border-radius: 30%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out; /* Agregamos transform a la transición */
+    cursor: pointer;
+}
+
+.rounded:hover {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+    transform: rotate(180deg) scale(1.2);
+}
+
+.rounded:active {
+    filter: blur(5px); /* Aplicamos un difuminado al hacer clic */
+    transition: filter 0.3s ease-in-out;
+}
+/* footer */
+.footer {
+    width: 100%;
+    text-align: center;
+    padding: 30px 0;
+}
+.footer p {
+    color: #777;
+}
+.footer h4 {
+    margin-bottom: 25px;
+    margin-top: 20px;
+    font-weight: 600;
+}
+.icons .fa{
+    color: #489B66;
+    margin: 0 13px;
+    cursor: pointer;
+    padding: 18px 0;
+}
+.fa-star-o {
+    color: #489B66;
+}
+
+/* Página: Sobre mí */
+.sub-header {
+    height: 50vh;
+    width: 100%;
+    background-image: linear-gradient(rgb(0, 255, 144), rgb(254, 75, 237)), url(images/ornitorrinco.jpg);
+    background-position: center;
+    background-size: cover;
+    text-align: center;
+    color: aliceblue;
+}
+
+.sub-header h1{
+    margin-top: 100px;
+    font-size: 55px;
+    font-weight: 700;
+}
+
+.sobre-mi{
+    width: 80%;
+    margin: auto;
+    padding-top: 80px;
+    padding-bottom: 50px;
+}
+.sobre-mi-col{
+    flex-basis: 48%;
+    padding: 30px 2px;
+}
+.sobre-mi-col img{
+    width: 100%;
+}
+.sobre-mi-col h1{
+    padding-top: 0;
+}
+.sobre-mi-col p{
+    padding: 15px 0 25px;
+}
