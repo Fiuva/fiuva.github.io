@@ -1,121 +1,68 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="iso-8859-1"/>
-    <title>Fiuva</title>
-    <link rel="stylesheet" href="style.css" />
+<html lang="es">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre MÃ­ - Fiuva</title>
+    <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=Comfortaa:wght@300;400;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="icon" type="image/jpg" href="images/OIG.jpeg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
+
 <body>
-    <section class="sub-header">
-        <nav>
-            <a href="#" id="redirectionLink"><img src="images/OIG.jpeg" class="rounded" /></a>
-            <div class="nav-links" id="navLinks">
-                <i class="fa fa-times" onclick="hideMenu()"></i>
-                <ul>
-                    <li><a href="index.html">FIUVA</a></li>
-                    <li><a href="about.html">SOBRE MI</a></li>
-                    <li><a href="">NADA xD</a></li>
-                    <li><a href="">PROGRAMACIÓN</a></li>
-                </ul>
+    <div class="background-animation"></div>
+    <section class="about-container">
+        <h1 class="fade-in">Sobre MÃ­</h1>
+        <div class="app-card fade-in delay-1"
+            style="width: 100%; margin-top: 40px; max-width: 800px; margin-left: auto; margin-right: auto; text-align: left;">
+            <div style="text-align: center; margin-bottom: 20px;">
+                <img src="images/ornitorrinco.jpg" alt="Fiuva" class="profile-img"
+                    style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover; border: 4px solid var(--secondary-color);">
             </div>
-            <i class="fa fa-bars" onclick="showMenu()" id="iconoMenu"></i>
-        </nav>
-        <h1>Sobre mí</h1>
-
-    </section>
-
-    <!-- Contenido: Sobre mí -->
-    <section class="sobre-mi">
-        <div class="row">
-            <div class="sobre-mi-col">
-                <h1>Quién soy?</h1>
-                <p>Hola, mi nombre es ....... pero me puedes llamar Fiuva, tengo <b><span id="edad"></span> años</b> y estudio 
-                el grado de <b>ingeniería informática</b> y un título de <b>desarrollo de videojuegos y aplicaciones de realidad virtual</b>. <br /><br />
-                
-                En mi tiempo libre he ganado algunos torenos de Brawl Stars pero actualmente sobre todo modero canales de Twitch y 
-                programo cosas como esta misma web :> (que por cierto, es mi primera vez con html). <br /><br />
-
-                Mi animal favorito son obviamente los mapaches... nah, en verdad son los ornitorrincos :>> no me preguntéis por qué, cosas de la vida. <br /><br />
-
-                Creo que no tengo nada más que contar, mi vida es aburrida y tal... antes solía hacer directos en Twitch pero lo dejé porque no me da la vida 
-                para moderar canales, sacarme el grado, salir con mis amigos una vez al mes y eso...
-                </p>
-
-                <a href="https://twitter.com/Fiuva5" class="boton-twitter">Besameee</a> <br />
-                <a href="https://discord.gg/NJf5ewazMk" class="boton-discord">Porfa</a>
-            </div>
-            <div class="sobre-mi-col">
-                <img src="images/ornitorrinco.jpg" alt="ornitorrinco" />
+            <p style="font-size: 18px; line-height: 1.8;">
+                Â¡Hola! Soy <strong>Fiuva</strong>.
+            </p>
+            <br>
+            <p style="font-size: 16px; line-height: 1.8; color: #ddd;">
+                Mi trayectoria en internet empezÃ³ mucho antes de la investigaciÃ³n. Durante aÃ±os fui una figura activa en
+                la comunidad de Twitch, ejerciendo como <strong>moderador</strong> para grandes streamers como
+                <em>Godeik</em>, <em>Alvaro845</em> y <em>Spiuk</em>, entre muchos otros. Esa etapa me enseÃ±Ã³ mucho
+                sobre gestiÃ³n de comunidades y el mundo digital.
+            </p>
+            <br>
+            <p style="font-size: 16px; line-height: 1.8; color: #ddd;">
+                Tras esa etapa, me centrÃ© en mi formaciÃ³n acadÃ©mica. Me graduÃ© en <strong>IngenierÃ­a
+                    InformÃ¡tica</strong> y obtuve el <strong>TÃ­tulo en Desarrollo de Videojuegos</strong>, desarrollando
+                proyectos como <strong>Birdia</strong> y <strong>Dayli</strong>. Actualmente, estoy cerrando el cÃ­rculo
+                finalizando mi mÃ¡ster y trabajando como <strong>investigador en modelos generativos de imagen</strong>,
+                explorando las fronteras de la Inteligencia Artificial.
+            </p>
+            <br>
+            <div class="social-icons" style="text-align: center;">
+                <a href="https://github.com/fiuva" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://x.com/fiuva5" target="_blank" aria-label="X (Twitter)"><i
+                        class="fa-brands fa-x-twitter"></i></a>
+                <a href="https://www.instagram.com/fiuva2/" target="_blank" aria-label="Instagram"><i
+                        class="fab fa-instagram"></i></a>
+                <a href="https://twitch.tv/fiuva2" target="_blank" aria-label="Twitch"><i class="fab fa-twitch"></i></a>
+                <a href="https://www.youtube.com/@fiuva8675" target="_blank" aria-label="YouTube"><i
+                        class="fab fa-youtube"></i></a>
+                <a href="https://discord.gg/NJf5ewazMk" target="_blank" aria-label="Discord"><i
+                        class="fab fa-discord"></i></a>
             </div>
         </div>
-    </section>
 
-    <!-- Footer -->
-    <section class="footer">
-        <p>Si lees esto me debes un beso :></p>
-        <div class="icons">
-            <a href="https://twitter.com/Fiuva5"><i class="fa fa-twitter"></i></a>
-            <a href="https://twitch.tv/fiuva2"><i class="fa fa-twitch"></i></a>
-            <a href="https://www.youtube.com/channel/UC7mbICaJXdzLSLCKx6teLVg"><i class="fa fa-youtube-play"></i></a>
-            <i class="fa fa-instagram"></i>
-            <a href="https://github.com/Fiuva"><i class="fa fa-github"></i></a>
+        <br>
+        <div class="fade-in delay-2" style="margin-top: 50px;">
+            <a href="index.html" class="hero-btn">Volver al Inicio</a>
         </div>
-        <p>Web hecha por Fiuva <i class="fa fa-star-o"></i></p>
     </section>
-
-    <!------JavaScript------>
-    <script>
-        var navLinks = document.getElementById("navLinks");
-        var iconoMenu = document.getElementById("iconoMenu");
-
-        function showMenu() {
-            navLinks.style.right = "0";
-            iconoMenu.style.color = "Transparent";
-        }
-        function hideMenu() {
-            navLinks.style.right = "-200px";
-            iconoMenu.style.color = "White";
-        }
-    </script>
-
-    <script>
-        const dateNow = new Date();
-        const fechaNac = DtoD(30, 10, 2001);
-        var fechaC = DtoD(30, 10, dateNow.getFullYear());
-
-        var distance = calcularDistancia(dateNow, fechaC);
-        if (distance < 0) {
-            fechaC = DtoD(day, month, dateNow.getFullYear() + 1);
-        }
-
-        const edad = fechaC.getFullYear() - fechaNac.getFullYear() - 1;
-
-        function DtoD(day, month, year) {
-            return new Date(`${month}/${day}/${year}`);
-        }
-        function calcularDistancia(fechaOrigen = dateNow, fechaMeta = dateNow, tz = "Europe/Madrid") {
-            return addMinutes(fechaMeta, 60) - addMinutes(fechaOrigen, diferencia(tz, "UTC"));
-            function diferencia(zonaDestino, zonaOrigen) {
-                var dif = (convertTZ(dateNow, zonaDestino) - convertTZ(dateNow, zonaOrigen)) / 60000;
-                return dif;
-            }
-            function addMinutes(date, minutes) {
-                var d = new Date(date);
-                d.setMinutes(d.getMinutes() + minutes);
-                return d.getTime();
-            }
-            function convertTZ(date, tzString) {
-                return new Date((typeof date === "string" ? new Date(date) : date).toLocaleString("en-Us", { timeZone: tzString }));
-            }
-        }
-
-        document.getElementById("edad").innerHTML = edad.toString();
-    </script>
-
 </body>
+
 </html>

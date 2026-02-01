@@ -1,79 +1,82 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="iso-8859-1" />
-    <title>Fiuva</title>
-    <link rel="stylesheet" href="style.css" />
+<html lang="es">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fiuva - Portfolio</title>
+    <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=Comfortaa:wght@300;400;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="icon" type="image/jpg" href="images/OIG.jpeg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
+
 <body>
+    <div class="background-animation"></div>
+
     <section class="header">
-        <nav>
-            <a href="#" id="redirectionLink"><img src="images/OIG.jpeg" class="rounded" /></a>
-            <div class="nav-links" id="navLinks">
-                <i class="fa fa-times" onclick="hideMenu()"></i>
-                <ul>
-                    <li><a href="index.html">FIUVA</a></li>
-                    <li><a href="about.html">SOBRE MI</a></li>
-                    <li><a href="">NADA xD</a></li>
-                    <li><a href="">PROGRAMACI�N</a></li>
-                </ul>
-            </div>
-            <i class="fa fa-bars" onclick="showMenu()" id="iconoMenu"></i>
-        </nav>
-
         <div class="text-box">
-            <h1>Fiuva</h1>
-            <p>Tu moderador de confianza :></p>
-            <a href="https://twitch.tv/fiuva2" class="boton-twitch">Twitch</a>
-            <a href="https://www.youtube.com/channel/UC7mbICaJXdzLSLCKx6teLVg" class="boton-youtube">Youtube</a>
-            <a href="https://www.tiktok.com/@fiuva" class="boton-tiktok">Tik Tok</a>
-            <br />
-            <a href="https://twitter.com/Fiuva5" class="boton-twitter">Twitter</a>
-            <a href="https://discord.gg/NJf5ewazMk" class="boton-discord">Discord</a>
-            <br />
-            <a href="https://github.com/Fiuva" class="boton-github">GitHub</a>
-        </div>
+            <img src="images/ornitorrinco.jpg" alt="Fiuva Profile" class="profile-img fade-in">
+            <h1 class="fade-in">Fiuva</h1>
+            <p class="fade-in delay-1">Investigador en Modelos Generativos de Imagen</p>
 
+            <div class="social-icons fade-in delay-2">
+                <a href="https://github.com/fiuva" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://x.com/fiuva5" target="_blank" aria-label="X (Twitter)"><i
+                        class="fa-brands fa-x-twitter"></i></a>
+                <a href="https://www.instagram.com/fiuva2/" target="_blank" aria-label="Instagram"><i
+                        class="fab fa-instagram"></i></a>
+                <a href="https://twitch.tv/fiuva2" target="_blank" aria-label="Twitch"><i class="fab fa-twitch"></i></a>
+                <a href="https://www.youtube.com/@fiuva8675" target="_blank" aria-label="YouTube"><i
+                        class="fab fa-youtube"></i></a>
+                <a href="https://discord.gg/NJf5ewazMk" target="_blank" aria-label="Discord"><i
+                        class="fab fa-discord"></i></a>
+            </div>
+
+            <div class="cta-buttons fade-in delay-3">
+                <a href="about.html" class="hero-btn">Sobre Mí</a>
+            </div>
+        </div>
     </section>
 
+    <section class="apps-section">
+        <h2 class="section-title">Mis Proyectos</h2>
+        <div class="app-container">
+            <div class="app-card birdia-card">
+                <div class="card-content">
+                    <div class="icon-box">
+                        <i class="fas fa-crow"></i>
+                    </div>
+                    <h3>Birdia</h3>
+                    <p>Identificación de aves mediante IA. Proyecto universitario destacado.</p>
+                    <a href="https://play.google.com/store/apps/details?id=com.fiuva.birdia" target="_blank"
+                        class="app-btn">
+                        Ver en Play Store <i class="fab fa-google-play"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="app-card dayli-card">
+                <div class="card-content">
+                    <div class="icon-box">
+                        <i class="fas fa-calendar-day"></i>
+                    </div>
+                    <h3>Dayli</h3>
+                    <p>Tu compañero diario. Organiza tu día con estilo.</p>
+                    <a href="/Dayli" class="app-btn primary">
+                        Visitar Web <i class="fas fa-globe"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <!------JavaScript------>
-    <script>
-        var navLinks = document.getElementById("navLinks");
-        var iconoMenu = document.getElementById("iconoMenu");
-
-        function showMenu() {
-            navLinks.style.right = "0";
-            iconoMenu.style.color = "Transparent";
-        }
-        function hideMenu() {
-            navLinks.style.right = "-200px";
-            iconoMenu.style.color = "White";
-        }
-
-        var redirectionLink = document.getElementById('redirectionLink');
-        var clickStartTime;
-
-        redirectionLink.addEventListener('mousedown', function () {
-            clickStartTime = new Date().getTime();
-            redirectionLink.classList.add('active');
-        });
-
-        redirectionLink.addEventListener('mouseup', function () {
-            redirectionLink.classList.remove('active');
-            var clickEndTime = new Date().getTime();
-            var clickDuration = clickEndTime - clickStartTime;
-
-            if (clickDuration >= 1000) { // Redirige solo si el clic se mantiene durante al menos 1 segundo
-                window.location.href = 'gatos.html';
-            }
-        });
-    </script>
-
+    <footer>
+        <p>&copy; 2026 Fiuva</p>
+    </footer>
 </body>
+
 </html>
