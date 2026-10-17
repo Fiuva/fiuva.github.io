@@ -10,6 +10,6 @@ Sitio web oficial de **Fiuva Labs**, el estudio independiente y laboratorio digi
 | Proyecto | Categoría | Web Oficial | Google Play |
 | :--- | :--- | :--- | :--- |
 | **✏️ Soy una línea (I'm a Line)** | Plataformas 2D & Speedrun | [fiuva.github.io/SoyUnaLinea](https://fiuva.github.io/SoyUnaLinea) | [Google Play](https://play.google.com/store/apps/details?id=com.Fiuva.Imaline) |
-| **🎵 BeeTune** | Reproductor de Música Local | [fiuva.github.io/BeeTune](https://fiuva.github.io/BeeTune) | [Google Play](https://play.google.com/store/apps/details?id=com.fiuva.beetune) |
+| **🎸 BeeTune** | Afinador Polifónico de Guitarra con IA | [fiuva.github.io/BeeTune](https://fiuva.github.io/BeeTune) | [Google Play](https://play.google.com/store/apps/details?id=com.fiuva.beetune) |
 | **🐦 Birdia** | Identificador de Aves con IA | [fiuva.github.io/birdia.html](https://fiuva.github.io/birdia.html) | [Google Play](https://play.google.com/store/apps/details?id=com.fiuva.birdia) |
 | **📅 Dayli** | Efemérides y Palabra del Día | [fiuva.github.io/Dayli](https://fiuva.github.io/Dayli) | [Google Play](https://play.google.com/store/apps/details?id=com.fiuva.dayli) |
