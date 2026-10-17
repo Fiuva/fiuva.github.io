@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birdia — Identificador de Aves por Canto con IA | Fiuva Labs</title>
+    <meta name="description" content="Birdia identifica aves en tiempo real escuchando su canto mediante Inteligencia Artificial local y espectrogramas en vivo. Desarrollado por Fiuva Labs.">
+    <link rel="icon" type="image/png" href="images/birdia_icon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #071310;
+            --bg-card: rgba(14, 35, 29, 0.75);
+            --primary: #10b981;
+            --primary-light: #34d399;
+            --accent-cyan: #22d3ee;
+            --text-main: #f0fdf4;
+            --text-muted: #94a3b8;
+            --border-glass: rgba(52, 211, 153, 0.16);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-dark);
+            background-image:
+                radial-gradient(circle at 18% 18%, rgba(16, 185, 129, 0.2), transparent 42%),
+                radial-gradient(circle at 82% 25%, rgba(34, 211, 238, 0.14), transparent 40%),
+                radial-gradient(circle at 50% 90%, rgba(16, 185, 129, 0.12), transparent 45%);
+            color: var(--text-main);
+            line-height: 1.65;
+            min-height: 100vh;
+        }
+
+        .topbar {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(16px);
+            background: rgba(7, 19, 16, 0.84);
+            border-bottom: 1px solid var(--border-glass);
+            padding: 14px 24px;
+        }
+
+        .topbar-inner {
+            max-width: 1080px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .studio-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 600;
+            font-size: 0.95rem;
+            padding: 6px 14px 6px 8px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-glass);
+            transition: all 0.2s ease;
+        }
+
+        .studio-pill:hover {
+            background: rgba(16, 185, 129, 0.16);
+            border-color: rgba(52, 211, 153, 0.45);
+            transform: translateY(-1px);
+        }
+
+        .studio-pill img {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-light);
+        }
+
+        .container {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 60px 24px 80px;
+        }
+
+        .hero {
+            text-align: center;
+            margin-bottom: 72px;
+        }
+
+        .app-icon {
+            width: 128px;
+            height: 128px;
+            border-radius: 28px;
+            box-shadow: 0 20px 45px rgba(16, 185, 129, 0.35);
+            border: 2px solid rgba(52, 211, 153, 0.35);
+            margin-bottom: 22px;
+            transition: transform 0.3s ease;
+        }
+
+        .app-icon:hover {
+            transform: scale(1.06);
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 16px;
+            border-radius: 999px;
+            background: rgba(16, 185, 129, 0.14);
+            border: 1px solid rgba(52, 211, 153, 0.3);
+            color: var(--primary-light);
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        h1 {
+            font-size: clamp(2.8rem, 6vw, 4.4rem);
+            font-weight: 800;
+            letter-spacing: -1px;
+            line-height: 1.08;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, #ffffff 0%, #6ee7b7 55%, #22d3ee 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            font-size: 1.22rem;
+            color: var(--text-muted);
+            max-width: 650px;
+            margin: 0 auto 34px;
+        }
+
+        .cta-row {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 34px;
+            border-radius: 999px;
+            background: linear-gradient(135deg, var(--primary), #059669);
+            color: #04130e;
+            font-weight: 800;
+            font-size: 1.08rem;
+            text-decoration: none;
+            box-shadow: 0 12px 30px -6px rgba(16, 185, 129, 0.55);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 18px 36px -6px rgba(16, 185, 129, 0.7);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin-bottom: 72px;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-glass);
+            border-radius: 22px;
+            padding: 28px;
+            backdrop-filter: blur(12px);
+            transition: transform 0.25s ease, border-color 0.25s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(52, 211, 153, 0.45);
+        }
+
+        .card-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 14px;
+            background: rgba(16, 185, 129, 0.14);
+            border: 1px solid rgba(52, 211, 153, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.65rem;
+            margin-bottom: 18px;
+        }
+
+        .card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.98rem;
+        }
+
+        .privacy-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border-glass);
+            border-radius: 22px;
+            padding: 32px;
+            margin-bottom: 40px;
+        }
+
+        .privacy-box h2 {
+            font-size: 1.5rem;
+            color: var(--primary-light);
+            margin-bottom: 12px;
+        }
+
+        .privacy-box p {
+            color: var(--text-muted);
+            font-size: 0.96rem;
+            margin-bottom: 10px;
+        }
+
+        footer {
+            border-top: 1px solid var(--border-glass);
+            padding: 40px 24px;
+            text-align: center;
+            color: var(--text-muted);
+        }
+
+        .footer-inner {
+            max-width: 960px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .footer-links a {
+            color: var(--primary-light);
+            text-decoration: none;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="topbar">
+        <div class="topbar-inner">
+            <a href="index.html" class="studio-pill">
+                <img src="images/fiuva_labs_icon.png" alt="Fiuva Labs">
+                <span>← Volver a Fiuva Labs</span>
+            </a>
+            <nav class="nav-links">
+                <a href="#funciones">Funciones</a>
+                <a href="#privacidad">Privacidad</a>
+                <a href="https://play.google.com/store/apps/details?id=com.fiuva.birdia" target="_blank" rel="noopener">Google Play</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="hero">
+            <img src="images/birdia_icon.png" alt="Icono de Birdia" class="app-icon">
+            <br>
+            <div class="badge">🐦 Reconocimiento Acústico de Aves con IA</div>
+            <h1>Birdia</h1>
+            <p class="subtitle">
+                Descubre qué ave está cantando a tu alrededor en tiempo real. Birdia analiza el sonido mediante Inteligencia Artificial local y dibuja el espectrograma en vivo directamente en tu teléfono.
+            </p>
+            <div class="cta-row">
+                <a href="https://play.google.com/store/apps/details?id=com.fiuva.birdia" target="_blank" rel="noopener" class="btn-primary">
+                    <span>▶ Descargar en Google Play</span>
+                </a>
+            </div>
+        </section>
+
+        <section id="funciones" class="grid">
+            <article class="card">
+                <div class="card-icon">🎙️</div>
+                <h3>IA Acústica en Tiempo Real</h3>
+                <p>Identifica decenas de especies de aves europeas e internacionales a partir de su canto y reclamo con redes neuronales ejecutadas directamente en tu dispositivo.</p>
+            </article>
+
+            <article class="card">
+                <div class="card-icon">📊</div>
+                <h3>Espectrograma en Vivo</h3>
+                <p>Observa cómo se dibujan las frecuencias del canto de cada pájaro en tiempo real mientras Birdia procesa las ventanas acústicas.</p>
+            </article>
+
+            <article class="card">
+                <div class="card-icon">📸</div>
+                <h3>Fotos y Fichas de Especies</h3>
+                <p>Consulta fotografías reales de cada ave detectada, su porcentaje de precisión y abre su artículo completo en Wikipedia con un solo toque.</p>
+            </article>
+
+            <article class="card">
+                <div class="card-icon">🌍</div>
+                <h3>Nombres en ES, EN y Científico</h3>
+                <p>Alterna al instante entre nombres comunes en español, nombres en inglés o la nomenclatura científica oficial en latín.</p>
+            </article>
+
+            <article class="card">
+                <div class="card-icon">🎚️</div>
+                <h3>Sensibilidad Configurable</h3>
+                <p>Ajusta el umbral mínimo de confianza para adaptar la detección tanto a bosques silenciosos como a parques urbanos con ruido ambiental.</p>
+            </article>
+
+            <article class="card">
+                <div class="card-icon">🔒</div>
+                <h3>Procesamiento 100% Local</h3>
+                <p>Tu micrófono se analiza exclusivamente en la memoria de tu móvil: tus grabaciones de audio nunca se suben ni se almacenan en servidores externos.</p>
+            </article>
+        </section>
+
+        <section id="privacidad" class="privacy-box">
+            <h2>Política de Privacidad de Birdia</h2>
+            <p><strong>Procesamiento de Audio (RECORD_AUDIO):</strong> Birdia utiliza el micrófono de tu dispositivo única y exclusivamente mientras pulsas el botón de escuchar para analizar frecuencias de cantos de aves en tiempo real en la memoria local del teléfono. Ningún fragmento de voz o audio es grabado permanentemente ni enviado a servidores externos.</p>
+            <p><strong>Servicios de Terceros y Publicidad:</strong> La aplicación utiliza Google AdMob para mostrar anuncios y Wikipedia API para mostrar fotografías públicas de las aves identificadas. Puedes consultar cualquier duda escribiendo a <strong>fiuvalabs@gmail.com</strong>.</p>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-inner">
+            <a href="index.html" class="studio-pill">
+                <img src="images/fiuva_labs_icon.png" alt="Fiuva Labs">
+                <span>Desarrollado por Fiuva Labs</span>
+            </a>
+            <div class="footer-links">
+                <a href="index.html">Inicio Fiuva Labs</a>
+                <a href="https://play.google.com/store/apps/details?id=com.fiuva.birdia" target="_blank" rel="noopener">Google Play</a>
+                <a href="app-ads.txt">app-ads.txt</a>
+            </div>
+            <p>&copy; 2026 Fiuva Labs. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

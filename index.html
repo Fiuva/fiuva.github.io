@@ -1,106 +1,345 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fiuva - Portfolio</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Fiuva Labs — Estudio de Videojuegos, Apps Móviles e Inteligencia Artificial</title>
+    <meta name="description" content="Fiuva Labs es el estudio independiente y laboratorio digital de Fiuva: creador de Soy una línea (I'm a Line), BeeTune, Birdia y Dayli para Android.">
+    <link rel="icon" type="image/png" href="images/fiuva_labs_icon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=Comfortaa:wght@300;400;600;700&display=swap"
-        rel="stylesheet">
-    <link rel="icon" type="image/jpg" href="images/OIG.jpeg">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-    <div class="background-animation"></div>
 
-    <section class="header">
-        <div class="text-box">
-            <img src="images/ornitorrinco.jpg" alt="Fiuva Profile" class="profile-img fade-in">
-            <h1 class="fade-in">Fiuva</h1>
-            <p class="fade-in delay-1">Investigador en Modelos Generativos de Imagen</p>
+    <!-- NAVBAR -->
+    <header class="navbar">
+        <div class="navbar-inner">
+            <a href="index.html" class="brand-logo">
+                <img src="images/fiuva_labs_icon.png" alt="Logo de Fiuva Labs">
+                <span>Fiuva <span class="labs-accent">Labs</span></span>
+            </a>
 
-            <div class="social-icons fade-in delay-2">
-                <a href="https://github.com/fiuva" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                <a href="https://x.com/fiuva5" target="_blank" aria-label="X (Twitter)"><i
-                        class="fa-brands fa-x-twitter"></i></a>
-                <a href="https://www.instagram.com/fiuva2/" target="_blank" aria-label="Instagram"><i
-                        class="fab fa-instagram"></i></a>
-                <a href="https://twitch.tv/fiuva2" target="_blank" aria-label="Twitch"><i class="fab fa-twitch"></i></a>
-                <a href="https://www.youtube.com/@fiuva8675" target="_blank" aria-label="YouTube"><i
-                        class="fab fa-youtube"></i></a>
-                <a href="https://discord.gg/NJf5ewazMk" target="_blank" aria-label="Discord"><i
-                        class="fab fa-discord"></i></a>
-            </div>
-
-            <div class="cta-buttons fade-in delay-3">
-                <a href="about.html" class="hero-btn">Sobre Mí</a>
-            </div>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="#proyectos" class="nav-link active">Apps y Juegos</a></li>
+                    <li><a href="#laboratorio" class="nav-link">El Laboratorio</a></li>
+                    <li><a href="about.html" class="nav-link">Sobre Fiuva</a></li>
+                    <li>
+                        <a href="https://play.google.com/store/apps/dev?id=7870183180556281898" target="_blank" rel="noopener" class="nav-cta">
+                            <span>▶ Google Play</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
         </div>
-    </section>
+    </header>
 
-    <section class="apps-section">
-        <h2 class="section-title">Mis Proyectos</h2>
-        <div class="app-container">
-            <div class="app-card beetune-card">
-                <div class="card-content">
-                    <div class="icon-box">
-                        <i class="fas fa-guitar"></i>
-                    </div>
-                    <h3>BeeTune</h3>
-                    <p>Afinador polifónico para guitarra con IA. Afina las 6 cuerdas de un rasgueo.</p>
-                    <a href="/BeeTune" class="app-btn primary">
-                        Visitar Web <i class="fas fa-globe"></i>
-                    </a>
-                </div>
+    <main class="container">
+        <!-- HERO SECTION -->
+        <section class="hero">
+            <div class="hero-logo-wrap">
+                <div class="hero-logo-glow"></div>
+                <img src="images/fiuva_labs_icon.png" alt="Emblema de Fiuva Labs" class="hero-logo">
             </div>
-            <div class="app-card birdia-card">
-                <div class="card-content">
-                    <div class="icon-box">
-                        <i class="fas fa-crow"></i>
-                    </div>
-                    <h3>Birdia</h3>
-                    <p>Identificación de aves mediante IA. Proyecto universitario destacado.</p>
-                    <a href="https://play.google.com/store/apps/details?id=com.fiuva.birdia" target="_blank"
-                        class="app-btn">
-                        Ver en Play Store <i class="fab fa-google-play"></i>
-                    </a>
-                </div>
-            </div>
-            <div class="app-card dayli-card">
-                <div class="card-content">
-                    <div class="icon-box">
-                        <i class="fas fa-calendar-day"></i>
-                    </div>
-                    <h3>Dayli</h3>
-                    <p>Tu compañero diario. Organiza tu día con estilo.</p>
-                    <a href="/Dayli" class="app-btn primary">
-                        Visitar Web <i class="fas fa-globe"></i>
-                    </a>
-                </div>
-            </div>
-            <div class="app-card soyunalinea-card">
-                <div class="card-content">
-                    <div class="icon-box">
-                        <i class="fas fa-gamepad"></i>
-                    </div>
-                    <h3>Soy una línea</h3>
-                    <p>Juego de plataformas.</p>
-                    <a href="/SoyUnaLinea" class="app-btn primary">
-                        Visitar Web <i class="fas fa-globe"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
+            <br>
+            <div class="eyebrow">🧪 Estudio Independiente • Videojuegos, Apps &amp; IA</div>
 
+            <h1>
+                Bienvenido a <span class="gradient-text">Fiuva Labs</span>
+            </h1>
+
+            <p class="hero-subtitle">
+                El laboratorio digital de <strong>Fiuva</strong> donde la <strong>Ingeniería Informática</strong>, el <strong>Desarrollo de Videojuegos</strong> y la <strong>Inteligencia Artificial</strong> se fusionan para crear juegos desafiantes y aplicaciones móviles pensadas al detalle.
+            </p>
+
+            <div class="hero-actions">
+                <a href="#proyectos" class="btn btn-primary">
+                    <span>🚀 Explorar Proyectos</span>
+                </a>
+                <a href="https://play.google.com/store/apps/dev?id=7870183180556281898" target="_blank" rel="noopener" class="btn btn-secondary">
+                    <span>▶ Catálogo en Google Play</span>
+                </a>
+                <a href="about.html" class="btn btn-secondary">
+                    <span>👤 Conocer a Fiuva</span>
+                </a>
+            </div>
+
+            <div class="stats-strip">
+                <div class="stat-item">
+                    <div class="stat-value">4 Publicaciones</div>
+                    <div class="stat-label">Juegos y Apps en Google Play</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">Unity &amp; Android</div>
+                    <div class="stat-label">Desarrollo nativo y multiplataforma</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">IA en Dispositivo</div>
+                    <div class="stat-label">Modelos generativos y audio en tiempo real</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">100% Propio</div>
+                    <div class="stat-label">Diseño, código y experimentación</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROJECTS / APPS SHOWCASE -->
+        <section id="proyectos">
+            <div class="section-header">
+                <div class="eyebrow">📱 Catálogo Oficial</div>
+                <h2>Nuestras Apps y Videojuegos</h2>
+                <p>Cada proyecto nace de una idea original llevada a producción: desde plataformas 2D de precisión dibujados a mano hasta reproductores locales y modelos acústicos con IA.</p>
+            </div>
+
+            <div class="projects-grid">
+                <!-- 1. SOY UNA LÍNEA (I'M A LINE) -->
+                <article class="app-card soy-linea">
+                    <div>
+                        <div class="app-card-top">
+                            <div class="app-icon-box">
+                                <img src="images/soy_linea_icon.png" alt="Icono oficial de Soy una línea (I'm a Line)">
+                            </div>
+                            <div class="app-meta">
+                                <span class="app-category">✏️ Videojuego • Plataformas 2D &amp; Speedrun</span>
+                                <h3 class="app-title">Soy una línea</h3>
+                                <div class="app-subtitle">I'm a Line — ¡El juego más difícil en tu cuaderno!</div>
+                            </div>
+                        </div>
+
+                        <p class="app-description" style="margin-top: 18px;">
+                            Controla a una línea dibujada en una hoja de cuaderno donde casi todo te mata al instante. Salta entre pinchos, ventiladores y rocas traicioneras, <strong>dispara por los ojos</strong> para activar botones en el aire y <strong>transfórmate en mosca</strong> para cruzar abismos imposibles sin tocar el suelo. Incluye cronómetro de speedrun al milisegundo y controles táctiles 100% editables.
+                        </p>
+
+                        <div class="app-tags">
+                            <span class="tag">Unity 2D</span>
+                            <span class="tag">Speedrun Timer</span>
+                            <span class="tag">Modo Mosca</span>
+                            <span class="tag">Estética Cuaderno</span>
+                            <span class="tag">Controles Pro Editables</span>
+                        </div>
+                    </div>
+
+                    <div class="app-card-actions">
+                        <a href="https://play.google.com/store/apps/details?id=com.Fiuva.Imaline" target="_blank" rel="noopener" class="btn-card store">
+                            <span>▶ Google Play</span>
+                        </a>
+                        <a href="/SoyUnaLinea" class="btn-card web">
+                            <span>🌐 Web Oficial</span>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- 2. BEETUNE -->
+                <article class="app-card beetune">
+                    <div>
+                        <div class="app-card-top">
+                            <div class="app-icon-box dark-icon">
+                                <img src="images/beetune_icon_nb.webp" alt="Icono oficial de BeeTune">
+                            </div>
+                            <div class="app-meta">
+                                <span class="app-category">🎵 Música &amp; Audio • Offline Player</span>
+                                <h3 class="app-title">BeeTune</h3>
+                                <div class="app-subtitle">Tu reproductor de música local sin límites</div>
+                            </div>
+                        </div>
+
+                        <p class="app-description" style="margin-top: 18px;">
+                            Reproductor de música local ultrarrápido y elegante para Android. Disfruta de tus canciones sin conexión ni suscripciones con soporte para <strong>letras sincronizadas (.lrc)</strong>, <strong>Modo Coche</strong> dedicado, ajuste de velocidad y tono (pitch) en tiempo real, ecualizador, temporizador de sueño, recortador de tonos y estadísticas de escucha.
+                        </p>
+
+                        <div class="app-tags">
+                            <span class="tag">Letras .LRC</span>
+                            <span class="tag">Modo Coche</span>
+                            <span class="tag">Pitch &amp; Velocidad</span>
+                            <span class="tag">Recortador de Audio</span>
+                            <span class="tag">100% Offline</span>
+                        </div>
+                    </div>
+
+                    <div class="app-card-actions">
+                        <a href="https://play.google.com/store/apps/details?id=com.fiuva.beetune" target="_blank" rel="noopener" class="btn-card store">
+                            <span>▶ Google Play</span>
+                        </a>
+                        <a href="/BeeTune" class="btn-card web">
+                            <span>🌐 Web Oficial</span>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- 3. BIRDIA -->
+                <article class="app-card birdia">
+                    <div>
+                        <div class="app-card-top">
+                            <div class="app-icon-box dark-icon">
+                                <img src="images/birdia_icon.png" alt="Icono oficial de Birdia">
+                            </div>
+                            <div class="app-meta">
+                                <span class="app-category">🐦 Inteligencia Artificial • Naturaleza</span>
+                                <h3 class="app-title">Birdia</h3>
+                                <div class="app-subtitle">Identificador de aves por su canto en tiempo real</div>
+                            </div>
+                        </div>
+
+                        <p class="app-description" style="margin-top: 18px;">
+                            Escucha el entorno y descubre qué especie de ave está cantando a tu alrededor. Birdia procesa el sonido directamente en tu dispositivo mediante <strong>redes neuronales acústicas</strong>, dibuja el <strong>espectrograma en vivo</strong> y muestra fotografías reales, nivel de confianza y nombres en español, inglés y latín científico.
+                        </p>
+
+                        <div class="app-tags">
+                            <span class="tag">IA Acústica Local</span>
+                            <span class="tag">Espectrograma en Vivo</span>
+                            <span class="tag">ES / EN / Científico</span>
+                            <span class="tag">Fichas &amp; Wikipedia</span>
+                        </div>
+                    </div>
+
+                    <div class="app-card-actions">
+                        <a href="https://play.google.com/store/apps/details?id=com.fiuva.birdia" target="_blank" rel="noopener" class="btn-card store">
+                            <span>▶ Google Play</span>
+                        </a>
+                        <a href="birdia.html" class="btn-card web">
+                            <span>🌐 Web Oficial</span>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- 4. DAYLI -->
+                <article class="app-card dayli">
+                    <div>
+                        <div class="app-card-top">
+                            <div class="app-icon-box dark-icon">
+                                <img src="images/dayli_icon.png" alt="Icono oficial de Dayli">
+                            </div>
+                            <div class="app-meta">
+                                <span class="app-category">📅 Cultura &amp; Educación • Efemérides</span>
+                                <h3 class="app-title">Dayli</h3>
+                                <div class="app-subtitle">Efemérides, curiosidades y Palabra del Día</div>
+                            </div>
+                        </div>
+
+                        <p class="app-description" style="margin-top: 18px;">
+                            Aprende algo fascinante cada mañana en menos de un minuto. Descubre la <strong>Palabra del Día</strong> con acceso directo a la definición oficial de la <strong>RAE</strong>, explora los acontecimientos históricos y nacimientos de tu fecha, días internacionales y lleva el conocimiento a tu pantalla de inicio con <strong>widgets personalizables</strong>.
+                        </p>
+
+                        <div class="app-tags">
+                            <span class="tag">Palabra del Día (RAE)</span>
+                            <span class="tag">Efemérides Históricas</span>
+                            <span class="tag">Widgets Android</span>
+                            <span class="tag">Modo Oscuro</span>
+                        </div>
+                    </div>
+
+                    <div class="app-card-actions">
+                        <a href="https://play.google.com/store/apps/details?id=com.fiuva.dayli" target="_blank" rel="noopener" class="btn-card store">
+                            <span>▶ Google Play</span>
+                        </a>
+                        <a href="/Dayli" class="btn-card web">
+                            <span>🌐 Web Oficial</span>
+                        </a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- LAB DNA / PILLARS -->
+        <section id="laboratorio">
+            <div class="section-header">
+                <div class="eyebrow">🔬 Filosofía de Trabajo</div>
+                <h2>El ADN de Fiuva Labs</h2>
+                <p>Combinamos rigor técnico en ingeniería de software e inteligencia artificial con la frescura de un estudio indie.</p>
+            </div>
+
+            <div class="pillars-grid">
+                <div class="pillar-card">
+                    <div class="pillar-icon">🎮</div>
+                    <h3>Videojuegos con Identidad</h3>
+                    <p>Diseñamos mecánicas directas, exigentes y adictivas, cuidando la respuesta de los controles táctiles, el ritmo de juego y una estética artesanal reconocible al primer vistazo.</p>
+                </div>
+
+                <div class="pillar-card">
+                    <div class="pillar-icon">🧠</div>
+                    <h3>Inteligencia Artificial Aplicada</h3>
+                    <p>Desde la investigación en modelos generativos de imagen hasta la inferencia acústica en tiempo real en dispositivos móviles sin comprometer la privacidad del usuario.</p>
+                </div>
+
+                <div class="pillar-card">
+                    <div class="pillar-icon">⚡</div>
+                    <h3>Software Rápido y Honesto</h3>
+                    <p>Aplicaciones ligeras que funcionan cuando las necesitas, priorizando el procesamiento local, interfaces limpias y experiencias sin muros de pago intrusivos.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT FIUVA & SOCIALS -->
+        <section>
+            <div class="about-banner">
+                <div class="avatar-stack">
+                    <img src="images/ornitorrinco.jpg" alt="Fiuva" class="main-avatar">
+                    <img src="images/fiuva_labs_icon.png" alt="Fiuva Labs" class="badge-avatar">
+                </div>
+
+                <div class="about-content">
+                    <div class="eyebrow" style="margin-bottom: 10px;">👋 Detrás del Laboratorio</div>
+                    <h2>Creado por Fiuva</h2>
+                    <p>
+                        Graduado en <strong>Ingeniería Informática</strong>, titulado en <strong>Desarrollo de Videojuegos</strong> e <strong>Investigador en Modelos Generativos de Imagen (IA)</strong>. Fiuva Labs nace como el espacio donde reunir todos mis videojuegos, aplicaciones móviles, experimentos de código y proyectos con la comunidad.
+                    </p>
+
+                    <div class="social-pills">
+                        <a href="about.html" class="social-pill" style="border-color: rgba(34, 211, 238, 0.5); color: var(--cyan);">
+                            <span>📖 Leer biografía completa</span>
+                        </a>
+                        <a href="https://github.com/fiuva" target="_blank" rel="noopener" class="social-pill">
+                            <span>🐙 GitHub</span>
+                        </a>
+                        <a href="https://play.google.com/store/apps/dev?id=7870183180556281898" target="_blank" rel="noopener" class="social-pill">
+                            <span>▶️ Google Play</span>
+                        </a>
+                        <a href="https://x.com/fiuva5" target="_blank" rel="noopener" class="social-pill">
+                            <span>🐦 X / Twitter</span>
+                        </a>
+                        <a href="https://www.instagram.com/fiuva2/" target="_blank" rel="noopener" class="social-pill">
+                            <span>📸 Instagram</span>
+                        </a>
+                        <a href="https://twitch.tv/fiuva2" target="_blank" rel="noopener" class="social-pill">
+                            <span>🟣 Twitch</span>
+                        </a>
+                        <a href="https://www.youtube.com/@fiuva8675" target="_blank" rel="noopener" class="social-pill">
+                            <span>🔴 YouTube</span>
+                        </a>
+                        <a href="https://discord.gg/NJf5ewazMk" target="_blank" rel="noopener" class="social-pill">
+                            <span>💬 Discord</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
     <footer>
-        <p>&copy; 2026 Fiuva</p>
-    </footer>
-</body>
+        <div class="footer-inner">
+            <a href="index.html" class="brand-logo">
+                <img src="images/fiuva_labs_icon.png" alt="Fiuva Labs">
+                <span>Fiuva <span class="labs-accent">Labs</span></span>
+            </a>
 
+            <nav class="footer-nav">
+                <a href="index.html">Inicio</a>
+                <a href="/SoyUnaLinea">Soy una línea</a>
+                <a href="/BeeTune">BeeTune</a>
+                <a href="birdia.html">Birdia</a>
+                <a href="/Dayli">Dayli</a>
+                <a href="about.html">Sobre Fiuva</a>
+                <a href="app-ads.txt">app-ads.txt</a>
+                <a href="mailto:fiuvalabs@gmail.com">fiuvalabs@gmail.com</a>
+            </nav>
+
+            <p class="footer-copy">&copy; 2026 Fiuva Labs. Hecho con código, creatividad y un ornitorrinco de laboratorio.</p>
+        </div>
+    </footer>
+
+</body>
 </html>
