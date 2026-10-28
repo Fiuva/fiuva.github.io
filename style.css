@@ -407,6 +407,7 @@ section {
 }
 
 .app-card.soy-linea { --card-accent: #facc15; }
+.app-card.platypus  { --card-accent: #d9ab4e; }
 .app-card.beetune   { --card-accent: #f59e0b; }
 .app-card.birdia    { --card-accent: #10b981; }
 .app-card.dayli     { --card-accent: #38bdf8; }
