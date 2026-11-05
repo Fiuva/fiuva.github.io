@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Política de Privacidad — Soy una línea (I'm a Line) | Fiuva Labs</title>
+    <link rel="icon" type="image/png" href="img/soy_linea_icon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Patrick+Hand&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --paper-bg: #fbfaf4;
+            --paper-card: #ffffff;
+            --ink-black: #141414;
+            --ink-muted: #424242;
+            --grid-line: rgba(145, 185, 214, 0.38);
+            --margin-red: rgba(235, 95, 95, 0.72);
+            --stamp-red: #d93333;
+            --highlighter-yellow: #ffd933;
+            --shadow-ink: 5px 5px 0px #141414;
+            --shadow-ink-sm: 3px 3px 0px #141414;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--paper-bg);
+            color: var(--ink-black);
+            line-height: 1.7;
+            background-image:
+                linear-gradient(90deg, transparent 58px, var(--margin-red) 58px, var(--margin-red) 60px, transparent 60px),
+                repeating-linear-gradient(0deg, transparent, transparent 31px, var(--grid-line) 31px, var(--grid-line) 32px);
+            background-attachment: fixed;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                background-image:
+                    linear-gradient(90deg, transparent 20px, var(--margin-red) 20px, var(--margin-red) 22px, transparent 22px),
+                    repeating-linear-gradient(0deg, transparent, transparent 31px, var(--grid-line) 31px, var(--grid-line) 32px);
+            }
+        }
+
+        h1, h2, .hand-font {
+            font-family: 'Patrick Hand', cursive, sans-serif;
+        }
+
+        .topbar {
+            background: rgba(251, 250, 244, 0.94);
+            border-bottom: 3px solid var(--ink-black);
+            padding: 12px 24px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .topbar-inner {
+            max-width: 920px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .brand-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--ink-black);
+            font-weight: 700;
+            background: #fff;
+            border: 2.5px solid var(--ink-black);
+            border-radius: 999px;
+            padding: 5px 14px 5px 6px;
+            box-shadow: var(--shadow-ink-sm);
+            transition: transform 0.15s ease;
+        }
+
+        .brand-btn:hover {
+            transform: translate(-2px, -2px);
+        }
+
+        .brand-btn img {
+            width: 30px;
+            height: 30px;
+            border-radius: 8px;
+        }
+
+        .container {
+            max-width: 880px;
+            margin: 36px auto 72px;
+            padding: 0 24px 0 80px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 18px 0 36px;
+            }
+        }
+
+        .sheet {
+            background: var(--paper-card);
+            border: 3.5px solid var(--ink-black);
+            border-radius: 14px;
+            padding: 40px 36px;
+            box-shadow: 8px 8px 0px var(--ink-black);
+        }
+
+        @media (max-width: 600px) {
+            .sheet {
+                padding: 26px 20px;
+            }
+        }
+
+        .sheet-header {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            border-bottom: 3px solid var(--ink-black);
+            padding-bottom: 22px;
+            margin-bottom: 26px;
+            flex-wrap: wrap;
+        }
+
+        .sheet-header img {
+            width: 68px;
+            height: 68px;
+            border-radius: 16px;
+            border: 3px solid var(--ink-black);
+            box-shadow: var(--shadow-ink-sm);
+        }
+
+        h1 {
+            font-size: clamp(2.1rem, 4.5vw, 2.8rem);
+            line-height: 1.1;
+        }
+
+        .date-badge {
+            display: inline-block;
+            background: var(--highlighter-yellow);
+            border: 2px solid var(--ink-black);
+            padding: 2px 10px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-top: 6px;
+        }
+
+        h2 {
+            font-size: 1.75rem;
+            margin-top: 28px;
+            margin-bottom: 10px;
+            display: inline-block;
+            background: linear-gradient(180deg, transparent 62%, var(--highlighter-yellow) 62%);
+            padding: 0 6px;
+        }
+
+        p, ul {
+            color: var(--ink-muted);
+            margin-bottom: 16px;
+            font-size: 1rem;
+        }
+
+        ul {
+            padding-left: 22px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        strong {
+            color: var(--ink-black);
+        }
+
+        a {
+            color: var(--stamp-red);
+            font-weight: 600;
+            text-decoration: underline;
+        }
+
+        .back-row {
+            margin-top: 32px;
+            padding-top: 20px;
+            border-top: 2px dashed var(--ink-black);
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .btn-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'Patrick Hand', cursive;
+            font-size: 1.3rem;
+            text-decoration: none;
+            color: var(--ink-black);
+            background: var(--highlighter-yellow);
+            border: 2.5px solid var(--ink-black);
+            border-radius: 8px;
+            padding: 8px 20px;
+            box-shadow: var(--shadow-ink-sm);
+        }
+        .sheet + .sheet { margin-top: 48px; }
+    </style>
+</head>
+<body>
+
+    <header class="topbar">
+        <div class="topbar-inner">
+            <a href="index.html" class="brand-btn">
+                <img src="img/soy_linea_icon.png" alt="Soy una línea">
+                <span>← Volver a Soy una línea</span>
+            </a>
+            <a href="https://fiuva.github.io" class="brand-btn">
+                <img src="img/fiuva_labs_icon.png" alt="Fiuva Labs">
+                <span>Fiuva Labs</span>
+            </a>
+        </div>
+    </header>
+
+    <main class="container">
+        <article class="sheet" id="es" lang="es">
+            <div class="sheet-header">
+                <img src="img/soy_linea_icon.png" alt="Icono de Soy una línea">
+                <div>
+                    <h1>Política de Privacidad</h1>
+                    <span class="date-badge">Aplicación: Soy una línea (I'm a Line) • Última actualización: 27 de octubre de 2026</span>
+                </div>
+            </div>
+
+            <p><a href="#en">🇬🇧 English version below</a></p>
+
+            <p>
+                Esta política de privacidad se aplica a la aplicación móvil y videojuego <strong>Soy una línea</strong> (también distribuido internacionalmente como <strong>I'm a Line</strong>, paquete <code>com.fiuva.imaline</code>), desarrollado por <strong>Fiuva (Fiuva Labs)</strong> como un servicio gratuito con publicidad integrada.
+            </p>
+
+            <h2>1. Información que se recopila</h2>
+            <p>
+                <strong>Soy una línea</strong> no te pide crear una cuenta propia ni recopila directamente datos personales como tu nombre real, dirección o teléfono. Fiuva Labs <strong>no tiene servidores propios</strong> y no almacena ningún dato tuyo.
+            </p>
+            <p>
+                Tus tiempos récord, los niveles desbloqueados y la configuración de los controles se guardan <strong>en tu dispositivo</strong>. Si inicias sesión en Google Play Juegos, además se guarda una copia de tu progreso en tu cuenta de Google (ver apartado 3).
+            </p>
+            <p>
+                La aplicación usa estos servicios de Google, que pueden recopilar datos según sus propias políticas:
+            </p>
+            <ul>
+                <li><strong>Google AdMob</strong> y <strong>User Messaging Platform (UMP)</strong>: anuncios y consentimiento de privacidad.</li>
+                <li><strong>Servicios de juegos de Google Play (Google Play Juegos)</strong>: inicio de sesión, clasificaciones y guardado en la nube.</li>
+            </ul>
+            <p>
+                Más información: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Política de privacidad de Google</a> y
+                <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener">cómo usa Google los datos de las apps que utilizan sus servicios</a>.
+            </p>
+
+            <h2>2. Publicidad y consentimiento (Google AdMob)</h2>
+            <p>
+                Usamos <strong>Google AdMob</strong> para mostrar anuncios tipo banner (solo en los menús y en la pausa, nunca mientras juegas), anuncios a pantalla completa (con un tiempo mínimo entre ellos) y anuncios con recompensa opcionales (por ejemplo, si decides ver un anuncio para jugar durante un tiempo a un nivel bloqueado).
+            </p>
+            <p>
+                Para mostrar y medir los anuncios y prevenir el fraude, AdMob puede recopilar y compartir con Google: la <strong>dirección IP</strong> (para estimar la ubicación aproximada), el <strong>ID de publicidad</strong> y otros identificadores del dispositivo, <strong>interacciones con los anuncios</strong> y <strong>datos de diagnóstico</strong>. Estos datos viajan cifrados.
+            </p>
+            <p>
+                En el Espacio Económico Europeo, Reino Unido y otras regiones donde se exige, la aplicación muestra el formulario oficial de consentimiento de Google (UMP) antes de cargar anuncios. Puedes cambiar tu elección en cualquier momento desde el enlace <strong>«Privacidad»</strong> del menú principal del juego.
+            </p>
+
+            <h2>3. Google Play Juegos (clasificaciones y guardado en la nube)</h2>
+            <p>
+                Si tu dispositivo tiene Google Play Juegos, la aplicación puede iniciar sesión automáticamente con tu perfil de jugador. En ese caso:
+            </p>
+            <ul>
+                <li><strong>Clasificaciones:</strong> tus mejores tiempos de cada nivel se envían a clasificaciones públicas, donde aparecen junto a tu <strong>nombre de jugador de Play Juegos</strong>. Puedes controlar quién ve tu perfil desde la configuración de Google Play Juegos.</li>
+                <li><strong>Guardado en la nube:</strong> tus tiempos récord se guardan en tu cuenta de Google para recuperarlos si cambias de móvil o reinstalas el juego.</li>
+                <li>Google Play Juegos también recopila datos de diagnóstico y de uso para el funcionamiento de su servicio.</li>
+            </ul>
+            <p>
+                Iniciar sesión es opcional: si no lo haces, el juego funciona igual, sin clasificaciones ni guardado en la nube.
+            </p>
+
+            <h2>4. Permisos del dispositivo</h2>
+            <ul>
+                <li><strong>Internet y estado de la red:</strong> para cargar los anuncios y usar Google Play Juegos.</li>
+                <li><strong>ID de publicidad:</strong> lo usa AdMob para los anuncios. Puedes restablecerlo o eliminarlo en los ajustes de tu dispositivo (Ajustes &gt; Google &gt; Anuncios).</li>
+                <li><strong>Acelerómetro:</strong> se usa solo dentro del dispositivo para un secreto del juego. Ningún dato de los sensores sale de tu dispositivo.</li>
+            </ul>
+
+            <h2>5. Tus derechos y cómo eliminar tus datos</h2>
+            <ul>
+                <li><strong>Datos del dispositivo:</strong> se borran al desinstalar la aplicación (o al borrar sus datos desde los ajustes de Android).</li>
+                <li><strong>Datos de Google Play Juegos</strong> (clasificaciones y progreso en la nube): puedes eliminarlos desde tu perfil de Google Play Juegos, para este juego en concreto o para toda tu cuenta.</li>
+                <li><strong>Anuncios:</strong> puedes retirar o cambiar tu consentimiento desde «Privacidad» en el menú principal y restablecer tu ID de publicidad en los ajustes del dispositivo.</li>
+            </ul>
+            <p>
+                Como Fiuva Labs no almacena tus datos, el resto de solicitudes sobre los datos que tratan los servicios de Google se gestionan a través de Google. Si tienes cualquier duda, escríbenos (apartado 8).
+            </p>
+
+            <h2>6. Privacidad de los menores</h2>
+            <p>
+                Esta aplicación no está dirigida a menores de 13 años y no recopilamos a sabiendas información personal de ellos. Si eres padre, madre o tutor y crees que un menor nos ha proporcionado información personal, escríbenos para eliminarla.
+            </p>
+
+            <h2>7. Cambios en esta política</h2>
+            <p>
+                Podemos actualizar esta política de privacidad ocasionalmente. Cuando lo hagamos, cambiaremos la fecha de «Última actualización» de arriba.
+            </p>
+
+            <h2>8. Contacto</h2>
+            <p>
+                Si tienes cualquier duda sobre esta política de privacidad o sobre el juego, puedes contactar con <strong>Fiuva Labs</strong> en:<br>
+                📧 <strong>fiuvalabs@gmail.com</strong>
+            </p>
+
+            <div class="back-row">
+                <a href="index.html" class="btn-back">← Volver a la página del juego</a>
+            </div>
+        </article>
+
+        <article class="sheet" id="en" lang="en">
+            <div class="sheet-header">
+                <img src="img/soy_linea_icon.png" alt="I'm a Line icon">
+                <div>
+                    <h1>Privacy Policy</h1>
+                    <span class="date-badge">App: I'm a Line (Soy una línea) • Last updated: October 27, 2026</span>
+                </div>
+            </div>
+
+            <p><a href="#es">🇪🇸 Versión en español arriba</a></p>
+
+            <p>
+                This privacy policy applies to the mobile app and video game <strong>I'm a Line</strong> (also distributed as <strong>Soy una línea</strong>, package <code>com.fiuva.imaline</code>), developed by <strong>Fiuva (Fiuva Labs)</strong> as a free, ad-supported service.
+            </p>
+
+            <h2>1. Information we collect</h2>
+            <p>
+                <strong>I'm a Line</strong> does not ask you to create an account and does not directly collect personal data such as your real name, address or phone number. Fiuva Labs <strong>has no servers of its own</strong> and does not store any of your data.
+            </p>
+            <p>
+                Your best times, unlocked levels and control settings are stored <strong>on your device</strong>. If you sign in to Google Play Games, a copy of your progress is also saved to your Google account (see section 3).
+            </p>
+            <p>
+                The app uses the following Google services, which may collect data under their own policies:
+            </p>
+            <ul>
+                <li><strong>Google AdMob</strong> and <strong>User Messaging Platform (UMP)</strong>: ads and privacy consent.</li>
+                <li><strong>Google Play Games Services</strong>: sign-in, leaderboards and cloud save.</li>
+            </ul>
+            <p>
+                More information: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy Policy</a> and
+                <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener">how Google uses information from apps that use its services</a>.
+            </p>
+
+            <h2>2. Advertising and consent (Google AdMob)</h2>
+            <p>
+                We use <strong>Google AdMob</strong> to show banner ads (only in menus and in the pause screen, never while you play), full-screen ads (with a minimum time between them) and optional rewarded ads (for example, if you choose to watch an ad to play a locked level for a limited time).
+            </p>
+            <p>
+                To show and measure ads and prevent fraud, AdMob may collect and share with Google: your <strong>IP address</strong> (to estimate approximate location), the <strong>advertising ID</strong> and other device identifiers, <strong>ad interactions</strong> and <strong>diagnostic data</strong>. This data is encrypted in transit.
+            </p>
+            <p>
+                In the European Economic Area, the United Kingdom and other regions where it is required, the app shows Google's official consent form (UMP) before loading ads. You can change your choice at any time from the <strong>"Privacy"</strong> link in the game's main menu.
+            </p>
+
+            <h2>3. Google Play Games (leaderboards and cloud save)</h2>
+            <p>
+                If your device has Google Play Games, the app may sign in automatically with your player profile. In that case:
+            </p>
+            <ul>
+                <li><strong>Leaderboards:</strong> your best time on each level is sent to public leaderboards, where it appears next to your <strong>Play Games player name</strong>. You can control who sees your profile in your Google Play Games settings.</li>
+                <li><strong>Cloud save:</strong> your best times are saved to your Google account so you can recover them if you change phones or reinstall the game.</li>
+                <li>Google Play Games also collects diagnostic and usage data to run its service.</li>
+            </ul>
+            <p>
+                Signing in is optional: if you don't, the game works the same, just without leaderboards or cloud save.
+            </p>
+
+            <h2>4. Device permissions</h2>
+            <ul>
+                <li><strong>Internet and network state:</strong> to load ads and use Google Play Games.</li>
+                <li><strong>Advertising ID:</strong> used by AdMob for ads. You can reset or delete it in your device settings (Settings &gt; Google &gt; Ads).</li>
+                <li><strong>Accelerometer:</strong> used only on the device for an in-game secret. No sensor data leaves your device.</li>
+            </ul>
+
+            <h2>5. Your rights and how to delete your data</h2>
+            <ul>
+                <li><strong>On-device data:</strong> deleted when you uninstall the app (or clear its data in Android settings).</li>
+                <li><strong>Google Play Games data</strong> (leaderboards and cloud progress): you can delete it from your Google Play Games profile, for this game only or for your whole account.</li>
+                <li><strong>Ads:</strong> you can withdraw or change your consent from "Privacy" in the main menu, and reset your advertising ID in your device settings.</li>
+            </ul>
+            <p>
+                Since Fiuva Labs does not store your data, other requests about data processed by Google services are handled through Google. If you have any questions, contact us (section 8).
+            </p>
+
+            <h2>6. Children's privacy</h2>
+            <p>
+                This app is not directed at children under 13 and we do not knowingly collect personal information from them. If you are a parent or guardian and believe a child has provided us with personal information, contact us and we will delete it.
+            </p>
+
+            <h2>7. Changes to this policy</h2>
+            <p>
+                We may update this privacy policy from time to time. When we do, we will change the "Last updated" date above.
+            </p>
+
+            <h2>8. Contact</h2>
+            <p>
+                If you have any questions about this privacy policy or the game, you can contact <strong>Fiuva Labs</strong> at:<br>
+                📧 <strong>fiuvalabs@gmail.com</strong>
+            </p>
+
+            <div class="back-row">
+                <a href="index.html" class="btn-back">← Back to the game page</a>
+            </div>
+        </article>
+    </main>
+</body>
+</html>

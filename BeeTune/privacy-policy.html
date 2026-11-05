@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BeeTune — Política de Privacidad (Privacy Policy) | Fiuva Labs</title>
+    <link rel="icon" type="image/webp" href="img/beetune_icon_nb.webp">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #FFB800;
+            --primary-light: #FFD600;
+            --bg-dark: #0D0E12;
+            --bg-card: #16181F;
+            --text-main: #FFFFFF;
+            --text-muted: #CBD5E1;
+            --border-glass: rgba(255, 255, 255, 0.09);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.7;
+            color: var(--text-main);
+            background-color: var(--bg-dark);
+            background-image:
+                radial-gradient(circle at 20% 15%, rgba(255, 184, 0, 0.14), transparent 42%),
+                radial-gradient(circle at 80% 30%, rgba(16, 185, 129, 0.1), transparent 40%);
+            min-height: 100vh;
+        }
+
+        .topbar {
+            backdrop-filter: blur(16px);
+            background: rgba(13, 14, 18, 0.86);
+            border-bottom: 1px solid var(--border-glass);
+            padding: 14px 24px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .topbar-inner {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .studio-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 600;
+            font-size: 0.95rem;
+            padding: 6px 14px 6px 8px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid var(--border-glass);
+            transition: all 0.2s ease;
+        }
+
+        .studio-pill:hover {
+            background: rgba(255, 184, 0, 0.15);
+            border-color: rgba(255, 184, 0, 0.4);
+        }
+
+        .studio-pill img {
+            width: 28px;
+            height: 28px;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+
+        .wrapper {
+            max-width: 880px;
+            margin: 36px auto 80px;
+            padding: 0 24px;
+        }
+
+        .lang-selector {
+            text-align: center;
+            margin-bottom: 24px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .lang-btn {
+            background-color: rgba(255, 255, 255, 0.06);
+            border: 1px solid var(--border-glass);
+            color: var(--text-muted);
+            padding: 8px 18px;
+            border-radius: 999px;
+            cursor: pointer;
+            font-family: inherit;
+            font-weight: 600;
+            font-size: 0.92rem;
+            transition: all 0.2s ease;
+        }
+
+        .lang-btn:hover {
+            background-color: rgba(255, 184, 0, 0.15);
+            color: #fff;
+        }
+
+        .lang-btn.active {
+            background: linear-gradient(135deg, var(--primary), #D97706);
+            color: #0D0E12;
+            border-color: transparent;
+        }
+
+        .container {
+            background: var(--bg-card);
+            padding: 40px;
+            border-radius: 24px;
+            border: 1px solid var(--border-glass);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.55);
+            display: none;
+        }
+
+        .container.active {
+            display: block;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 26px 20px;
+            }
+        }
+
+        h1 {
+            color: #FFFFFF;
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 12px;
+            margin-bottom: 8px;
+            font-size: clamp(1.8rem, 4vw, 2.3rem);
+        }
+
+        h2 {
+            color: var(--primary-light);
+            margin-top: 26px;
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+
+        p, ul {
+            color: var(--text-muted);
+            margin-bottom: 14px;
+        }
+
+        ul {
+            padding-left: 22px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        strong {
+            color: #FFFFFF;
+        }
+
+        .date {
+            color: var(--primary-light);
+            font-size: 0.9rem;
+            margin-bottom: 22px;
+        }
+
+        a {
+            color: var(--primary-light);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="topbar">
+        <div class="topbar-inner">
+            <a href="index.html" class="studio-pill">
+                <img src="img/beetune_icon_nb.webp" alt="BeeTune">
+                <span>← Volver a BeeTune</span>
+            </a>
+            <a href="https://fiuva.github.io" class="studio-pill">
+                <img src="img/fiuva_labs_icon.png" alt="Fiuva Labs">
+                <span>Fiuva Labs</span>
+            </a>
+        </div>
+    </header>
+
+    <div class="wrapper">
+        <div class="lang-selector">
+            <button class="lang-btn" onclick="changeLanguage('es')" id="btn-es">🇪🇸 Español</button>
+            <button class="lang-btn" onclick="changeLanguage('en')" id="btn-en">🇬🇧 English</button>
+            <button class="lang-btn" onclick="changeLanguage('fr')" id="btn-fr">🇫🇷 Français</button>
+            <button class="lang-btn" onclick="changeLanguage('de')" id="btn-de">🇩🇪 Deutsch</button>
+            <button class="lang-btn" onclick="changeLanguage('pt')" id="btn-pt">🇵🇹 Português</button>
+        </div>
+
+        <div id="content-es" class="container">
+            <h1>Política de Privacidad de BeeTune</h1>
+            <p class="date">Última actualización: 30 de marzo de 2026</p>
+            <p><strong>Fiuva Labs</strong> desarrolló la aplicación <strong>BeeTune</strong> (afinador polifónico y monofónico de guitarra con Inteligencia Artificial) como una aplicación gratuita con publicidad. Este SERVICIO es proporcionado por Fiuva Labs sin coste alguno y está diseñado para ser utilizado tal cual.</p>
+            <h2>1. Recopilación y Uso de Información (Procesamiento Acústico 100% Local)</h2>
+            <p>BeeTune utiliza un modelo de inteligencia artificial propio (<em>BeeNet-8 CQT</em> mediante ONNX Runtime) que se ejecuta íntegramente en tu dispositivo. <strong>No grabamos, ni almacenamos, ni transmitimos audio de tu micrófono ni datos personales identificables a ningún servidor externo.</strong> Todo el análisis espectral de las cuerdas de tu guitarra ocurre en tiempo real en la memoria volátil de tu teléfono.</p>
+            <p>No obstante, la aplicación integra servicios de terceros para mostrar anuncios y gestionar el consentimiento normativo (RGPD/UMP), los cuales pueden recopilar identificadores de publicidad del dispositivo y datos técnicos básicos de diagnóstico:</p>
+            <ul>
+                <li><a href="https://www.google.com/policies/privacy/" target="_blank" rel="noopener">Google Play Services</a></li>
+                <li><a href="https://support.google.com/admob/answer/6128543?hl=es" target="_blank" rel="noopener">Google AdMob &amp; User Messaging Platform (UMP)</a></li>
+            </ul>
+            <h2>2. Permisos del Dispositivo</h2>
+            <p>Para funcionar correctamente como afinador de guitarra con IA, BeeTune solicita únicamente los siguientes permisos:</p>
+            <ul>
+                <li><strong>Micrófono (RECORD_AUDIO):</strong> Imprescindible para escuchar la vibración acústica de las cuerdas de tu guitarra y calcular su afinación en tiempo real mediante IA local. El audio jamás se guarda ni sale de tu dispositivo.</li>
+                <li><strong>Vibración (VIBRATE):</strong> Se utiliza localmente para proporcionar una respuesta háptica sutil cuando clavas la afinación de una cuerda.</li>
+                <li><strong>Acceso a Internet y Estado de Red:</strong> Utilizados exclusivamente para cargar anuncios a través de Google AdMob y gestionar las opciones de consentimiento de privacidad.</li>
+            </ul>
+            <h2>3. Privacidad de los Menores</h2>
+            <p>Estos Servicios no están dirigidos a menores de 13 años. No recopilamos a sabiendas información de identificación personal de niños menores de 13 años.</p>
+            <h2>4. Cambios en esta Política de Privacidad</h2>
+            <p>Podemos actualizar nuestra Política de Privacidad ocasionalmente. Te recomendamos revisar esta página periódicamente para estar al tanto de cualquier cambio.</p>
+            <h2>5. Contacto</h2>
+            <p>Si tienes alguna pregunta o sugerencia sobre nuestra Política de Privacidad, no dudes en contactarnos en: <strong>fiuvalabs@gmail.com</strong></p>
+        </div>
+
+        <div id="content-en" class="container">
+            <h1>Privacy Policy for BeeTune</h1>
+            <p class="date">Last Updated: March 30, 2026</p>
+            <p><strong>Fiuva Labs</strong> built the <strong>BeeTune</strong> app (AI-powered polyphonic and monophonic guitar tuner) as an Ad-Supported application. This SERVICE is provided by Fiuva Labs at no cost and is intended for use as is.</p>
+            <h2>1. Information Collection and Use (100% On-Device Audio Processing)</h2>
+            <p>BeeTune uses a proprietary artificial intelligence model (<em>BeeNet-8 CQT</em> via ONNX Runtime) that runs entirely on your device. <strong>We do not record, store, or transmit any microphone audio or personally identifiable data to external servers.</strong> All spectral analysis of your guitar strings happens in real time in your phone's volatile memory.</p>
+            <p>However, the app uses third-party services to display advertisements and manage GDPR/UMP consent, which may collect device advertising identifiers and basic diagnostic data:</p>
+            <ul>
+                <li><a href="https://www.google.com/policies/privacy/" target="_blank" rel="noopener">Google Play Services</a></li>
+                <li><a href="https://support.google.com/admob/answer/6128543" target="_blank" rel="noopener">Google AdMob &amp; User Messaging Platform (UMP)</a></li>
+            </ul>
+            <h2>2. Device Permissions</h2>
+            <p>To function properly as an AI guitar tuner, BeeTune requests only the following permissions:</p>
+            <ul>
+                <li><strong>Microphone (RECORD_AUDIO):</strong> Strictly required to listen to the acoustic vibration of your guitar strings and compute pitch accuracy in real time using on-device AI. Audio is never saved or transmitted off your device.</li>
+                <li><strong>Vibration (VIBRATE):</strong> Used locally to provide subtle haptic feedback when a string reaches accurate tuning.</li>
+                <li><strong>Internet &amp; Network State:</strong> Used strictly to load advertisements via Google AdMob and manage privacy consent options.</li>
+            </ul>
+            <h2>3. Children’s Privacy</h2>
+            <p>These Services do not address anyone under the age of 13. We do not knowingly collect personally identifiable information from children under 13.</p>
+            <h2>4. Changes to This Privacy Policy</h2>
+            <p>We may update our Privacy Policy from time to time. You are advised to review this page periodically for any changes.</p>
+            <h2>5. Contact Us</h2>
+            <p>If you have any questions or suggestions about our Privacy Policy, do not hesitate to contact us at: <strong>fiuvalabs@gmail.com</strong></p>
+        </div>
+
+        <div id="content-fr" class="container">
+            <h1>Politique de Confidentialité de BeeTune</h1>
+            <p class="date">Dernière mise à jour : 30 mars 2026</p>
+            <p><strong>Fiuva Labs</strong> a conçu l'application <strong>BeeTune</strong> (accordeur de guitare polyphonique et monophonique par IA) en tant qu'application gratuite financée par la publicité.</p>
+            <h2>1. Collecte et Utilisation des Informations (Traitement Audio 100 % Local)</h2>
+            <p>BeeTune utilise un modèle d'intelligence artificielle exécuté intégralement sur votre appareil. <strong>Nous n'enregistrons, ne stockons ni ne transmettons jamais l'audio de votre microphone vers des serveurs externes.</strong></p>
+            <ul>
+                <li><a href="https://www.google.com/policies/privacy/" target="_blank" rel="noopener">Google Play Services</a></li>
+                <li><a href="https://support.google.com/admob/answer/6128543?hl=fr" target="_blank" rel="noopener">Google AdMob</a></li>
+            </ul>
+            <h2>2. Autorisations de l'Appareil</h2>
+            <ul>
+                <li><strong>Microphone (RECORD_AUDIO) :</strong> Requis uniquement pour écouter les cordes de votre guitare et analyser leur accordage en temps réel sur l'appareil.</li>
+                <li><strong>Vibration (VIBRATE) :</strong> Utilisé pour le retour haptique lorsqu'une corde est accordée.</li>
+                <li><strong>Accès Internet :</strong> Utilisé uniquement pour charger les publicités via Google AdMob.</li>
+            </ul>
+            <h2>3. Nous Contacter</h2>
+            <p>Pour toute question concernant cette politique : <strong>fiuvalabs@gmail.com</strong></p>
+        </div>
+
+        <div id="content-de" class="container">
+            <h1>Datenschutzerklärung für BeeTune</h1>
+            <p class="date">Letzte Aktualisierung: 30. März 2026</p>
+            <p><strong>Fiuva Labs</strong> hat die App <strong>BeeTune</strong> (KI-gestütztes polyphones und monophones Gitarrenstimmgerät) als werbefinanzierte Anwendung entwickelt.</p>
+            <h2>1. Erfassung und Nutzung von Informationen (100 % lokale Audioverarbeitung)</h2>
+            <p>BeeTune führt die KI-Audioanalyse vollständig lokal auf Ihrem Gerät aus. <strong>Mikrofon-Audiodaten werden niemals gespeichert oder an externe Server übertragen.</strong></p>
+            <ul>
+                <li><a href="https://www.google.com/policies/privacy/" target="_blank" rel="noopener">Google Play Services</a></li>
+                <li><a href="https://support.google.com/admob/answer/6128543?hl=de" target="_blank" rel="noopener">Google AdMob</a></li>
+            </ul>
+            <h2>2. Geräteberechtigungen</h2>
+            <ul>
+                <li><strong>Mikrofon (RECORD_AUDIO):</strong> Erforderlich, um die Schwingungen Ihrer Gitarrensaiten in Echtzeit lokal zu analysieren.</li>
+                <li><strong>Vibration (VIBRATE):</strong> Für haptisches Feedback bei perfekter Stimmung.</li>
+                <li><strong>Internetzugang:</strong> Wird ausschließlich zum Laden von Google AdMob-Anzeigen verwendet.</li>
+            </ul>
+            <h2>3. Kontakt</h2>
+            <p>Bei Fragen erreichen Sie uns unter: <strong>fiuvalabs@gmail.com</strong></p>
+        </div>
+
+        <div id="content-pt" class="container">
+            <h1>Política de Privacidade do BeeTune</h1>
+            <p class="date">Última atualização: 30 de março de 2026</p>
+            <p>A <strong>Fiuva Labs</strong> desenvolveu o aplicativo <strong>BeeTune</strong> (afinador polifônico e monofônico de guitarra com IA) como um aplicativo gratuito suportado por anúncios.</p>
+            <h2>1. Coleta e Uso de Informações (Processamento de Áudio 100% Local)</h2>
+            <p>O BeeTune executa seu modelo de inteligência artificial inteiramente no seu dispositivo. <strong>Não gravamos, armazenamos nem transmitimos o áudio do seu microfone para servidores externos.</strong></p>
+            <ul>
+                <li><a href="https://www.google.com/policies/privacy/" target="_blank" rel="noopener">Google Play Services</a></li>
+                <li><a href="https://support.google.com/admob/answer/6128543?hl=pt" target="_blank" rel="noopener">Google AdMob</a></li>
+            </ul>
+            <h2>2. Permissões do Dispositivo</h2>
+            <ul>
+                <li><strong>Microfone (RECORD_AUDIO):</strong> Necessário exclusivamente para captar o som das cordas da guitarra e calcular a afinação em tempo real no aparelho.</li>
+                <li><strong>Vibração (VIBRATE):</strong> Usado para feedback tátil ao atingir a afinação correta.</li>
+                <li><strong>Acesso à Internet:</strong> Usado estritamente para exibir anúncios via Google AdMob.</li>
+            </ul>
+            <h2>3. Contato</h2>
+            <p>Em caso de dúvidas, entre em contato: <strong>fiuvalabs@gmail.com</strong></p>
+        </div>
+    </div>
+
+    <script>
+        function changeLanguage(lang) {
+            document.querySelectorAll('.container').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.lang-btn').forEach(el => el.classList.remove('active'));
+
+            const targetContent = document.getElementById('content-' + lang);
+            const targetBtn = document.getElementById('btn-' + lang);
+
+            if (targetContent && targetBtn) {
+                targetContent.classList.add('active');
+                targetBtn.classList.add('active');
+                document.documentElement.lang = lang;
+            } else {
+                document.getElementById('content-es').classList.add('active');
+                document.getElementById('btn-es').classList.add('active');
+            }
+        }
+
+        window.onload = function() {
+            const userLang = navigator.language || navigator.userLanguage || 'es';
+            const shortLang = userLang.substring(0, 2).toLowerCase();
+            const supportedLangs = ['es', 'en', 'fr', 'de', 'pt'];
+            if (supportedLangs.includes(shortLang)) {
+                changeLanguage(shortLang);
+            } else {
+                changeLanguage('es');
+            }
+        };
+    </script>
+
+</body>
+</html>
