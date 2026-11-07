@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=3">
 </head>
 <body>
 
@@ -209,27 +209,44 @@
 
                 <article class="legal-sheet" style="margin-top: 24px;" data-reveal>
                     <span class="bento-panel-kicker">POLÍTICA DE PRIVACIDAD</span>
-                    <h2 style="margin-top: 10px;">Política de privacidad de Birdia</h2>
+                    <h2 style="margin-top: 8px; font-size: clamp(1.6rem, 3vw, 2.1rem);">Política de privacidad de Birdia</h2>
+                    <div class="legal-meta" style="margin-top: 6px;">Sin anuncios · Cero recopilación de datos personales · Procesamiento en dispositivo</div>
 
-                    <p style="margin-top: 16px;">
+                    <p>
                         La privacidad es importante para mí. Por lo tanto, he diseñado la aplicación <strong>Birdia</strong> de manera que no recopile ni guarde ningún tipo de datos personales de los usuarios. La aplicación sólo utiliza los siguientes permisos para funcionar correctamente:
                     </p>
 
-                    <ul>
-                        <li>
-                            <strong>Permiso de lectura del almacenamiento externo:</strong> Este permiso se necesita para poder leer los archivos de audio del dispositivo para realizar las correspondientes predicciones. No se guarda ningún tipo de dato de audio.
-                        </li>
-                        <li>
-                            <strong>Permiso de grabación de audio:</strong> Este permiso se necesita para poder grabar audio con la aplicación. El audio grabado se procesa únicamente en el dispositivo.
-                        </li>
-                        <li>
-                            <strong>Permiso de internet:</strong> Este permiso se necesita para poder cargar imágenes y algunos datos de pájaros. No se recopila ni se envía ningún tipo de dato personal a través de internet.
-                        </li>
-                    </ul>
+                    <div class="legal-perm-list">
+                        <div class="legal-perm-item">
+                            <span class="perm-kicker">PERMISO 01 · ALMACENAMIENTO</span>
+                            <h2>Permiso de lectura del almacenamiento externo</h2>
+                            <p>
+                                Este permiso se necesita para poder leer los archivos de audio del dispositivo para realizar las correspondientes predicciones. No se guarda ningún tipo de dato de audio.
+                            </p>
+                        </div>
 
-                    <p>
-                        En resumen, la aplicación <strong>Birdia</strong> no recopila ni guarda ningún tipo de datos personales de los usuarios. Si tienes alguna pregunta o inquietud acerca de nuestra política de privacidad, no dudes en contactarme en <a href="mailto:fiuvalabs@gmail.com"><strong>fiuvalabs@gmail.com</strong></a>.
-                    </p>
+                        <div class="legal-perm-item">
+                            <span class="perm-kicker">PERMISO 02 · MICRÓFONO</span>
+                            <h2>Permiso de grabación de audio</h2>
+                            <p>
+                                Este permiso se necesita para poder grabar audio con la aplicación. El audio grabado se procesa únicamente en el dispositivo.
+                            </p>
+                        </div>
+
+                        <div class="legal-perm-item">
+                            <span class="perm-kicker">PERMISO 03 · RED</span>
+                            <h2>Permiso de internet</h2>
+                            <p>
+                                Este permiso se necesita para poder cargar imágenes y algunos datos de pájaros. No se recopila ni se envía ningún tipo de dato personal a través de internet.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="legal-summary-box">
+                        <p>
+                            En resumen, la aplicación <strong>Birdia</strong> no recopila ni guarda ningún tipo de datos personales de los usuarios. Si tienes alguna pregunta o inquietud acerca de nuestra política de privacidad, no dudes en contactarme en <a href="mailto:fiuvalabs@gmail.com"><strong>fiuvalabs@gmail.com</strong></a>.
+                        </p>
+                    </div>
                 </article>
             </section>
         </main>
@@ -257,6 +274,6 @@
         </footer>
     </div>
 
-    <script src="main.js"></script>
+    <script src="main.js?v=3"></script>
 </body>
 </html>

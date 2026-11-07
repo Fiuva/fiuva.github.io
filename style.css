@@ -197,8 +197,15 @@ body.cursor-hover .cursor-ring {
     margin: 0 auto;
     border-left: 1px solid var(--border);
     border-right: 1px solid var(--border);
-    min-height: 100vh;
+    min-height: calc(100vh - 68px);
+    display: flex;
+    flex-direction: column;
     position: relative;
+}
+
+.page-shell > main {
+    flex: 1;
+    width: 100%;
 }
 
 .container {
@@ -2199,28 +2206,37 @@ body.cursor-hover .cursor-ring {
 }
 
 /* Legal / Privacy Policy Document Styling */
-.legal-sheet {
+.legal-doc-wrap {
+    padding: clamp(64px, 9vw, 120px) clamp(20px, 4vw, 56px);
+}
+
+.legal-sheet,
+.legal-doc-card {
     background: var(--surface);
     border: 1px solid var(--border);
-    border-radius: 16px;
+    border-radius: 20px;
     padding: clamp(28px, 4.5vw, 52px);
     max-width: 880px;
     margin: 0 auto;
+    box-shadow: var(--shadow-card);
 }
 
 .legal-sheet + .legal-sheet {
     margin-top: 32px;
 }
 
-.legal-sheet h1 {
+.legal-sheet h1,
+.legal-doc-card h1 {
     font-size: clamp(1.85rem, 3.6vw, 2.6rem);
     font-weight: 700;
     letter-spacing: -0.03em;
     line-height: 1.1;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
 }
 
-.legal-meta {
+.legal-meta,
+.legal-updated {
+    display: block;
     font-family: 'JetBrains Mono', monospace;
     font-size: 0.74rem;
     color: var(--accent);
@@ -2229,6 +2245,56 @@ body.cursor-hover .cursor-ring {
     padding-bottom: 20px;
     margin-bottom: 24px;
     border-bottom: 1px solid var(--border);
+}
+
+.legal-perm-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 14px;
+    margin: 24px 0;
+}
+
+.legal-perm-item {
+    background: var(--bg-subtle);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 18px 22px;
+}
+
+.legal-perm-item .perm-kicker {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.66rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--emerald);
+    display: block;
+    margin-bottom: 4px;
+}
+
+.legal-perm-item h2 {
+    font-size: 1.05rem !important;
+    font-weight: 700;
+    margin: 0 0 6px 0 !important;
+    color: var(--text);
+}
+
+.legal-perm-item p {
+    margin: 0 !important;
+    font-size: 0.94rem;
+    color: var(--text-secondary);
+    line-height: 1.65;
+}
+
+.legal-summary-box {
+    background: var(--bg-subtle);
+    border-left: 3px solid var(--emerald);
+    border-radius: 0 12px 12px 0;
+    padding: 18px 22px;
+    margin-top: 24px;
+}
+
+.legal-summary-box p {
+    margin: 0 !important;
 }
 
 .legal-sheet h2 {
