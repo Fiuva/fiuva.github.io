@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,836 +8,305 @@
     <link rel="icon" type="image/png" href="img/soy_linea_icon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Patrick+Hand&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --paper-bg: #fbfaf4;
-            --paper-card: #ffffff;
-            --ink-black: #141414;
-            --ink-muted: #4a4a4a;
-            --grid-line: rgba(145, 185, 214, 0.38);
-            --margin-red: rgba(235, 95, 95, 0.72);
-            --stamp-red: #d93333;
-            --highlighter-yellow: #ffd933;
-            --highlighter-cyan: #a8f0ff;
-            --highlighter-green: #b9fbc0;
-            --shadow-ink: 5px 5px 0px #141414;
-            --shadow-ink-sm: 3px 3px 0px #141414;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
-            background-color: var(--paper-bg);
-            color: var(--ink-black);
-            line-height: 1.6;
-            overflow-x: hidden;
-            /* Cuaderno escolar con renglones y cuadrícula sutil */
-            background-image:
-                linear-gradient(90deg, transparent 58px, var(--margin-red) 58px, var(--margin-red) 60px, transparent 60px, transparent 64px, rgba(235, 95, 95, 0.35) 64px, rgba(235, 95, 95, 0.35) 65px, transparent 65px),
-                repeating-linear-gradient(0deg, transparent, transparent 31px, var(--grid-line) 31px, var(--grid-line) 32px),
-                repeating-linear-gradient(90deg, transparent, transparent 31px, rgba(145, 185, 214, 0.16) 31px, rgba(145, 185, 214, 0.16) 32px);
-            background-attachment: fixed;
-        }
-
-        @media (max-width: 768px) {
-            body {
-                background-image:
-                    linear-gradient(90deg, transparent 22px, var(--margin-red) 22px, var(--margin-red) 24px, transparent 24px),
-                    repeating-linear-gradient(0deg, transparent, transparent 31px, var(--grid-line) 31px, var(--grid-line) 32px);
-            }
-        }
-
-        h1, h2, h3, .hand-font {
-            font-family: 'Patrick Hand', cursive, sans-serif;
-            letter-spacing: 0.5px;
-        }
-
-        /* Top Navigation (Fiuva Labs bar) */
-        .topbar {
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            background: rgba(251, 250, 244, 0.92);
-            backdrop-filter: blur(8px);
-            border-bottom: 3px solid var(--ink-black);
-            padding: 12px 24px;
-        }
-
-        .topbar-inner {
-            max-width: 1060px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 16px;
-            flex-wrap: wrap;
-        }
-
-        .studio-brand {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            text-decoration: none;
-            color: var(--ink-black);
-            font-weight: 700;
-            font-size: 1.05rem;
-            padding: 4px 12px 4px 6px;
-            background: #fff;
-            border: 2.5px solid var(--ink-black);
-            border-radius: 999px;
-            box-shadow: var(--shadow-ink-sm);
-            transition: transform 0.15s ease, box-shadow 0.15s ease;
-        }
-
-        .studio-brand:hover {
-            transform: translate(-2px, -2px);
-            box-shadow: 5px 5px 0px var(--ink-black);
-        }
-
-        .studio-brand img {
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            object-fit: cover;
-        }
-
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            flex-wrap: wrap;
-        }
-
-        .nav-link {
-            text-decoration: none;
-            color: var(--ink-black);
-            font-family: 'Patrick Hand', cursive;
-            font-size: 1.25rem;
-            padding: 4px 12px;
-            border-radius: 6px;
-            transition: background 0.15s ease;
-        }
-
-        .nav-link:hover {
-            background: var(--highlighter-yellow);
-        }
-
-        .container {
-            max-width: 1020px;
-            margin: 0 auto;
-            padding: 40px 24px 80px 84px;
-        }
-
-        @media (max-width: 768px) {
-            .container {
-                padding: 28px 18px 60px 38px;
-            }
-        }
-
-        /* Hero Section */
-        .hero {
-            display: grid;
-            grid-template-columns: 1.15fr 0.85fr;
-            gap: 40px;
-            align-items: center;
-            margin-top: 16px;
-            margin-bottom: 64px;
-        }
-
-        @media (max-width: 860px) {
-            .hero {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-        }
-
-        .hero-badge-row {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 14px;
-            flex-wrap: wrap;
-        }
-
-        @media (max-width: 860px) {
-            .hero-badge-row {
-                justify-content: center;
-            }
-        }
-
-        .notebook-tag {
-            display: inline-block;
-            background: var(--highlighter-yellow);
-            border: 2.5px solid var(--ink-black);
-            padding: 3px 14px;
-            font-family: 'Patrick Hand', cursive;
-            font-size: 1.15rem;
-            font-weight: 700;
-            box-shadow: var(--shadow-ink-sm);
-            transform: rotate(-1.5deg);
-        }
-
-        .version-tag {
-            display: inline-block;
-            background: #fff;
-            border: 2px solid var(--ink-black);
-            padding: 3px 10px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            border-radius: 6px;
-        }
-
-        .title-wrapper {
-            position: relative;
-            display: inline-block;
-            margin-bottom: 18px;
-        }
-
-        h1.game-title {
-            font-size: clamp(3.3rem, 7vw, 5.2rem);
-            line-height: 0.98;
-            color: var(--ink-black);
-            position: relative;
-            z-index: 2;
-        }
-
-        .title-underline {
-            height: 14px;
-            background: var(--highlighter-yellow);
-            border: 2.5px solid var(--ink-black);
-            margin-top: -8px;
-            transform: rotate(-0.8deg);
-            box-shadow: 2px 2px 0px var(--ink-black);
-        }
-
-        /* Sello rojo estilo DisenoMenus.cs */
-        .speedrun-stamp {
-            display: inline-block;
-            color: var(--stamp-red);
-            border: 3.5px solid var(--stamp-red);
-            padding: 4px 16px;
-            font-family: 'Patrick Hand', cursive;
-            font-size: 1.55rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            transform: rotate(-8deg);
-            background: rgba(255, 255, 255, 0.88);
-            box-shadow: 3px 3px 0px rgba(217, 51, 51, 0.25);
-            cursor: pointer;
-            user-select: none;
-            transition: transform 0.15s ease;
-            margin-top: 8px;
-            margin-bottom: 14px;
-        }
-
-        .speedrun-stamp:hover {
-            transform: rotate(-4deg) scale(1.06);
-        }
-
-        .hero-subtitle {
-            font-size: 1.2rem;
-            color: var(--ink-muted);
-            margin-bottom: 28px;
-            max-width: 560px;
-        }
-
-        @media (max-width: 860px) {
-            .hero-subtitle {
-                margin-left: auto;
-                margin-right: auto;
-            }
-        }
-
-        .hero-subtitle strong {
-            color: var(--ink-black);
-            background: linear-gradient(180deg, transparent 58%, var(--highlighter-yellow) 58%);
-            padding: 0 3px;
-        }
-
-        .cta-group {
-            display: flex;
-            gap: 16px;
-            flex-wrap: wrap;
-            align-items: center;
-        }
-
-        @media (max-width: 860px) {
-            .cta-group {
-                justify-content: center;
-            }
-        }
-
-        .btn-sketch {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            font-family: 'Patrick Hand', cursive;
-            font-size: 1.45rem;
-            text-decoration: none;
-            padding: 12px 26px;
-            border: 3px solid var(--ink-black);
-            border-radius: 10px;
-            box-shadow: var(--shadow-ink);
-            transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
-            cursor: pointer;
-        }
-
-        .btn-sketch.primary {
-            background: var(--highlighter-yellow);
-            color: var(--ink-black);
-        }
-
-        .btn-sketch.secondary {
-            background: #ffffff;
-            color: var(--ink-black);
-        }
-
-        .btn-sketch:hover {
-            transform: translate(-3px, -3px);
-            box-shadow: 8px 8px 0px var(--ink-black);
-        }
-
-        .btn-sketch:active {
-            transform: translate(2px, 2px);
-            box-shadow: 2px 2px 0px var(--ink-black);
-        }
-
-        /* Hero Right Card (Icon + Real Level Polaroid) */
-        .hero-visual {
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .polaroid-card {
-            background: #fff;
-            border: 3.5px solid var(--ink-black);
-            border-radius: 14px;
-            padding: 16px 16px 20px;
-            box-shadow: 8px 8px 0px var(--ink-black);
-            transform: rotate(2deg);
-            max-width: 390px;
-            width: 100%;
-            position: relative;
-            transition: transform 0.25s ease;
-        }
-
-        .polaroid-card:hover {
-            transform: rotate(0deg) scale(1.02);
-        }
-
-        .tape-strip {
-            position: absolute;
-            top: -15px;
-            left: 50%;
-            transform: translateX(-50%) rotate(-3deg);
-            width: 120px;
-            height: 28px;
-            background: rgba(255, 230, 128, 0.72);
-            border: 1.5px dashed rgba(20, 20, 20, 0.35);
-            z-index: 5;
-        }
-
-        .polaroid-img-wrap {
-            position: relative;
-            border: 2.5px solid var(--ink-black);
-            border-radius: 8px;
-            overflow: hidden;
-            background: var(--paper-bg);
-        }
-
-        .polaroid-img-wrap img.level-preview {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        .floating-app-icon {
-            position: absolute;
-            bottom: -18px;
-            left: -22px;
-            width: 96px;
-            height: 96px;
-            border-radius: 22px;
-            border: 3.5px solid var(--ink-black);
-            box-shadow: var(--shadow-ink);
-            background: #fff;
-            transform: rotate(-6deg);
-            z-index: 6;
-        }
-
-        .floating-fly-badge {
-            position: absolute;
-            top: -22px;
-            right: -18px;
-            background: #fff;
-            border: 3px solid var(--ink-black);
-            border-radius: 50%;
-            width: 74px;
-            height: 74px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: var(--shadow-ink-sm);
-            transform: rotate(10deg);
-            z-index: 6;
-        }
-
-        .floating-fly-badge img {
-            width: 52px;
-            height: 52px;
-            object-fit: contain;
-        }
-
-        .polaroid-caption {
-            margin-top: 14px;
-            text-align: right;
-            font-family: 'Patrick Hand', cursive;
-            font-size: 1.25rem;
-            color: var(--ink-black);
-            padding-left: 72px;
-        }
-
-        /* Section Headings */
-        .section-header {
-            margin-bottom: 36px;
-            text-align: left;
-        }
-
-        .section-header h2 {
-            font-size: clamp(2.2rem, 4.5vw, 3rem);
-            display: inline-block;
-            background: linear-gradient(180deg, transparent 62%, var(--highlighter-yellow) 62%);
-            padding: 0 8px;
-            border-bottom: 3px solid var(--ink-black);
-        }
-
-        .section-header p {
-            margin-top: 8px;
-            color: var(--ink-muted);
-            font-size: 1.1rem;
-        }
-
-        /* Features Grid (Notebook Cards) */
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 26px;
-            margin-bottom: 68px;
-        }
-
-        .sketch-card {
-            background: var(--paper-card);
-            border: 3px solid var(--ink-black);
-            border-radius: 12px;
-            padding: 26px 24px;
-            box-shadow: var(--shadow-ink);
-            position: relative;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .sketch-card:hover {
-            transform: translate(-3px, -3px);
-            box-shadow: 8px 8px 0px var(--ink-black);
-        }
-
-        .card-icon-row {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 4px;
-        }
-
-        .card-icon-badge {
-            width: 56px;
-            height: 56px;
-            border: 2.5px solid var(--ink-black);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.75rem;
-            background: var(--highlighter-yellow);
-            box-shadow: var(--shadow-ink-sm);
-        }
-
-        .card-icon-badge.cyan { background: var(--highlighter-cyan); }
-        .card-icon-badge.green { background: var(--highlighter-green); }
-        .card-icon-badge.red { background: #ffd6d6; }
-
-        .card-icon-badge img {
-            width: 40px;
-            height: 40px;
-            object-fit: contain;
-        }
-
-        .card-number {
-            font-family: 'Patrick Hand', cursive;
-            font-size: 1.6rem;
-            color: var(--stamp-red);
-            font-weight: 700;
-        }
-
-        .sketch-card h3 {
-            font-size: 1.65rem;
-            color: var(--ink-black);
-            line-height: 1.15;
-        }
-
-        .sketch-card p {
-            color: var(--ink-muted);
-            font-size: 0.98rem;
-        }
-
-        /* Fly Mode Highlight Banner */
-        .fly-showcase {
-            background: #fff;
-            border: 3.5px solid var(--ink-black);
-            border-radius: 16px;
-            padding: 32px;
-            box-shadow: 8px 8px 0px var(--ink-black);
-            margin-bottom: 68px;
-            display: grid;
-            grid-template-columns: 1fr auto;
-            gap: 28px;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        @media (max-width: 768px) {
-            .fly-showcase {
-                grid-template-columns: 1fr;
-                text-align: center;
-                padding: 24px 20px;
-            }
-        }
-
-        .fly-showcase-sprites {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 18px;
-            background: var(--paper-bg);
-            border: 2.5px dashed var(--ink-black);
-            border-radius: 14px;
-            padding: 20px 26px;
-        }
-
-        .fly-showcase-sprites img {
-            width: 72px;
-            height: 72px;
-            object-fit: contain;
-            transition: transform 0.2s ease;
-        }
-
-        .fly-showcase-sprites img:hover {
-            transform: scale(1.12) rotate(-6deg);
-        }
-
-        .warning-pill {
-            display: inline-block;
-            background: var(--stamp-red);
-            color: #fff;
-            font-family: 'Patrick Hand', cursive;
-            font-size: 1.15rem;
-            padding: 3px 12px;
-            border-radius: 6px;
-            margin-bottom: 10px;
-            letter-spacing: 0.5px;
-        }
-
-        /* Controls Showcase Table / Cards */
-        .controls-box {
-            background: #fff;
-            border: 3px solid var(--ink-black);
-            border-radius: 14px;
-            padding: 28px;
-            box-shadow: var(--shadow-ink);
-            margin-bottom: 60px;
-        }
-
-        .controls-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 18px;
-            margin-top: 18px;
-        }
-
-        .control-item {
-            background: var(--paper-bg);
-            border: 2px solid var(--ink-black);
-            border-radius: 10px;
-            padding: 16px;
-        }
-
-        .control-item h4 {
-            font-family: 'Patrick Hand', cursive;
-            font-size: 1.4rem;
-            margin-bottom: 6px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .control-item p {
-            font-size: 0.92rem;
-            color: var(--ink-muted);
-        }
-
-        /* Footer */
-        footer {
-            border-top: 3px solid var(--ink-black);
-            background: rgba(251, 250, 244, 0.96);
-            padding: 36px 24px;
-            text-align: center;
-        }
-
-        .footer-inner {
-            max-width: 960px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 16px;
-        }
-
-        .footer-links {
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .footer-links a {
-            color: var(--ink-black);
-            font-family: 'Patrick Hand', cursive;
-            font-size: 1.25rem;
-            text-decoration: none;
-            border-bottom: 2px solid var(--highlighter-yellow);
-        }
-
-        .footer-links a:hover {
-            background: var(--highlighter-yellow);
-        }
-
-        .copyright {
-            font-size: 0.9rem;
-            color: var(--ink-muted);
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
 </head>
 <body>
 
-    <header class="topbar">
-        <div class="topbar-inner">
-            <a href="https://fiuva.github.io" class="studio-brand" title="Volver a Fiuva Labs">
-                <img src="img/fiuva_labs_icon.png" alt="Fiuva Labs">
-                <span>Fiuva Labs</span>
-            </a>
-            <nav class="nav-links">
-                <a href="#mecanicas" class="nav-link">Mecánicas</a>
-                <a href="#modo-mosca" class="nav-link">Modo Mosca</a>
-                <a href="#controles" class="nav-link">Controles</a>
-                <a href="privacy-policy.html" class="nav-link">Privacidad</a>
+    <div class="cursor-dot" aria-hidden="true"></div>
+    <div class="cursor-ring" aria-hidden="true"></div>
+
+    <header class="site-header">
+        <div class="header-inner">
+            <div class="brand-cluster">
+                <a href="../index.html" class="brand-mark" data-magnetic>
+                    <span class="brand-mark-flask">
+                        <img src="../images/fiuva_labs_icon.png" alt="Fiuva Labs">
+                    </span>
+                    <span>← Fiuva Labs</span>
+                </a>
+                <span class="brand-divider"></span>
+                <div class="status-beacon">
+                    <span class="status-dot"></span>
+                    <span>SOY UNA LÍNEA // SPEEDRUN ENGINE</span>
+                </div>
+            </div>
+
+            <nav class="nav-cluster" aria-label="Navegación de Soy una línea">
+                <a href="#mecanicas" class="nav-item"><span class="nav-idx">01</span>Mecánicas</a>
+                <a href="#modo-mosca" class="nav-item"><span class="nav-idx">02</span>Modo Mosca</a>
+                <a href="#controles" class="nav-item"><span class="nav-idx">03</span>Controles</a>
+                <a href="privacy-policy.html" class="nav-item"><span class="nav-idx">04</span>Privacidad</a>
+
+                <button type="button" id="theme-toggle" class="theme-btn" aria-label="Cambiar tema claro/oscuro">
+                    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="4"></circle>
+                        <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
+                    </svg>
+                    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+
+                <a href="https://play.google.com/store/apps/details?id=com.fiuva.imaline" target="_blank" rel="noopener" class="header-cta" data-magnetic>
+                    <span>Google Play</span>
+                    <span>↗</span>
+                </a>
             </nav>
         </div>
     </header>
 
-    <main class="container">
-        <!-- HERO SECTION -->
-        <section class="hero">
-            <div class="hero-content">
-                <div class="hero-badge-row">
-                    <span class="notebook-tag">✏️ Plataformas 2D &amp; Speedrun</span>
-                    <span class="version-tag">Android • Google Play</span>
-                </div>
+    <div class="page-shell">
+        <main>
+            <!-- HERO SECTION WITH LIVE NOTEBOOK RUNNER -->
+            <section class="editorial-section" style="padding-bottom: 64px;">
+                <div class="project-showcase" data-project="soy-linea" style="border-radius: 20px;">
+                    <div class="project-info-col">
+                        <div>
+                            <div class="project-meta-top">
+                                <span class="project-index">FIUVA LABS // PROYECTO 02</span>
+                                <span class="project-kind">UNITY 2D · PLATAFORMAS &amp; SPEEDRUN</span>
+                            </div>
 
-                <div class="title-wrapper">
-                    <h1 class="game-title">Soy una línea</h1>
-                    <div class="title-underline"></div>
-                </div>
-                <br>
+                            <div class="project-identity">
+                                <div class="project-icon-frame light-bg" style="width: 82px; height: 82px;">
+                                    <img src="img/soy_linea_icon.png" alt="Soy una línea">
+                                </div>
+                                <div class="project-title-group">
+                                    <h1 style="font-size: clamp(2.1rem, 3.8vw, 3.2rem); font-weight: 700; letter-spacing: -0.035em; line-height: 1.02;">
+                                        Soy una <span class="serif-italic">línea</span>
+                                    </h1>
+                                    <p class="project-tagline">I'm a Line — Plataformas implacable dibujado sobre papel cuadriculado</p>
+                                </div>
+                            </div>
 
-                <div id="splashStamp" class="speedrun-stamp" title="¡Haz clic para cambiar el sello!">
-                    ¡EL JUEGO MÁS DIFÍCIL!
-                </div>
+                            <p class="project-body">
+                                Eres literalmente <strong>una línea dibujada en un cuaderno</strong> y absolutamente todo en el nivel quiere matarte. Salta entre pinchos, ventiladores y rocas traicioneras, <strong>dispara por los ojos</strong> para activar interruptores en pleno vuelo, <strong>transfórmate en mosca</strong> y bate el cronómetro de speedrun al milisegundo.
+                            </p>
 
-                <p class="hero-subtitle">
-                    Eres literalmente <strong>una línea dibujada en un cuaderno</strong> y absolutamente todo en el nivel quiere matarte. Salta, dispara por los ojos, <strong>transfórmate en mosca</strong> en pleno vuelo y bate el cronómetro de speedrun al milisegundo.
-                </p>
-
-                <div class="cta-group">
-                    <a href="https://play.google.com/store/apps/details?id=com.Fiuva.Imaline" target="_blank" rel="noopener" class="btn-sketch primary">
-                        <span>▶ Descargar en Google Play</span>
-                    </a>
-                    <a href="https://play.google.com/store/apps/dev?id=7870183180556281898" target="_blank" rel="noopener" class="btn-sketch secondary">
-                        <span>Ver ficha de Fiuva Labs</span>
-                    </a>
-                </div>
-            </div>
-
-            <div class="hero-visual">
-                <div class="polaroid-card">
-                    <div class="tape-strip"></div>
-                    <div class="floating-fly-badge" title="¡Modo Mosca!">
-                        <img src="img/mosca_icon.png" alt="Modo Mosca">
-                    </div>
-                    <div class="polaroid-img-wrap">
-                        <img src="img/ui_mundo1.png" alt="Nivel de Soy una línea en el cuaderno" class="level-preview">
-                    </div>
-                    <img src="img/soy_linea_icon.png" alt="Icono oficial de Soy una línea" class="floating-app-icon">
-                    <div class="polaroid-caption">
-                        Mundo 1 — "No toques los pinchos" ⏱️
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- MECHANICS SECTION -->
-        <section id="mecanicas">
-            <div class="section-header">
-                <h2>¿Qué hace único a Soy una línea?</h2>
-                <p>Olvídate de los tutoriales eternos: aquí mueres en medio segundo y reapareces al instante.</p>
-            </div>
-
-            <div class="features-grid">
-                <article class="sketch-card">
-                    <div class="card-icon-row">
-                        <div class="card-icon-badge">⏱️</div>
-                        <span class="card-number">#01</span>
-                    </div>
-                    <h3>Speedrun al Milisegundo</h3>
-                    <p>
-                        El cronómetro empieza a correr en el exacto instante en que te mueves. Supera niveles llenos de trampas, guarda tus mejores marcas personales por nivel y comparte tus tiempos récord.
-                    </p>
-                </article>
-
-                <article class="sketch-card">
-                    <div class="card-icon-row">
-                        <div class="card-icon-badge red">💀</div>
-                        <span class="card-number">#02</span>
-                    </div>
-                    <h3>Peligros por Todas Partes</h3>
-                    <p>
-                        Pinchos traicioneros, enemigos patrullando, ventiladores que te empujan al vacío, bolas con pinchos y rocas que caen cuando menos te lo esperas. Un solo roce y vuelves a la salida sin pantallas de carga.
-                    </p>
-                </article>
-
-                <article class="sketch-card">
-                    <div class="card-icon-row">
-                        <div class="card-icon-badge cyan">👀</div>
-                        <span class="card-number">#03</span>
-                    </div>
-                    <h3>Disparo Direccional</h3>
-                    <p>
-                        ¡Tu línea dispara por los ojos! Apunta según hacia dónde miras para activar botones rojos a distancia, abrir compuertas y desactivar trampas en mitad de un salto sin perder velocidad.
-                    </p>
-                </article>
-
-                <article class="sketch-card">
-                    <div class="card-icon-row">
-                        <div class="card-icon-badge green">
-                            <img src="img/mosca_icon.png" alt="Mosca">
+                            <div class="project-specs-list">
+                                <span class="spec-chip">Cronómetro al Milisegundo</span>
+                                <span class="spec-chip">Disparo Direccional</span>
+                                <span class="spec-chip">Modo Mosca</span>
+                                <span class="spec-chip">Controles Pro Editables</span>
+                                <span class="spec-chip">Clasificaciones Play Juegos</span>
+                            </div>
                         </div>
-                        <span class="card-number">#04</span>
+
+                        <div class="project-links-row">
+                            <a href="https://play.google.com/store/apps/details?id=com.fiuva.imaline" target="_blank" rel="noopener" class="project-btn primary" data-magnetic>
+                                <span>Descargar en Google Play</span>
+                                <span>↗</span>
+                            </a>
+                            <a href="privacy-policy.html" class="project-btn secondary" data-magnetic>
+                                <span>Política de Privacidad</span>
+                                <span>→</span>
+                            </a>
+                        </div>
                     </div>
-                    <h3>¡Transfórmate en Mosca!</h3>
-                    <p>
-                        Cuando estés en el aire, conviértete en mosca para volar sobre abismos imposibles. Recoge monedas con alas para recargar tu barra de vuelo y vuelve a ser línea antes de tocar tierra.
-                    </p>
-                </article>
-            </div>
-        </section>
 
-        <!-- FLY MODE CALLOUT -->
-        <section id="modo-mosca" class="fly-showcase">
-            <div>
-                <span class="warning-pill">⚠️ REGLA DE ORO DEL MODO MOSCA</span>
-                <h2 class="hand-font" style="font-size: 2.2rem; margin-bottom: 10px;">
-                    Vuela alto, pero ¡NUNCA aterrices siendo mosca!
-                </h2>
-                <p style="color: var(--ink-muted); font-size: 1.05rem;">
-                    En <strong>Soy una línea</strong> puedes transformarte en mosca siempre que estés en el aire. Sin embargo, las moscas son tan frágiles que <strong>tocar cualquier superficie —¡incluido el suelo normal!— te matará en el acto</strong>. Calcula tu barra de vuelo, atrapa las <strong>monedas aladas</strong> para ganar segundos extra y vuelve a transformarte en línea justo antes de tocar el suelo.
-                </p>
-            </div>
-            <div class="fly-showcase-sprites">
-                <img src="img/soy_linea_icon.png" alt="Soy una línea" style="border-radius: 14px; border: 2px solid #141414;">
-                <span class="hand-font" style="font-size: 2rem; font-weight: bold;">⇄</span>
-                <img src="img/mosca_icon.png" alt="Modo Mosca">
-                <span class="hand-font" style="font-size: 2rem; font-weight: bold;">+</span>
-                <img src="img/moneda.png" alt="Moneda de tiempo de vuelo">
-            </div>
-        </section>
+                    <div class="project-sandbox-col">
+                        <div class="sandbox-top-bar">
+                            <span class="sandbox-live-badge">SIMULADOR DE CUADERNO INTERACTIVO</span>
+                            <span>60 FPS</span>
+                        </div>
 
-        <!-- CUSTOM CONTROLS SECTION -->
-        <section id="controles" class="controls-box">
-            <h2 class="hand-font" style="font-size: 2.2rem;">🎮 Controles 100% a tu Medida</h2>
-            <p style="color: var(--ink-muted); margin-top: 4px;">
-                Cada speedrunner tiene su estilo. Configura la interfaz táctil a tu gusto o edita el tamaño y la posición exacta de cada botón en pantalla:
-            </p>
+                        <div class="notebook-canvas-wrap" style="min-height: 215px;">
+                            <canvas id="linea-canvas"></canvas>
+                            <div class="notebook-hud">
+                                <span>MUNDO 01 // RUN</span>
+                                <span id="linea-timer">00:00.000</span>
+                            </div>
+                        </div>
 
-            <div class="controls-list">
-                <div class="control-item">
-                    <h4>⚡ Sin Botones (Modo Pro)</h4>
-                    <p>Pantalla limpia. Desliza a izquierda/derecha en la mitad izquierda para moverte, desliza arriba para saltar, abajo para transformarte en mosca y toca a la derecha para disparar.</p>
+                        <div class="sandbox-footer-hint">
+                            <span>Haz clic en el cuaderno para saltar y disparar por los ojos</span>
+                            <span>SPEEDRUN TIMER</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="control-item">
-                    <h4>🕹️ Joystick Vertical</h4>
-                    <p>Elige entre Joystick Fijo, Dinámico o Flotante con sensibilidad de swipe independiente para saltar y activar el modo mosca con total precisión.</p>
-                </div>
-                <div class="control-item">
-                    <h4>🎛️ Botones Personalizables</h4>
-                    <p>Usa el editor visual integrado para arrastrar, recolocar y escalar cada botón (Mover, Saltar, Disparar, Mosca y Reiniciar) donde te resulte más cómodo.</p>
-                </div>
-            </div>
-        </section>
-    </main>
+            </section>
 
-    <footer>
-        <div class="footer-inner">
-            <a href="https://fiuva.github.io" class="studio-brand">
-                <img src="img/fiuva_labs_icon.png" alt="Fiuva Labs">
-                <span>Un juego de Fiuva Labs</span>
-            </a>
-            <div class="footer-links">
-                <a href="https://fiuva.github.io">Web de Fiuva Labs</a>
-                <a href="https://play.google.com/store/apps/details?id=com.Fiuva.Imaline" target="_blank" rel="noopener">Google Play</a>
-                <a href="privacy-policy.html">Política de Privacidad</a>
-                <a href="app-ads.txt">app-ads.txt</a>
-            </div>
-            <p class="copyright">&copy; 2026 Fiuva Labs. Todos los derechos reservados.</p>
-        </div>
-    </footer>
+            <!-- SECTION 01: MECHANICS (#mecanicas) -->
+            <section id="mecanicas" class="editorial-section section-rule">
+                <div class="section-head-split" data-reveal>
+                    <div class="section-index-label">
+                        <span class="num">01</span>
+                        <span>// MECÁNICAS DE PRECISIÓN</span>
+                    </div>
+                    <div class="section-title-wrap">
+                        <h2 class="section-title">
+                            Mueres en medio segundo y <span class="serif-italic">reapareces al instante</span>.
+                        </h2>
+                        <p class="section-desc">
+                            Sin pantallas de carga ni tutoriales interminables. Cada nivel es un puzle de reflejos y memoria muscular diseñado para competir al milisegundo.
+                        </p>
+                    </div>
+                </div>
 
-    <script>
-        // Frases reales del sello de DisenoMenus.cs en Unity
-        const splashPhrases = [
-            "¡EL JUEGO MÁS DIFÍCIL!",
-            "¡IMPOSIBLE DE PASAR!",
-            "¡SOLO PARA PROS!",
-            "¿TE VAS A RENDIR?",
-            "SPEEDRUN MODE!"
-        ];
-        let idx = 0;
-        const stamp = document.getElementById('splashStamp');
-        if (stamp) {
-            stamp.addEventListener('click', () => {
-                idx = (idx + 1) % splashPhrases.length;
-                stamp.textContent = splashPhrases[idx];
-            });
-        }
-    </script>
+                <div class="research-bento" style="grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));" data-reveal>
+                    <article class="bento-panel">
+                        <div>
+                            <span class="bento-panel-kicker">01 / CRONÓMETRO</span>
+                            <h3>Speedrun al Milisegundo</h3>
+                            <p style="margin-top: 10px;">
+                                El reloj arranca en el exacto fotograma en que te mueves. Guarda tus mejores marcas personales por nivel y compite en las clasificaciones de Google Play Juegos.
+                            </p>
+                        </div>
+                    </article>
+
+                    <article class="bento-panel">
+                        <div>
+                            <span class="bento-panel-kicker">02 / PELIGROS</span>
+                            <h3>Trampas en Cada Trazo</h3>
+                            <p style="margin-top: 10px;">
+                                Pinchos, enemigos patrullando, ventiladores que alteran la gravedad, bolas con pinchos y desprendimientos. Un solo roce reinicia el intento al instante.
+                            </p>
+                        </div>
+                    </article>
+
+                    <article class="bento-panel">
+                        <div>
+                            <span class="bento-panel-kicker">03 / ACCIÓN</span>
+                            <h3>Disparo por los Ojos</h3>
+                            <p style="margin-top: 10px;">
+                                Tu línea dispara en la dirección hacia la que mira para activar botones rojos a distancia, abrir compuertas y desactivar trampas en mitad de un salto sin perder inercia.
+                            </p>
+                        </div>
+                    </article>
+
+                    <article class="bento-panel">
+                        <div>
+                            <span class="bento-panel-kicker">04 / TRANSFORMACIÓN</span>
+                            <h3>Modo Mosca</h3>
+                            <p style="margin-top: 10px;">
+                                Cuando estás en el aire puedes transformarte en mosca para cruzar abismos imposibles, recogiendo monedas aladas para recargar tu tiempo de vuelo.
+                            </p>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <!-- SECTION 02: FLY MODE & LEVEL SHOWCASE (#modo-mosca) -->
+            <section id="modo-mosca" class="editorial-section section-rule">
+                <div class="section-head-split" data-reveal>
+                    <div class="section-index-label">
+                        <span class="num">02</span>
+                        <span>// REGLA DE ORO</span>
+                    </div>
+                    <div class="section-title-wrap">
+                        <h2 class="section-title">
+                            Vuela alto, pero <span class="serif-italic">nunca aterrices siendo mosca</span>.
+                        </h2>
+                    </div>
+                </div>
+
+                <div class="research-bento" data-reveal>
+                    <article class="bento-panel">
+                        <div>
+                            <span class="bento-panel-kicker">MECÁNICA DE VUELO Y RIESGO</span>
+                            <h3>Transformación aérea con riesgo total</h3>
+                            <p style="margin-top: 12px;">
+                                En <strong>Soy una línea</strong> puedes transformarte en mosca siempre que estés en el aire. Pero las moscas son tan frágiles que <strong>tocar cualquier superficie —incluido el suelo normal— te elimina en el acto</strong>.
+                            </p>
+                            <p style="margin-top: 10px;">
+                                Calcula tu barra de vuelo, atrapa las <strong>monedas con alas</strong> para ganar segundos extra y vuelve a transformarte en línea justo antes de tocar tierra.
+                            </p>
+                        </div>
+
+                        <div style="display: flex; align-items: center; gap: 20px; padding-top: 18px; border-top: 1px solid var(--border);">
+                            <img src="img/soy_linea_icon.png" alt="Línea" style="width: 56px; height: 56px; border-radius: 12px; border: 1px solid var(--border-strong); background: #fff;">
+                            <span class="mono" style="color: var(--text-muted);">⇄</span>
+                            <img src="img/mosca_icon.png" alt="Mosca" style="width: 56px; height: 56px; object-fit: contain;">
+                            <span class="mono" style="color: var(--text-muted);">+</span>
+                            <img src="img/moneda.png" alt="Moneda con alas" style="width: 56px; height: 56px; object-fit: contain;">
+                        </div>
+                    </article>
+
+                    <aside class="bento-panel" style="padding: 18px; justify-content: center;">
+                        <img src="img/ui_mundo1.png" alt="Captura del Mundo 1 de Soy una línea" style="width: 100%; border-radius: 10px; border: 1px solid var(--border);">
+                        <div class="shot-caption" style="margin-top: 8px;">
+                            <span>MUNDO 01</span>
+                            <span>ESTÉTICA DE CUADERNO ORIGINAL</span>
+                        </div>
+                    </aside>
+                </div>
+            </section>
+
+            <!-- SECTION 03: CUSTOMIZABLE CONTROLS (#controles) -->
+            <section id="controles" class="editorial-section section-rule" style="padding-bottom: 84px;">
+                <div class="section-head-split" data-reveal>
+                    <div class="section-index-label">
+                        <span class="num">03</span>
+                        <span>// ERGONOMÍA TÁCTIL</span>
+                    </div>
+                    <div class="section-title-wrap">
+                        <h2 class="section-title">
+                            Controles <span class="serif-italic">100% a tu medida</span>.
+                        </h2>
+                        <p class="section-desc">
+                            Cada speedrunner tiene su estilo. Elige entre tres esquemas táctiles o abre el editor visual para mover y escalar cada botón en pantalla.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="research-bento" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));" data-reveal>
+                    <article class="bento-panel">
+                        <div>
+                            <span class="bento-panel-kicker">ESQUEMA 01 // MODO PRO</span>
+                            <h3>Sin Botones en Pantalla</h3>
+                            <p style="margin-top: 10px;">
+                                Pantalla totalmente limpia. Desliza a izquierda/derecha en la mitad izquierda para moverte, arriba para saltar, abajo para transformarte en mosca y toca a la derecha para disparar.
+                            </p>
+                        </div>
+                    </article>
+
+                    <article class="bento-panel">
+                        <div>
+                            <span class="bento-panel-kicker">ESQUEMA 02 // HÍBRIDO</span>
+                            <h3>Joystick Fijo, Dinámico o Flotante</h3>
+                            <p style="margin-top: 10px;">
+                                Configura el comportamiento del joystick con sensibilidad de swipe independiente para saltar y activar el modo mosca con precisión milimétrica.
+                            </p>
+                        </div>
+                    </article>
+
+                    <article class="bento-panel">
+                        <div>
+                            <span class="bento-panel-kicker">ESQUEMA 03 // EDITOR VISUAL</span>
+                            <h3>Botones Personalizables</h3>
+                            <p style="margin-top: 10px;">
+                                Arrastra, recoloca y cambia el tamaño de cada botón (Mover, Saltar, Disparar, Mosca y Reiniciar) para adaptarlo exactamente a tus pulgares.
+                            </p>
+                        </div>
+                    </article>
+                </div>
+            </section>
+        </main>
+
+        <footer class="site-footer">
+            <div class="footer-grid">
+                <div class="brand-cluster">
+                    <a href="../index.html" class="brand-mark">
+                        <span class="brand-mark-flask">
+                            <img src="../images/fiuva_labs_icon.png" alt="Fiuva Labs">
+                        </span>
+                        <span>Fiuva Labs</span>
+                    </a>
+                    <span class="footer-meta">© 2026 Fiuva Labs · Todos los derechos reservados</span>
+                </div>
+
+                <nav class="footer-links" aria-label="Enlaces de pie de página">
+                    <a href="../index.html">Inicio Fiuva Labs</a>
+                    <a href="https://play.google.com/store/apps/details?id=com.fiuva.imaline" target="_blank" rel="noopener">Google Play</a>
+                    <a href="privacy-policy.html">Política de Privacidad</a>
+                    <a href="app-ads.txt">app-ads.txt</a>
+                    <a href="mailto:fiuvalabs@gmail.com">fiuvalabs@gmail.com</a>
+                </nav>
+            </div>
+        </footer>
+    </div>
+
+    <script src="../main.js"></script>
 </body>
 </html>

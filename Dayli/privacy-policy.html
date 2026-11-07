@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,212 +7,98 @@
     <link rel="icon" type="image/png" href="img/dayli_icon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg-dark: #0b101e;
-            --bg-surface: rgba(20, 29, 51, 0.85);
-            --primary: #38bdf8;
-            --text-main: #f8fafc;
-            --text-muted: #cbd5e1;
-            --border-glass: rgba(148, 163, 184, 0.16);
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
-            background-color: var(--bg-dark);
-            background-image:
-                radial-gradient(circle at 15% 15%, rgba(37, 99, 235, 0.22), transparent 42%),
-                radial-gradient(circle at 85% 20%, rgba(251, 191, 36, 0.1), transparent 38%);
-            color: var(--text-main);
-            line-height: 1.75;
-            min-height: 100vh;
-        }
-
-        .topbar {
-            backdrop-filter: blur(16px);
-            background: rgba(11, 16, 30, 0.82);
-            border-bottom: 1px solid var(--border-glass);
-            padding: 14px 24px;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .topbar-inner {
-            max-width: 920px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 16px;
-            flex-wrap: wrap;
-        }
-
-        .studio-pill {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            text-decoration: none;
-            color: var(--text-main);
-            font-weight: 600;
-            font-size: 0.95rem;
-            padding: 6px 14px 6px 8px;
-            border-radius: 999px;
-            background: rgba(255, 255, 255, 0.06);
-            border: 1px solid var(--border-glass);
-            transition: all 0.2s ease;
-        }
-
-        .studio-pill:hover {
-            background: rgba(56, 189, 248, 0.14);
-            border-color: rgba(56, 189, 248, 0.4);
-        }
-
-        .studio-pill img {
-            width: 28px;
-            height: 28px;
-            border-radius: 8px;
-        }
-
-        .container {
-            max-width: 880px;
-            margin: 40px auto 80px;
-            padding: 0 24px;
-        }
-
-        .card {
-            background: var(--bg-surface);
-            border: 1px solid var(--border-glass);
-            border-radius: 24px;
-            padding: 40px;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
-            backdrop-filter: blur(12px);
-        }
-
-        @media (max-width: 600px) {
-            .card {
-                padding: 26px 20px;
-            }
-        }
-
-        .header-row {
-            display: flex;
-            align-items: center;
-            gap: 18px;
-            padding-bottom: 22px;
-            margin-bottom: 26px;
-            border-bottom: 1px solid var(--border-glass);
-            flex-wrap: wrap;
-        }
-
-        .header-row img {
-            width: 64px;
-            height: 64px;
-            border-radius: 16px;
-        }
-
-        h1 {
-            font-size: clamp(1.8rem, 4vw, 2.3rem);
-            color: #fff;
-        }
-
-        .date {
-            font-size: 0.9rem;
-            color: var(--primary);
-        }
-
-        h2 {
-            font-size: 1.35rem;
-            color: var(--primary);
-            margin-top: 28px;
-            margin-bottom: 10px;
-        }
-
-        p, ul {
-            color: var(--text-muted);
-            margin-bottom: 16px;
-        }
-
-        ul {
-            padding-left: 22px;
-        }
-
-        li {
-            margin-bottom: 8px;
-        }
-
-        strong {
-            color: #fff;
-        }
-
-        a {
-            color: var(--primary);
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
 </head>
 <body>
 
-    <header class="topbar">
-        <div class="topbar-inner">
-            <a href="index.html" class="studio-pill">
-                <img src="img/dayli_icon.png" alt="Dayli">
-                <span>← Volver a Dayli</span>
-            </a>
-            <a href="https://fiuva.github.io" class="studio-pill">
-                <img src="img/fiuva_labs_icon.png" alt="Fiuva Labs">
-                <span>Fiuva Labs</span>
-            </a>
+    <div class="cursor-dot" aria-hidden="true"></div>
+    <div class="cursor-ring" aria-hidden="true"></div>
+
+    <header class="site-header">
+        <div class="header-inner">
+            <div class="brand-cluster">
+                <a href="index.html" class="brand-mark" data-magnetic>
+                    <span class="brand-mark-flask">
+                        <img src="img/dayli_icon.png" alt="Dayli">
+                    </span>
+                    <span>← Dayli</span>
+                </a>
+                <span class="brand-divider"></span>
+                <a href="../index.html" class="status-beacon">FIUVA LABS</a>
+            </div>
+
+            <nav class="nav-cluster" aria-label="Tema">
+                <button type="button" id="theme-toggle" class="theme-btn" aria-label="Cambiar tema claro/oscuro">
+                    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="4"></circle>
+                        <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
+                    </svg>
+                    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+            </nav>
         </div>
     </header>
 
-    <main class="container">
-        <article class="card">
-            <div class="header-row">
-                <img src="img/dayli_icon.png" alt="Dayli">
-                <div>
-                    <h1>Política de Privacidad de Dayli</h1>
-                    <div class="date">Última actualización: 20 de marzo de 2026</div>
+    <div class="page-shell">
+        <main class="editorial-section">
+            <article class="legal-sheet">
+                <h1>Política de Privacidad de Dayli</h1>
+                <div class="legal-meta">Última actualización: 20 de marzo de 2026</div>
+
+                <p>Esta política de privacidad se aplica a la aplicación móvil <strong>Dayli</strong> (en adelante, "la Aplicación"), desarrollada por <strong>Fiuva (Fiuva Labs)</strong> como un servicio gratuito con publicidad.</p>
+
+                <h2>1. Recopilación y Uso de Información</h2>
+                <p>La Aplicación no solicita ni recopila directamente datos personales identificables como tu nombre, dirección o número de teléfono. Sin embargo, sí utiliza servicios de terceros que pueden recopilar información utilizada para identificarte de forma anónima (como el ID de publicidad de tu dispositivo o datos de uso básicos).</p>
+                <p>Enlaces a la política de privacidad de los proveedores de servicios de terceros utilizados por la Aplicación:</p>
+                <ul>
+                    <li><a href="https://www.google.com/policies/privacy/" target="_blank" rel="noopener">Servicios de Google Play (Google Play Services)</a></li>
+                    <li><a href="https://support.google.com/admob/answer/6128543?hl=es" target="_blank" rel="noopener">Google AdMob</a></li>
+                </ul>
+
+                <h2>2. Publicidad (Google AdMob)</h2>
+                <p>Utilizamos Google AdMob para mostrar anuncios en la Aplicación. AdMob puede utilizar el identificador de publicidad de tu dispositivo móvil y tecnologías similares para mostrar anuncios personalizados o no personalizados, dependiendo de la configuración de privacidad y el consentimiento que hayas otorgado en la Aplicación (cumpliendo con la normativa RGPD europea).</p>
+
+                <h2>3. Permisos del Dispositivo</h2>
+                <p>Para su correcto funcionamiento, la Aplicación solicita los siguientes permisos:</p>
+                <ul>
+                    <li><strong>Notificaciones (POST_NOTIFICATIONS):</strong> Se utiliza exclusivamente de forma local en tu dispositivo para enviarte un recordatorio diario a la hora que tú configures. No enviamos notificaciones comerciales ni almacenamos esta información en servidores externos.</li>
+                    <li><strong>Acceso a Internet:</strong> Necesario para cargar los anuncios de AdMob y para abrir enlaces externos (como la definición de la palabra del día en la web de la RAE).</li>
+                </ul>
+
+                <h2>4. Privacidad de los Niños</h2>
+                <p>Estos Servicios no están dirigidos a menores de 13 años. No recopilamos a sabiendas información de identificación personal de niños menores de 13 años. Si descubrimos que un niño menor de 13 años nos ha proporcionado información personal, la eliminaremos inmediatamente. Si eres padre o tutor y sabes que tu hijo nos ha proporcionado información personal, por favor contáctanos.</p>
+
+                <h2>5. Cambios en esta Política de Privacidad</h2>
+                <p>Podemos actualizar nuestra Política de Privacidad ocasionalmente. Te recomendamos revisar esta página periódicamente para estar al tanto de cualquier cambio. Los cambios son efectivos inmediatamente después de su publicación en esta página.</p>
+
+                <h2>6. Contacto</h2>
+                <p>Si tienes alguna pregunta o sugerencia sobre nuestra Política de Privacidad, no dudes en contactarnos en: <a href="mailto:fiuvalabs@gmail.com"><strong>fiuvalabs@gmail.com</strong></a></p>
+            </article>
+        </main>
+
+        <footer class="site-footer">
+            <div class="footer-grid">
+                <div class="brand-cluster">
+                    <a href="../index.html" class="brand-mark">
+                        <span class="brand-mark-flask">
+                            <img src="../images/fiuva_labs_icon.png" alt="Fiuva Labs">
+                        </span>
+                        <span>Fiuva Labs</span>
+                    </a>
+                    <span class="footer-meta">© 2026 Fiuva Labs</span>
                 </div>
+                <nav class="footer-links">
+                    <a href="index.html">← Dayli</a>
+                    <a href="../index.html">Inicio Fiuva Labs</a>
+                    <a href="app-ads.txt">app-ads.txt</a>
+                </nav>
             </div>
+        </footer>
+    </div>
 
-            <p>Esta política de privacidad se aplica a la aplicación móvil <strong>Dayli</strong> (en adelante, "la Aplicación"), desarrollada por <strong>Fiuva (Fiuva Labs)</strong> como un servicio gratuito con publicidad.</p>
-
-            <h2>1. Recopilación y Uso de Información</h2>
-            <p>La Aplicación no solicita ni recopila directamente datos personales identificables como tu nombre, dirección o número de teléfono. Sin embargo, sí utiliza servicios de terceros que pueden recopilar información utilizada para identificarte de forma anónima (como el ID de publicidad de tu dispositivo o datos de uso básicos).</p>
-            <p>Enlaces a la política de privacidad de los proveedores de servicios de terceros utilizados por la Aplicación:</p>
-            <ul>
-                <li><a href="https://www.google.com/policies/privacy/" target="_blank" rel="noopener">Servicios de Google Play (Google Play Services)</a></li>
-                <li><a href="https://support.google.com/admob/answer/6128543?hl=es" target="_blank" rel="noopener">Google AdMob</a></li>
-            </ul>
-
-            <h2>2. Publicidad (Google AdMob)</h2>
-            <p>Utilizamos Google AdMob para mostrar anuncios en la Aplicación. AdMob puede utilizar el identificador de publicidad de tu dispositivo móvil y tecnologías similares para mostrar anuncios personalizados o no personalizados, dependiendo de la configuración de privacidad y el consentimiento que hayas otorgado en la Aplicación (cumpliendo con la normativa RGPD europea).</p>
-
-            <h2>3. Permisos del Dispositivo</h2>
-            <p>Para su correcto funcionamiento, la Aplicación solicita los siguientes permisos:</p>
-            <ul>
-                <li><strong>Notificaciones (POST_NOTIFICATIONS):</strong> Se utiliza exclusivamente de forma local en tu dispositivo para enviarte un recordatorio diario a la hora que tú configures. No enviamos notificaciones comerciales ni almacenamos esta información en servidores externos.</li>
-                <li><strong>Acceso a Internet:</strong> Necesario para cargar los anuncios de AdMob y para abrir enlaces externos (como la definición de la palabra del día en la web de la RAE).</li>
-            </ul>
-
-            <h2>4. Privacidad de los Niños</h2>
-            <p>Estos Servicios no están dirigidos a menores de 13 años. No recopilamos a sabiendas información de identificación personal de niños menores de 13 años. Si descubrimos que un niño menor de 13 años nos ha proporcionado información personal, la eliminaremos inmediatamente. Si eres padre o tutor y sabes que tu hijo nos ha proporcionado información personal, por favor contáctanos.</p>
-
-            <h2>5. Cambios en esta Política de Privacidad</h2>
-            <p>Podemos actualizar nuestra Política de Privacidad ocasionalmente. Te recomendamos revisar esta página periódicamente para estar al tanto de cualquier cambio. Los cambios son efectivos inmediatamente después de su publicación en esta página.</p>
-
-            <h2>6. Contacto</h2>
-            <p>Si tienes alguna pregunta o sugerencia sobre nuestra Política de Privacidad, no dudes en contactarnos en:<br>
-            📧 <strong>fiuvalabs@gmail.com</strong></p>
-        </article>
-    </main>
-
+    <script src="../main.js"></script>
 </body>
 </html>
