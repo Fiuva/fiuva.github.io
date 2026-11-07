@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,722 +8,296 @@
     <link rel="icon" type="image/webp" href="img/beetune_icon_nb.webp">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            /* Paleta oficial de Color.kt en BeeTune */
-            --bee-gold: #FFB800;
-            --bee-yellow: #FFD600;
-            --bee-amber: #D97706;
-            --intune-green: #10B981;
-            --flat-red: #EF4444;
-            --sharp-orange: #F97316;
-            --bg-dark: #0D0E12;
-            --bg-surface: #16181F;
-            --bg-surface-variant: #22252F;
-            --text-main: #FFFFFF;
-            --text-muted: #94A3B8;
-            --border-glass: rgba(255, 255, 255, 0.09);
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
-            background-color: var(--bg-dark);
-            background-image:
-                radial-gradient(circle at 18% 14%, rgba(255, 184, 0, 0.16), transparent 40%),
-                radial-gradient(circle at 82% 24%, rgba(16, 185, 129, 0.12), transparent 40%),
-                radial-gradient(circle at 50% 90%, rgba(217, 119, 6, 0.1), transparent 45%);
-            color: var(--text-main);
-            line-height: 1.65;
-            overflow-x: hidden;
-        }
-
-        /* Topbar */
-        .topbar {
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            backdrop-filter: blur(16px);
-            background: rgba(13, 14, 18, 0.86);
-            border-bottom: 1px solid var(--border-glass);
-            padding: 14px 24px;
-        }
-
-        .topbar-inner {
-            max-width: 1120px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 16px;
-            flex-wrap: wrap;
-        }
-
-        .studio-pill {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            text-decoration: none;
-            color: var(--text-main);
-            font-weight: 600;
-            font-size: 0.95rem;
-            padding: 6px 14px 6px 8px;
-            border-radius: 999px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid var(--border-glass);
-            transition: all 0.2s ease;
-        }
-
-        .studio-pill:hover {
-            background: rgba(255, 184, 0, 0.14);
-            border-color: rgba(255, 184, 0, 0.45);
-            transform: translateY(-1px);
-        }
-
-        .studio-pill img {
-            width: 28px;
-            height: 28px;
-            border-radius: 50%;
-            object-fit: cover;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 22px;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-
-        .nav-links a {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-size: 0.95rem;
-            font-weight: 500;
-            transition: color 0.2s ease;
-        }
-
-        .nav-links a:hover {
-            color: var(--bee-gold);
-        }
-
-        .container {
-            max-width: 1120px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        /* Hero Section */
-        .hero {
-            padding: 64px 0 60px;
-            display: grid;
-            grid-template-columns: 1.15fr 0.85fr;
-            gap: 48px;
-            align-items: center;
-        }
-
-        @media (max-width: 900px) {
-            .hero {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-        }
-
-        .hero-brand-row {
-            display: inline-flex;
-            align-items: center;
-            gap: 16px;
-            margin-bottom: 20px;
-        }
-
-        .app-icon {
-            width: 84px;
-            height: 84px;
-            border-radius: 22px;
-            object-fit: cover;
-            filter: drop-shadow(0 12px 24px rgba(255, 184, 0, 0.28));
-        }
-
-        .ai-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 6px 14px;
-            border-radius: 999px;
-            background: rgba(255, 184, 0, 0.14);
-            border: 1px solid rgba(255, 184, 0, 0.35);
-            color: var(--bee-yellow);
-            font-size: 0.86rem;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-        }
-
-        h1 {
-            font-size: clamp(2.8rem, 6vw, 4.4rem);
-            font-weight: 800;
-            line-height: 1.06;
-            letter-spacing: -1.5px;
-            margin-bottom: 18px;
-        }
-
-        h1 span.gold {
-            background: linear-gradient(135deg, #FFFFFF 0%, var(--bee-yellow) 50%, var(--bee-amber) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .subtitle {
-            font-size: 1.18rem;
-            color: var(--text-muted);
-            max-width: 580px;
-            margin-bottom: 32px;
-        }
-
-        @media (max-width: 900px) {
-            .subtitle {
-                margin-left: auto;
-                margin-right: auto;
-            }
-        }
-
-        .subtitle strong {
-            color: #fff;
-        }
-
-        .cta-row {
-            display: flex;
-            gap: 16px;
-            flex-wrap: wrap;
-        }
-
-        @media (max-width: 900px) {
-            .cta-row {
-                justify-content: center;
-            }
-        }
-
-        .cta-button {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: linear-gradient(135deg, var(--bee-gold) 0%, var(--bee-amber) 100%);
-            color: #0D0E12;
-            font-weight: 800;
-            font-size: 1.08rem;
-            padding: 15px 34px;
-            border-radius: 999px;
-            text-decoration: none;
-            transition: all 0.25s ease;
-            box-shadow: 0 12px 30px -6px rgba(255, 184, 0, 0.45);
-        }
-
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 18px 36px -6px rgba(255, 184, 0, 0.65);
-        }
-
-        .cta-secondary {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: rgba(255, 255, 255, 0.06);
-            border: 1px solid var(--border-glass);
-            color: var(--text-main);
-            font-weight: 600;
-            font-size: 1.02rem;
-            padding: 15px 26px;
-            border-radius: 999px;
-            text-decoration: none;
-            transition: all 0.25s ease;
-        }
-
-        .cta-secondary:hover {
-            background: rgba(255, 255, 255, 0.12);
-            transform: translateY(-2px);
-        }
-
-        /* Interactive Polyphonic UI Mockup Card (Inspired by PolyphonicView.kt) */
-        .tuner-mockup {
-            background: var(--bg-surface);
-            border: 1px solid var(--border-glass);
-            border-radius: 28px;
-            padding: 26px 24px;
-            box-shadow: 0 28px 60px rgba(0, 0, 0, 0.65);
-            position: relative;
-        }
-
-        .mockup-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 22px;
-            padding-bottom: 14px;
-            border-bottom: 1px solid var(--border-glass);
-        }
-
-        .mockup-status {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.78rem;
-            font-weight: 700;
-            color: var(--intune-green);
-            background: rgba(16, 185, 129, 0.14);
-            border: 1px solid rgba(16, 185, 129, 0.35);
-            padding: 4px 12px;
-            border-radius: 999px;
-        }
-
-        .status-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: var(--intune-green);
-            animation: blink 1.4s infinite;
-        }
-
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.35; }
-        }
-
-        .mode-pills {
-            display: flex;
-            background: var(--bg-surface-variant);
-            padding: 3px;
-            border-radius: 999px;
-            gap: 4px;
-            font-size: 0.78rem;
-            font-weight: 700;
-        }
-
-        .mode-pill {
-            padding: 4px 10px;
-            border-radius: 999px;
-            color: var(--text-muted);
-        }
-
-        .mode-pill.active {
-            background: var(--bee-gold);
-            color: #0D0E12;
-        }
-
-        .poly-columns {
-            display: grid;
-            grid-template-columns: repeat(6, 1fr);
-            gap: 10px;
-            height: 220px;
-            margin-bottom: 18px;
-        }
-
-        .string-col {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: space-between;
-            background: rgba(34, 37, 47, 0.55);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            border-radius: 16px;
-            padding: 12px 6px;
-        }
-
-        .note-badge {
-            font-family: 'JetBrains Mono', monospace;
-            font-weight: 700;
-            font-size: 0.95rem;
-            color: #fff;
-        }
-
-        .string-track {
-            width: 6px;
-            flex: 1;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 99px;
-            margin: 10px 0;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .string-marker {
-            width: 18px;
-            height: 18px;
-            border-radius: 50%;
-            position: absolute;
-            box-shadow: 0 0 12px currentColor;
-        }
-
-        .string-marker.ok {
-            background: var(--intune-green);
-            color: var(--intune-green);
-            top: 50%;
-            transform: translateY(-50%);
-        }
-
-        .string-marker.flat {
-            background: var(--flat-red);
-            color: var(--flat-red);
-            top: 72%;
-            transform: translateY(-50%);
-        }
-
-        .string-marker.sharp {
-            background: var(--sharp-orange);
-            color: var(--sharp-orange);
-            top: 26%;
-            transform: translateY(-50%);
-        }
-
-        .action-label {
-            font-size: 0.65rem;
-            font-weight: 800;
-            letter-spacing: 0.5px;
-            padding: 3px 6px;
-            border-radius: 6px;
-        }
-
-        .action-label.ok { color: var(--intune-green); background: rgba(16, 185, 129, 0.14); }
-        .action-label.flat { color: var(--flat-red); background: rgba(239, 68, 68, 0.14); }
-        .action-label.sharp { color: var(--sharp-orange); background: rgba(249, 115, 22, 0.14); }
-
-        .mockup-footer {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            background: rgba(13, 14, 18, 0.65);
-            border: 1px solid var(--border-glass);
-            border-radius: 14px;
-            padding: 12px 16px;
-            font-size: 0.85rem;
-        }
-
-        .mockup-footer span.mono-precision {
-            color: var(--intune-green);
-            font-weight: 700;
-            font-family: 'JetBrains Mono', monospace;
-        }
-
-        /* Tunings Strip */
-        .tunings-strip {
-            background: var(--bg-surface);
-            border: 1px solid var(--border-glass);
-            border-radius: 22px;
-            padding: 28px 32px;
-            margin-bottom: 72px;
-            text-align: center;
-        }
-
-        .tunings-strip h3 {
-            font-size: 1.25rem;
-            margin-bottom: 16px;
-            color: var(--bee-yellow);
-        }
-
-        .tuning-pills {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 10px;
-        }
-
-        .tuning-pill {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.86rem;
-            background: var(--bg-surface-variant);
-            border: 1px solid var(--border-glass);
-            color: #e2e8f0;
-            padding: 8px 16px;
-            border-radius: 999px;
-        }
-
-        .tuning-pill.highlight {
-            background: rgba(255, 184, 0, 0.15);
-            border-color: rgba(255, 184, 0, 0.4);
-            color: var(--bee-yellow);
-        }
-
-        /* Features Grid */
-        .features-section {
-            padding: 10px 0 88px;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: clamp(2rem, 4vw, 2.65rem);
-            font-weight: 800;
-            margin-bottom: 12px;
-            color: #FFFFFF;
-        }
-
-        .section-subtitle {
-            text-align: center;
-            color: var(--text-muted);
-            font-size: 1.1rem;
-            max-width: 660px;
-            margin: 0 auto 48px;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
-            gap: 26px;
-        }
-
-        .card {
-            background: var(--bg-surface);
-            border: 1px solid var(--border-glass);
-            padding: 32px 28px;
-            border-radius: 24px;
-            transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-6px);
-            border-color: rgba(255, 184, 0, 0.42);
-            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.65);
-        }
-
-        .card-icon {
-            width: 54px;
-            height: 54px;
-            border-radius: 16px;
-            background: rgba(255, 184, 0, 0.14);
-            border: 1px solid rgba(255, 184, 0, 0.3);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.7rem;
-            margin-bottom: 20px;
-        }
-
-        .card h3 {
-            font-size: 1.35rem;
-            margin-bottom: 10px;
-            color: #FFFFFF;
-        }
-
-        .card p {
-            color: var(--text-muted);
-            font-size: 0.98rem;
-        }
-
-        /* Footer */
-        footer {
-            border-top: 1px solid var(--border-glass);
-            padding: 44px 0;
-            text-align: center;
-            color: var(--text-muted);
-            font-size: 0.95rem;
-        }
-
-        .footer-inner {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 16px;
-        }
-
-        .footer-links {
-            display: flex;
-            gap: 24px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .footer-links a {
-            color: var(--bee-gold);
-            text-decoration: none;
-            font-weight: 500;
-            transition: opacity 0.2s;
-        }
-
-        .footer-links a:hover {
-            opacity: 0.85;
-            text-decoration: underline;
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
 </head>
 <body>
 
-    <header class="topbar">
-        <div class="topbar-inner">
-            <a href="https://fiuva.github.io" class="studio-pill">
-                <img src="img/fiuva_labs_icon.png" alt="Fiuva Labs">
-                <span>Fiuva Labs</span>
-            </a>
-            <nav class="nav-links">
-                <a href="#modos">Modos e IA</a>
-                <a href="#afinaciones">Afinaciones</a>
-                <a href="privacy-policy.html">Privacidad</a>
-                <a href="https://play.google.com/store/apps/details?id=com.fiuva.beetune" target="_blank" rel="noopener">Google Play</a>
+    <div class="cursor-dot" aria-hidden="true"></div>
+    <div class="cursor-ring" aria-hidden="true"></div>
+
+    <header class="site-header">
+        <div class="header-inner">
+            <div class="brand-cluster">
+                <a href="../index.html" class="brand-mark" data-magnetic>
+                    <span class="brand-mark-flask">
+                        <img src="../images/fiuva_labs_icon.png" alt="Fiuva Labs">
+                    </span>
+                    <span>← Fiuva Labs</span>
+                </a>
+                <span class="brand-divider"></span>
+                <div class="status-beacon">
+                    <span class="status-dot"></span>
+                    <span>BEETUNE // BEENET-8 CQT</span>
+                </div>
+            </div>
+
+            <nav class="nav-cluster" aria-label="Navegación de BeeTune">
+                <a href="#modos" class="nav-item"><span class="nav-idx">01</span>Modos e IA</a>
+                <a href="#afinaciones" class="nav-item"><span class="nav-idx">02</span>Afinaciones</a>
+                <a href="privacy-policy.html" class="nav-item"><span class="nav-idx">03</span>Privacidad</a>
+
+                <button type="button" id="theme-toggle" class="theme-btn" aria-label="Cambiar tema claro/oscuro">
+                    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="4"></circle>
+                        <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
+                    </svg>
+                    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+
+                <a href="https://play.google.com/store/apps/details?id=com.fiuva.beetune" target="_blank" rel="noopener" class="header-cta" data-magnetic>
+                    <span>Google Play</span>
+                    <span>↗</span>
+                </a>
             </nav>
         </div>
     </header>
 
-    <div class="container">
-        <!-- HERO -->
-        <section class="hero">
-            <div>
-                <div class="hero-brand-row">
-                    <img src="img/beetune_icon_nb.webp" alt="Logo de BeeTune" class="app-icon">
-                    <div class="ai-badge">🐝 Red Neuronal BeeNet-8 • CQT</div>
+    <div class="page-shell">
+        <main>
+            <!-- HERO SECTION WITH INTERACTIVE 6-STRING TUNER -->
+            <section class="editorial-section" style="padding-bottom: 64px;">
+                <div class="project-showcase" data-project="beetune" style="border-radius: 20px;">
+                    <div class="project-info-col">
+                        <div>
+                            <div class="project-meta-top">
+                                <span class="project-index">FIUVA LABS // PROYECTO 03</span>
+                                <span class="project-kind">RED NEURONAL BEENET-8 · CQT · ONNX</span>
+                            </div>
+
+                            <div class="project-identity">
+                                <div class="project-icon-frame" style="width: 82px; height: 82px;">
+                                    <img src="img/beetune_icon_nb.webp" alt="BeeTune">
+                                </div>
+                                <div class="project-title-group">
+                                    <h1 style="font-size: clamp(2.1rem, 3.8vw, 3.2rem); font-weight: 700; letter-spacing: -0.035em; line-height: 1.02;">
+                                        BeeTune <span class="serif-italic">Polifónico</span>
+                                    </h1>
+                                    <p class="project-tagline">Afinador polifónico y monofónico de guitarra con IA en tiempo real</p>
+                                </div>
+                            </div>
+
+                            <p class="project-body">
+                                Rasguea las <strong>6 cuerdas a la vez</strong> para comprobar el estado de toda tu guitarra de un vistazo o cambia al modo <strong>monofónico de alta precisión (&lt;1 centésima)</strong>. Impulsado por el modelo neuronal propio <strong>BeeNet-8 (Constant-Q Transform)</strong> ejecutado íntegramente en tu dispositivo.
+                            </p>
+
+                            <div class="project-specs-list">
+                                <span class="spec-chip">Polifonía 6 Cuerdas</span>
+                                <span class="spec-chip">Precisión &lt;1 Cent</span>
+                                <span class="spec-chip">BeeNet-8 ONNX</span>
+                                <span class="spec-chip">Conmutación Auto</span>
+                                <span class="spec-chip">100% Local</span>
+                            </div>
+                        </div>
+
+                        <div class="project-links-row">
+                            <a href="https://play.google.com/store/apps/details?id=com.fiuva.beetune" target="_blank" rel="noopener" class="project-btn primary" data-magnetic>
+                                <span>Descargar en Google Play</span>
+                                <span>↗</span>
+                            </a>
+                            <a href="privacy-policy.html" class="project-btn secondary" data-magnetic>
+                                <span>Política de Privacidad</span>
+                                <span>→</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="project-sandbox-col">
+                        <div class="sandbox-top-bar">
+                            <span class="sandbox-live-badge">SINTETIZADOR &amp; AFINADOR INTERACTIVO</span>
+                            <button type="button" id="strum-all-btn" class="alchemy-el-btn" style="padding: 2px 8px; font-size: 0.65rem;">[ RASGUEAR 6 CUERDAS ]</button>
+                        </div>
+
+                        <div class="tuner-stage">
+                            <div class="tuner-meter">
+                                <div class="tuner-note-display">
+                                    <span class="tuner-note-big" id="tuner-note">E4</span>
+                                    <span class="tuner-freq" id="tuner-freq">329.6 Hz · 0.0c</span>
+                                </div>
+                                <div class="tuner-cents-bar" aria-hidden="true">
+                                    <div class="tuner-cents-indicator" id="tuner-cents-dot"></div>
+                                </div>
+                            </div>
+
+                            <div class="guitar-strings-list">
+                                <div class="guitar-string-row" data-note="E4" data-freq="329.6" data-cents="0" data-state="ok">
+                                    <span class="string-label">1·E4</span>
+                                    <div class="string-wire"></div>
+                                    <span class="string-status ok">OK</span>
+                                </div>
+                                <div class="guitar-string-row" data-note="B3" data-freq="246.9" data-cents="14" data-state="sharp">
+                                    <span class="string-label">2·B3</span>
+                                    <div class="string-wire"></div>
+                                    <span class="string-status sharp">+14c</span>
+                                </div>
+                                <div class="guitar-string-row" data-note="G3" data-freq="196.0" data-cents="0" data-state="ok">
+                                    <span class="string-label">3·G3</span>
+                                    <div class="string-wire"></div>
+                                    <span class="string-status ok">OK</span>
+                                </div>
+                                <div class="guitar-string-row" data-note="D3" data-freq="146.8" data-cents="-11" data-state="flat">
+                                    <span class="string-label">4·D3</span>
+                                    <div class="string-wire"></div>
+                                    <span class="string-status flat">-11c</span>
+                                </div>
+                                <div class="guitar-string-row" data-note="A2" data-freq="110.0" data-cents="0" data-state="ok">
+                                    <span class="string-label">5·A2</span>
+                                    <div class="string-wire"></div>
+                                    <span class="string-status ok">OK</span>
+                                </div>
+                                <div class="guitar-string-row" data-note="E2" data-freq="82.4" data-cents="0" data-state="ok">
+                                    <span class="string-label">6·E2</span>
+                                    <div class="string-wire"></div>
+                                    <span class="string-status ok">OK</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="sandbox-footer-hint">
+                            <span>Toca cualquier cuerda para escuchar el armónico real</span>
+                            <span>BEENET-8 ENGINE</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 01: MODES & AI (#modos) -->
+            <section id="modos" class="editorial-section section-rule">
+                <div class="section-head-split" data-reveal>
+                    <div class="section-index-label">
+                        <span class="num">01</span>
+                        <span>// ARQUITECTURA ACÚSTICA</span>
+                    </div>
+                    <div class="section-title-wrap">
+                        <h2 class="section-title">
+                            Precisión de estudio impulsada por <span class="serif-italic">BeeNet-8</span>.
+                        </h2>
+                        <p class="section-desc">
+                            Diseñado desde cero combinando transformadas espectrales Constant-Q (CQT) con inferencia neuronal ONNX de baja latencia.
+                        </p>
+                    </div>
                 </div>
 
-                <h1>Afinador Polifónico de Guitarra <span class="gold">con IA</span></h1>
+                <div class="research-bento" style="grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));" data-reveal>
+                    <article class="bento-panel">
+                        <div>
+                            <span class="bento-panel-kicker">01 / POLIFONÍA</span>
+                            <h3>Modo Polifónico de 6 Cuerdas</h3>
+                            <p style="margin-top: 10px;">
+                                Rasguea todas las cuerdas al mismo tiempo y comprueba al instante cuáles están afinadas (<code>OK</code>) y la desviación exacta en centésimas (<code>-11c</code>, <code>+14c</code>) de las que necesitan ajuste.
+                            </p>
+                        </div>
+                    </article>
 
-                <p class="subtitle">
-                    Rasguea las <strong>6 cuerdas a la vez</strong> para ver el estado de toda tu guitarra de un vistazo o cambia al modo <strong>monofónico de alta precisión (&lt;1 centésima)</strong>. Impulsado por inteligencia artificial ejecutada 100% en tu dispositivo.
-                </p>
+                    <article class="bento-panel">
+                        <div>
+                            <span class="bento-panel-kicker">02 / MONOFONÍA</span>
+                            <h3>Aguja Sub-Centésima (&lt;1 cent)</h3>
+                            <p style="margin-top: 10px;">
+                                Cuando buscas calibración milimétrica cuerda por cuerda, la aguja monofónica te guía hasta una desviación inferior a 1 centésima de semitono con confirmación háptica.
+                            </p>
+                        </div>
+                    </article>
 
-                <div class="cta-row">
-                    <a href="https://play.google.com/store/apps/details?id=com.fiuva.beetune" target="_blank" rel="noopener" class="cta-button">
-                        <span>▶ Descargar en Google Play</span>
+                    <article class="bento-panel">
+                        <div>
+                            <span class="bento-panel-kicker">03 / RED NEURONAL</span>
+                            <h3>Motor Neuronal BeeNet-8 (CQT)</h3>
+                            <p style="margin-top: 10px;">
+                                Combina transformadas Constant-Q con inferencia ONNX Runtime de respuesta rápida (<em>Fast-Attack</em>) e histéresis inteligente para evitar oscilaciones bruscas.
+                            </p>
+                        </div>
+                    </article>
+
+                    <article class="bento-panel">
+                        <div>
+                            <span class="bento-panel-kicker">04 / MODO AUTO</span>
+                            <h3>Conmutación Inteligente</h3>
+                            <p style="margin-top: 10px;">
+                                ¿Rasgueas un acorde o punteas una sola nota? En modo <strong>Auto</strong>, BeeTune detecta tu intención y alterna automáticamente entre la vista polifónica y la aguja monofónica.
+                            </p>
+                        </div>
+                    </article>
+
+                    <article class="bento-panel">
+                        <div>
+                            <span class="bento-panel-kicker">05 / CALIBRACIÓN</span>
+                            <h3>Ganancia de Entrada Ajustable</h3>
+                            <p style="margin-top: 10px;">
+                                Regula la sensibilidad del micrófono (<em>Input Gain</em>) para adaptarte tanto a una guitarra eléctrica desenchufada como a una acústica en entornos con ruido ambiental.
+                            </p>
+                        </div>
+                    </article>
+
+                    <article class="bento-panel">
+                        <div>
+                            <span class="bento-panel-kicker">06 / PRIVACIDAD</span>
+                            <h3>100% Local y Sin Conexión</h3>
+                            <p style="margin-top: 10px;">
+                                Toda la inteligencia artificial se ejecuta directamente en el procesador del móvil. Funciona en el local de ensayo o en el escenario sin consumir datos y sin grabar tu audio.
+                            </p>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <!-- SECTION 02: ALTERNATIVE TUNINGS (#afinaciones) -->
+            <section id="afinaciones" class="editorial-section section-rule" style="padding-bottom: 84px;">
+                <div class="section-head-split" data-reveal>
+                    <div class="section-index-label">
+                        <span class="num">02</span>
+                        <span>// AFINACIONES SOPORTADAS</span>
+                    </div>
+                    <div class="section-title-wrap">
+                        <h2 class="section-title">
+                            Detección universal y <span class="serif-italic">afinaciones abiertas</span>.
+                        </h2>
+                        <p class="section-desc">
+                            Reconocimiento automático cromático y preajustes dedicados para afinaciones estándar, graves y abiertas:
+                        </p>
+                    </div>
+                </div>
+
+                <div class="project-specs-list" style="gap: 10px;" data-reveal>
+                    <span class="spec-chip" style="border-color: var(--amber); color: var(--text);">Automático Universal</span>
+                    <span class="spec-chip">Standard (E-A-D-G-B-E)</span>
+                    <span class="spec-chip">Drop D (D-A-D-G-B-E)</span>
+                    <span class="spec-chip">Eb Standard (D#-G#-C#-F#-A#-D#)</span>
+                    <span class="spec-chip">D Standard (D-G-C-F-A-D)</span>
+                    <span class="spec-chip">Drop C (C-G-C-F-A-D)</span>
+                    <span class="spec-chip">DADGAD (D-A-D-G-A-D)</span>
+                    <span class="spec-chip">Open D (D-A-D-F#-A-D)</span>
+                    <span class="spec-chip">Open G (D-G-D-G-B-D)</span>
+                    <span class="spec-chip">Low C (C-G-D-G-A-D)</span>
+                </div>
+            </section>
+        </main>
+
+        <footer class="site-footer">
+            <div class="footer-grid">
+                <div class="brand-cluster">
+                    <a href="../index.html" class="brand-mark">
+                        <span class="brand-mark-flask">
+                            <img src="../images/fiuva_labs_icon.png" alt="Fiuva Labs">
+                        </span>
+                        <span>Fiuva Labs</span>
                     </a>
-                    <a href="#modos" class="cta-secondary">
-                        <span>Descubrir cómo funciona</span>
-                    </a>
-                </div>
-            </div>
-
-            <!-- UI Mockup of BeeTune Polyphonic + Monophonic -->
-            <div class="tuner-mockup">
-                <div class="mockup-header">
-                    <div class="mockup-status">
-                        <span class="status-dot"></span>
-                        <span>POLIFÓNICO • CAPTANDO</span>
-                    </div>
-                    <div class="mode-pills">
-                        <span class="mode-pill active">Auto</span>
-                        <span class="mode-pill">Mono</span>
-                        <span class="mode-pill">Poli</span>
-                    </div>
+                    <span class="footer-meta">© 2026 Fiuva Labs · Todos los derechos reservados</span>
                 </div>
 
-                <div class="poly-columns">
-                    <div class="string-col">
-                        <span class="note-badge">E2</span>
-                        <div class="string-track"><div class="string-marker ok"></div></div>
-                        <span class="action-label ok">OK</span>
-                    </div>
-                    <div class="string-col">
-                        <span class="note-badge">A2</span>
-                        <div class="string-track"><div class="string-marker flat"></div></div>
-                        <span class="action-label flat">APRIETA</span>
-                    </div>
-                    <div class="string-col">
-                        <span class="note-badge">D3</span>
-                        <div class="string-track"><div class="string-marker ok"></div></div>
-                        <span class="action-label ok">OK</span>
-                    </div>
-                    <div class="string-col">
-                        <span class="note-badge">G3</span>
-                        <div class="string-track"><div class="string-marker ok"></div></div>
-                        <span class="action-label ok">OK</span>
-                    </div>
-                    <div class="string-col">
-                        <span class="note-badge">B3</span>
-                        <div class="string-track"><div class="string-marker sharp"></div></div>
-                        <span class="action-label sharp">AFLOJA</span>
-                    </div>
-                    <div class="string-col">
-                        <span class="note-badge">E4</span>
-                        <div class="string-track"><div class="string-marker ok"></div></div>
-                        <span class="action-label ok">OK</span>
-                    </div>
-                </div>
-
-                <div class="mockup-footer">
-                    <span>🎯 Aguja Monofónica:</span>
-                    <span class="mono-precision">AFINACIÓN PERFECTA (&lt;1c)</span>
-                </div>
-            </div>
-        </section>
-
-        <!-- TUNINGS STRIP -->
-        <section id="afinaciones" class="tunings-strip">
-            <h3>🎸 Detección Universal Automática y Afinaciones Alternativas</h3>
-            <div class="tuning-pills">
-                <span class="tuning-pill highlight">✨ Automático Universal</span>
-                <span class="tuning-pill">Standard (E-A-D-G-B-E)</span>
-                <span class="tuning-pill">Drop D (D-A-D-G-B-E)</span>
-                <span class="tuning-pill">Eb Standard (D#-G#-C#-F#-A#-D#)</span>
-                <span class="tuning-pill">D Standard (D-G-C-F-A-D)</span>
-                <span class="tuning-pill">Drop C (C-G-C-F-A-D)</span>
-                <span class="tuning-pill">DADGAD (D-A-D-G-A-D)</span>
-                <span class="tuning-pill">Open D (D-A-D-F#-A-D)</span>
-                <span class="tuning-pill">Open G (D-G-D-G-B-D)</span>
-                <span class="tuning-pill">Low C (C-G-D-G-A-D)</span>
-            </div>
-        </section>
-
-        <!-- FEATURES SECTION -->
-        <section id="modos" class="features-section">
-            <h2 class="section-title">Ingeniería Acústica e Inteligencia Artificial</h2>
-            <p class="section-subtitle">Diseñado desde cero con un modelo neuronal propio para escuchar tu guitarra con precisión de estudio.</p>
-
-            <div class="grid">
-                <div class="card">
-                    <div class="card-icon">🎸</div>
-                    <h3>Modo Polifónico de 6 Cuerdas</h3>
-                    <p>Rasguea todas las cuerdas al mismo tiempo y comprueba al instante cuáles están afinadas (<code>OK</code>), cuáles están bajas (<code>APRIETA</code>) y cuáles están altas (<code>AFLOJA</code>).</p>
-                </div>
-
-                <div class="card">
-                    <div class="card-icon">🎯</div>
-                    <h3>Modo Monofónico (&lt;1 cent)</h3>
-                    <p>Cuando buscas precisión milimétrica cuerda por cuerda, la aguja monofónica te guía hasta alcanzar una desviación inferior a 1 centésima de semitono, con respuesta háptica al clavar la nota.</p>
-                </div>
-
-                <div class="card">
-                    <div class="card-icon">🧠</div>
-                    <h3>Motor Neuronal BeeNet-8 (CQT)</h3>
-                    <p>Combina transformadas espectrales Constant-Q (CQT) con inferencia ONNX Runtime de baja latencia (<em>Fast-Attack</em>) e histéresis inteligente para evitar saltos bruscos en la aguja.</p>
-                </div>
-
-                <div class="card">
-                    <div class="card-icon">🔄</div>
-                    <h3>Conmutación Automática (Modo Auto)</h3>
-                    <p>¿Rasgueas un acorde o tocas una sola nota? En modo <strong>Auto</strong>, BeeTune detecta tu forma de tocar y alterna inteligentemente entre la vista polifónica y la aguja de precisión.</p>
-                </div>
-
-                <div class="card">
-                    <div class="card-icon">🎙️</div>
-                    <h3>Ganancia de Entrada Ajustable</h3>
-                    <p>Regula la sensibilidad del micrófono (<em>Input Gain</em>) para adaptarte tanto a una guitarra eléctrica sin amplificar como a una acústica o española en entornos con ruido ambiente.</p>
-                </div>
-
-                <div class="card">
-                    <div class="card-icon">🔒</div>
-                    <h3>100% Local y Sin Conexión</h3>
-                    <p>Toda la inteligencia artificial se ejecuta directamente en el procesador de tu móvil. Funciona en el local de ensayo o en el escenario sin consumir datos y sin grabar tu audio.</p>
-                </div>
-            </div>
-        </section>
-
-        <footer>
-            <div class="footer-inner">
-                <a href="https://fiuva.github.io" class="studio-pill">
-                    <img src="img/fiuva_labs_icon.png" alt="Fiuva Labs">
-                    <span>Desarrollado por Fiuva Labs</span>
-                </a>
-                <div class="footer-links">
-                    <a href="https://fiuva.github.io">Web de Fiuva Labs</a>
+                <nav class="footer-links" aria-label="Enlaces de pie de página">
+                    <a href="../index.html">Inicio Fiuva Labs</a>
                     <a href="https://play.google.com/store/apps/details?id=com.fiuva.beetune" target="_blank" rel="noopener">Google Play</a>
-                    <a href="privacy-policy.html">Política de Privacidad (Privacy Policy)</a>
+                    <a href="privacy-policy.html">Política de Privacidad</a>
                     <a href="app-ads.txt">app-ads.txt</a>
-                </div>
-                <p>&copy; 2026 Fiuva Labs. Todos los derechos reservados.</p>
+                    <a href="mailto:fiuvalabs@gmail.com">fiuvalabs@gmail.com</a>
+                </nav>
             </div>
         </footer>
     </div>
 
+    <script src="../main.js"></script>
 </body>
 </html>

@@ -1,407 +1,391 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>How to Build a Platypus — Cómo hacer un ornitorrinco | Fiuva Labs</title>
     <meta name="description" content="Juego de alquimia para Android: combina 4.180 cartas ilustradas, recorre siete mesas de trabajo y descubre cómo crear la criatura más imposible de la naturaleza.">
-    <meta name="theme-color" content="#070B1E">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="How to Build a Platypus">
-    <meta property="og:description" content="Combina cartas, descubre recetas y crea lo imposible. Un juego de alquimia de Fiuva Labs.">
+    <meta property="og:title" content="How to Build a Platypus — Fiuva Labs">
+    <meta property="og:description" content="Combina cartas, descubre recetas y crea lo imposible. Un juego de alquimia e IA semántica de Fiuva Labs.">
     <meta property="og:image" content="https://fiuva.github.io/BuildAPlatypus/img/og.jpg">
     <meta name="twitter:card" content="summary_large_image">
     <link rel="icon" type="image/png" href="img/favicon.png">
     <link rel="apple-touch-icon" href="img/app-icon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=IM+Fell+English:ital@1&family=Alegreya+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
     <style>
-        :root {
-            /* the game's palette (ui/theme/Color.kt) */
-            --ink: #0D1330;
-            --ink2: #141C3F;
-            --deep: #070B1E;
-            --line: #2F3D74;
-            --vellum: #ECE6D6;
-            --muted: #A0A8C8;
-            --gold: #D9AB4E;
-            --gold-bright: #F0C766;
-            --aether: #7FD0FF;
-            --insight: #C1A6FF;
-        }
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        html { scroll-behavior: smooth; }
-        body {
-            font-family: 'Alegreya Sans', system-ui, sans-serif;
-            background: var(--deep);
-            color: var(--vellum);
-            line-height: 1.65;
-            font-size: 18px;
-            overflow-x: hidden;
-        }
-        a { color: var(--gold-bright); }
-        img { display: block; max-width: 100%; }
-        .wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
-        .fell { font-family: 'IM Fell English SC', serif; font-weight: 400; }
-        .gold-text {
-            background: linear-gradient(180deg, #FAE2A0 10%, #C9923A 95%);
-            -webkit-background-clip: text; background-clip: text; color: transparent;
-        }
-
-        /* ---------- top bar ---------- */
-        .topbar {
-            position: fixed; inset: 0 0 auto 0; z-index: 20;
-            transition: background .3s, border-color .3s;
-            border-bottom: 1px solid transparent;
-        }
-        .topbar.solid { background: rgba(7, 11, 30, 0.86); backdrop-filter: blur(14px); border-color: rgba(255, 255, 255, 0.06); }
-        .topbar .wrap { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-top: 14px; padding-bottom: 14px; }
-        .studio { display: inline-flex; align-items: center; gap: 10px; color: var(--vellum); text-decoration: none; font-weight: 500; }
-        .studio img { width: 30px; height: 30px; border-radius: 8px; }
-        .langs button {
-            background: rgba(7, 11, 30, 0.5); border: 1px solid var(--line); color: var(--muted);
-            font: inherit; font-size: 14px; padding: 4px 12px; border-radius: 99px; cursor: pointer; margin-left: 6px;
-        }
-        .langs button.on { color: var(--ink); background: var(--gold); border-color: var(--gold); }
-
-        /* ---------- hero ---------- */
-        .hero { position: relative; min-height: min(92vh, 760px); display: flex; align-items: center; overflow: hidden; }
-        .hero-art { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 68% 30%; animation: drift 24s ease-in-out infinite alternate; }
-        @keyframes drift { from { transform: scale(1.02); } to { transform: scale(1.08) translateX(-1%); } }
-        .hero::before {
-            content: ""; position: absolute; inset: 0; z-index: 1;
-            background:
-                linear-gradient(90deg, var(--deep) 0%, rgba(7, 11, 30, 0.82) 28%, rgba(7, 11, 30, 0) 58%),
-                linear-gradient(0deg, var(--deep) 0%, rgba(7, 11, 30, 0) 22%);
-        }
-        .hero-in { position: relative; z-index: 2; width: 100%; padding-top: 90px; padding-bottom: 60px; }
-        .hero-text { max-width: 520px; }
-        .eyebrow { color: var(--gold); letter-spacing: 0.12em; font-size: 17px; }
-        h1 { line-height: 1; margin: 14px 0 22px; }
-        h1 .small { display: block; font-size: clamp(30px, 4.2vw, 46px); color: var(--vellum); }
-        h1 .big { display: block; font-size: clamp(46px, 6.2vw, 78px); filter: drop-shadow(0 4px 24px rgba(217, 171, 78, 0.35)); }
-        .tagline { font-family: 'IM Fell English', serif; font-style: italic; font-size: clamp(20px, 2.3vw, 24px); color: #C9CEE4; line-height: 1.45; }
-        .cta { margin-top: 30px; display: flex; gap: 12px; flex-wrap: wrap; }
-        .btn {
-            display: inline-flex; align-items: center; gap: 10px; text-decoration: none;
-            padding: 13px 26px; border-radius: 99px; font-weight: 700; font-size: 17px;
-            transition: transform .15s, box-shadow .15s;
-        }
-        .btn:hover { transform: translateY(-2px); }
-        .btn.primary { background: linear-gradient(180deg, var(--gold-bright), var(--gold)); color: #1C1405; box-shadow: 0 10px 30px rgba(217, 171, 78, 0.3); }
-        .btn.primary:hover { box-shadow: 0 14px 38px rgba(217, 171, 78, 0.45); }
-        .btn.ghost { border: 1px solid rgba(236, 230, 214, 0.25); color: var(--vellum); background: rgba(7, 11, 30, 0.4); }
-        .btn svg { width: 20px; height: 20px; }
-        .stats { display: flex; gap: 34px; margin-top: 38px; flex-wrap: wrap; }
-        .stats div { line-height: 1.1; }
-        .stats b { display: block; font-family: 'IM Fell English SC', serif; font-weight: 400; font-size: 36px; color: var(--gold-bright); }
-        .stats span { font-size: 15px; color: var(--muted); }
-
-        /* ---------- sections ---------- */
-        section, section.wrap { padding-top: 84px; padding-bottom: 84px; position: relative; }
-        h2 { font-family: 'IM Fell English SC', serif; font-weight: 400; font-size: clamp(32px, 4vw, 44px); line-height: 1.15; margin-bottom: 14px; }
-        .center { text-align: center; }
-        .lead { color: var(--muted); max-width: 680px; margin: 0 auto 44px; }
-        .ornament { display: flex; align-items: center; justify-content: center; gap: 12px; color: var(--gold); margin-bottom: 18px; }
-        .ornament::before, .ornament::after { content: ""; width: 70px; height: 1px; background: linear-gradient(90deg, transparent, var(--gold)); }
-        .ornament::after { transform: scaleX(-1); }
-        .ornament i { width: 9px; height: 9px; background: var(--gold); transform: rotate(45deg); }
-
-        .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
-        .card {
-            background: linear-gradient(180deg, rgba(20, 28, 63, 0.9), rgba(13, 19, 48, 0.9));
-            border: 1px solid rgba(217, 171, 78, 0.16); border-radius: 20px; padding: 26px 22px;
-            transition: transform .2s, border-color .2s;
-        }
-        .card:hover { transform: translateY(-4px); border-color: rgba(217, 171, 78, 0.45); }
-        .glyph {
-            width: 54px; height: 54px; border-radius: 50%; display: grid; place-items: center;
-            border: 1px solid rgba(217, 171, 78, 0.5); color: var(--gold-bright);
-            background: radial-gradient(circle, rgba(217, 171, 78, 0.18), transparent 70%);
-        }
-        .glyph svg { width: 26px; height: 26px; }
-        .card h3 { font-family: 'IM Fell English SC', serif; font-weight: 400; font-size: 23px; margin: 16px 0 6px; color: var(--gold-bright); line-height: 1.2; }
-        .card p { color: var(--muted); font-size: 16px; }
-
-        /* story split */
-        .split { display: grid; grid-template-columns: 1.15fr 1fr; gap: 56px; align-items: center; }
-        .frame { position: relative; border-radius: 24px; overflow: hidden; box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(217, 171, 78, 0.25); }
-        .frame::after { content: ""; position: absolute; inset: 0; border-radius: inherit; box-shadow: inset 0 0 60px rgba(7, 11, 30, 0.6); pointer-events: none; }
-        .glow { position: absolute; inset: -10% -6%; background: radial-gradient(circle, rgba(217, 171, 78, 0.22), transparent 62%); z-index: -1; filter: blur(10px); }
-        .list { list-style: none; margin-top: 22px; }
-        .list li { position: relative; padding-left: 28px; margin: 14px 0; color: #C9CEE4; }
-        .list li::before { content: ""; position: absolute; left: 4px; top: 10px; width: 8px; height: 8px; background: var(--gold); transform: rotate(45deg); }
-        .list b { color: var(--vellum); font-weight: 700; }
-        .aether { color: var(--aether); } .insight { color: var(--insight); }
-
-        /* tables panorama */
-        .pano { position: relative; border-radius: 24px; overflow: hidden; box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(217, 171, 78, 0.25); }
-        .pin {
-            position: absolute; transform: translate(-50%, -50%);
-            display: flex; flex-direction: column; align-items: center; gap: 6px; pointer-events: none;
-        }
-        .pin b {
-            width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center;
-            font-family: 'IM Fell English SC', serif; font-weight: 400; font-size: 18px; color: #1C1405;
-            background: linear-gradient(180deg, var(--gold-bright), var(--gold));
-            box-shadow: 0 0 0 4px rgba(217, 171, 78, 0.25), 0 4px 14px rgba(0, 0, 0, 0.6);
-            animation: pulse 2.6s ease-in-out infinite;
-        }
-        .pin:nth-child(2n) b { animation-delay: -1.3s; }
-        @keyframes pulse { 50% { box-shadow: 0 0 0 9px rgba(217, 171, 78, 0.08), 0 4px 14px rgba(0, 0, 0, 0.6); } }
-        .pin span { font-size: 14px; font-weight: 700; background: rgba(7, 11, 30, 0.82); padding: 2px 10px; border-radius: 99px; white-space: nowrap; border: 1px solid rgba(217, 171, 78, 0.3); }
-        .legend { list-style: none; display: grid; grid-template-columns: repeat(7, 1fr); gap: 10px; margin-top: 22px; counter-reset: t; }
-        .legend li { text-align: center; font-size: 15px; color: var(--muted); }
-        .legend li strong { display: block; font-family: 'IM Fell English SC', serif; font-weight: 400; font-size: 19px; color: var(--vellum); }
-        .legend li::before { counter-increment: t; content: counter(t); display: inline-grid; place-items: center; width: 24px; height: 24px; border-radius: 50%; font-size: 13px; font-weight: 700; color: var(--gold); border: 1px solid var(--gold); margin-bottom: 6px; }
-
-        /* screenshots */
-        .shots-wrap { position: relative; }
-        .shots {
-            display: flex; gap: 22px; overflow-x: auto; padding: 10px 24px 26px; scroll-snap-type: x mandatory;
-            scrollbar-width: thin; scrollbar-color: var(--line) transparent;
-            mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);
-        }
-        .shots figure { flex: 0 0 auto; scroll-snap-align: center; text-align: center; }
-        .shots img { height: 500px; width: auto; border-radius: 26px; border: 1px solid rgba(255, 255, 255, 0.1); box-shadow: 0 18px 50px rgba(0, 0, 0, 0.55); }
-        .shots figcaption { margin-top: 12px; font-size: 15px; color: var(--muted); }
-
-        /* final call */
-        .final {
-            text-align: center; border-radius: 28px; padding: 64px 24px;
-            background:
-                radial-gradient(circle at 50% 0%, rgba(217, 171, 78, 0.22), transparent 60%),
-                linear-gradient(180deg, var(--ink2), var(--ink));
-            border: 1px solid rgba(217, 171, 78, 0.22);
-        }
-        .final img { width: 116px; height: 116px; border-radius: 28px; margin: 0 auto 22px; box-shadow: 0 16px 50px rgba(217, 171, 78, 0.3); }
-        .final p { color: var(--muted); max-width: 520px; margin: 0 auto 28px; }
-        .final .cta { justify-content: center; }
-
-        footer { border-top: 1px solid rgba(255, 255, 255, 0.06); padding: 34px 0 48px; color: var(--muted); font-size: 15px; text-align: center; margin-top: 84px; }
-        footer p { margin: 6px 0; }
-
-        .reveal { opacity: 0; transform: translateY(24px); transition: opacity .8s ease, transform .8s ease; }
-        .reveal.in { opacity: 1; transform: none; }
-
-        /* language switch: !important so it wins over any display rule above */
         [data-lang="en"] { display: none !important; }
         body.en [data-lang="es"] { display: none !important; }
         body.en [data-lang="en"] { display: revert !important; }
-        body.en h1 [data-lang="en"], body.en .legend strong[data-lang="en"] { display: block !important; }
-
-        @media (max-width: 960px) {
-            .grid { grid-template-columns: repeat(2, 1fr); }
-            .split { grid-template-columns: 1fr; gap: 36px; }
-            .legend { grid-template-columns: repeat(4, 1fr); row-gap: 18px; }
-            .pin span, body.en .pin span[data-lang] { display: none !important; }
-        }
-        @media (max-width: 720px) {
-            body { font-size: 17px; }
-            .wrap { padding: 0 16px; }
-            .hero { display: block; min-height: 0; }
-            .hero-art { position: relative; height: auto; aspect-ratio: 5 / 4; object-position: 86% 30%; animation: none;
-                -webkit-mask-image: linear-gradient(180deg, #000 62%, transparent); mask-image: linear-gradient(180deg, #000 62%, transparent); }
-            .hero::before { display: none; }
-            .hero-in { padding-top: 0; margin-top: -54px; padding-bottom: 30px; }
-            .hero-text { text-align: center; max-width: none; }
-            h1 .small { font-size: 7.6vw; }
-            h1 .big { font-size: 11.4vw; }
-            .cta, .stats { justify-content: center; }
-            .stats { gap: 26px; }
-            section, section.wrap { padding-top: 60px; padding-bottom: 60px; }
-            .grid { grid-template-columns: 1fr; }
-            .pin b { width: 22px; height: 22px; font-size: 14px; }
-            .legend { grid-template-columns: repeat(2, 1fr); text-align: left; }
-            .shots { padding: 10px 16px 22px; gap: 14px; }
-            .shots img { height: 420px; }
-        }
-        @media (prefers-reduced-motion: reduce) {
-            .hero-art, .pin b { animation: none; }
-            .reveal { opacity: 1; transform: none; transition: none; }
-        }
     </style>
 </head>
 <body>
-    <header class="topbar" id="topbar">
-        <div class="wrap">
-            <a class="studio" href="https://fiuva.github.io/"><img src="https://fiuva.github.io/images/fiuva_labs_icon.png" alt="Fiuva Labs"> Fiuva Labs</a>
-            <div class="langs"><button id="b-es" class="on" onclick="setLang('es')">ES</button><button id="b-en" onclick="setLang('en')">EN</button></div>
+
+    <div class="cursor-dot" aria-hidden="true"></div>
+    <div class="cursor-ring" aria-hidden="true"></div>
+
+    <header class="site-header">
+        <div class="header-inner">
+            <div class="brand-cluster">
+                <a href="../index.html" class="brand-mark" data-magnetic>
+                    <span class="brand-mark-flask">
+                        <img src="../images/fiuva_labs_icon.png" alt="Fiuva Labs">
+                    </span>
+                    <span>← Fiuva Labs</span>
+                </a>
+                <span class="brand-divider"></span>
+                <div class="status-beacon">
+                    <span class="status-dot"></span>
+                    <span>PLATYPUS // ALCHEMY ENGINE</span>
+                </div>
+            </div>
+
+            <nav class="nav-cluster" aria-label="Navegación de How to Build a Platypus">
+                <a href="#mesas" class="nav-item"><span class="nav-idx">01</span><span data-lang="es">7 Mesas</span><span data-lang="en">7 Tables</span></a>
+                <a href="#shots" class="nav-item"><span class="nav-idx">02</span><span data-lang="es">Capturas</span><span data-lang="en">Screenshots</span></a>
+                <a href="privacy-policy.html" class="nav-item"><span class="nav-idx">03</span><span data-lang="es">Privacidad</span><span data-lang="en">Privacy</span></a>
+
+                <div class="lang-switch-group" role="group" aria-label="Idioma">
+                    <button type="button" id="b-es" class="lang-pill-btn active" onclick="setLang('es')">ES</button>
+                    <button type="button" id="b-en" class="lang-pill-btn" onclick="setLang('en')">EN</button>
+                </div>
+
+                <button type="button" id="theme-toggle" class="theme-btn" aria-label="Cambiar tema claro/oscuro">
+                    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="4"></circle>
+                        <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
+                    </svg>
+                    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+
+                <a href="https://play.google.com/store/apps/details?id=com.fiuva.buildaplatypus" target="_blank" rel="noopener" class="header-cta" data-magnetic>
+                    <span>Google Play</span>
+                    <span>↗</span>
+                </a>
+            </nav>
         </div>
     </header>
 
-    <div class="hero">
-        <img class="hero-art" src="img/hero.jpg" alt="">
-        <div class="wrap hero-in">
-            <div class="hero-text">
-                <div class="eyebrow fell"><span data-lang="es">Un juego de alquimia</span><span data-lang="en">An alchemy game</span></div>
-                <h1 class="fell">
-                    <span class="small" data-lang="es">Cómo hacer un</span><span class="big gold-text" data-lang="es">ornitorrinco</span>
-                    <span class="small" data-lang="en">How to Build</span><span class="big gold-text" data-lang="en">a Platypus</span>
-                </h1>
-                <p class="tagline">
-                    <span data-lang="es">Un pico de pato, una cola de castor, huevos y veneno. La naturaleza lo hizo una vez. ¿Sabrás hacerlo tú?</span>
-                    <span data-lang="en">A duck's bill, a beaver's tail, eggs and venom. Nature did it once. Can you?</span>
-                </p>
-                <div class="cta">
-                    <a class="btn primary" href="https://play.google.com/store/apps/details?id=com.fiuva.buildaplatypus" target="_blank" rel="noopener">
-                        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.6 2.4 13.8 12l-9.2 9.6c-.4-.2-.6-.6-.6-1.1V3.5c0-.5.2-.9.6-1.1Zm10.6 8.1 2.6-2.7-11-6.3 8.4 9Zm0 3-8.4 9 11-6.3-2.6-2.7Zm4.1-4.8 2.4 1.4c.8.5.8 1.4 0 1.9l-2.4 1.4-2.8-2.9 2.8-1.8Z"/></svg>
-                        <span data-lang="es">Descargar en Google Play</span><span data-lang="en">Get it on Google Play</span>
+    <div class="page-shell">
+        <main>
+            <!-- HERO SECTION WITH INTERACTIVE ALCHEMY COMBINER -->
+            <section class="editorial-section" style="padding-bottom: 64px;">
+                <div class="project-showcase" data-project="platypus" style="border-radius: 20px;">
+                    <div class="project-info-col">
+                        <div>
+                            <div class="project-meta-top">
+                                <span class="project-index">FIUVA LABS // PROYECTO 01</span>
+                                <span class="project-kind">
+                                    <span data-lang="es">ALQUIMIA · 4.180 CARTAS · IA LOCAL</span>
+                                    <span data-lang="en">ALCHEMY · 4,180 CARDS · ON-DEVICE AI</span>
+                                </span>
+                            </div>
+
+                            <div class="project-identity">
+                                <div class="project-icon-frame" style="width: 82px; height: 82px;">
+                                    <img src="img/app-icon.png" alt="How to Build a Platypus">
+                                </div>
+                                <div class="project-title-group">
+                                    <h1 style="font-size: clamp(2rem, 3.6vw, 3rem); font-weight: 700; letter-spacing: -0.035em; line-height: 1.04;">
+                                        <span data-lang="es">Cómo hacer un <span class="serif-italic">ornitorrinco</span></span>
+                                        <span data-lang="en">How to Build <span class="serif-italic">a Platypus</span></span>
+                                    </h1>
+                                    <p class="project-tagline">
+                                        <span data-lang="es">Un pico de pato, una cola de castor, huevos y veneno. La naturaleza lo hizo una vez. ¿Sabrás hacerlo tú?</span>
+                                        <span data-lang="en">A duck's bill, a beaver's tail, eggs and venom. Nature did it once. Can you?</span>
+                                    </p>
+                                </div>
+                            </div>
+
+                            <p class="project-body">
+                                <span data-lang="es">Empiezas con cuatro elementos y un mortero. Con <strong>4.180 cartas ilustradas</strong>, más de <strong>5.000 recetas escritas a mano</strong> y un modelo <strong>EmbeddingGemma</strong> que comprende el significado de cada carta en local, recorrerás <strong>7 mesas de trabajo</strong> y <strong>12 capítulos</strong> hasta completar la Gran Obra.</span>
+                                <span data-lang="en">You start with four elements and a mortar. With <strong>4,180 illustrated cards</strong>, over <strong>5,000 hand-written recipes</strong> and an on-device <strong>EmbeddingGemma</strong> model that reads the meaning of every card, you will journey across <strong>7 workbenches</strong> and <strong>12 chapters</strong> to complete the Great Work.</span>
+                            </p>
+
+                            <div class="project-specs-list">
+                                <span class="spec-chip"><span data-lang="es">4.180 Cartas</span><span data-lang="en">4,180 Cards</span></span>
+                                <span class="spec-chip"><span data-lang="es">5.000+ Recetas</span><span data-lang="en">5,000+ Recipes</span></span>
+                                <span class="spec-chip">EmbeddingGemma AI</span>
+                                <span class="spec-chip"><span data-lang="es">7 Mesas</span><span data-lang="en">7 Tables</span></span>
+                                <span class="spec-chip"><span data-lang="es">12 Capítulos</span><span data-lang="en">12 Chapters</span></span>
+                            </div>
+                        </div>
+
+                        <div class="project-links-row">
+                            <a href="https://play.google.com/store/apps/details?id=com.fiuva.buildaplatypus" target="_blank" rel="noopener" class="project-btn primary" data-magnetic>
+                                <span><span data-lang="es">Descargar en Google Play</span><span data-lang="en">Get it on Google Play</span></span>
+                                <span>↗</span>
+                            </a>
+                            <a href="#shots" class="project-btn secondary" data-magnetic>
+                                <span><span data-lang="es">Ver capturas</span><span data-lang="en">See screenshots</span></span>
+                                <span>↓</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="project-sandbox-col">
+                        <div class="sandbox-top-bar">
+                            <span class="sandbox-live-badge"><span data-lang="es">ARTE OFICIAL DEL LABORATORIO</span><span data-lang="en">OFFICIAL LABORATORY ARTWORK</span></span>
+                            <span>4.180 CARTAS</span>
+                        </div>
+
+                        <div style="flex: 1; margin: 12px 0; border-radius: 10px; overflow: hidden; border: 1px solid var(--border); position: relative; min-height: 210px;">
+                            <img src="img/hero.jpg" alt="How to Build a Platypus" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                        </div>
+
+                        <div class="sandbox-footer-hint">
+                            <span><span data-lang="es">7 mesas de trabajo · 12 capítulos</span><span data-lang="en">7 workbenches · 12 chapters</span></span>
+                            <span>GRAN OBRA</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 01: ARCHITECTURE & STORY -->
+            <section class="editorial-section section-rule">
+                <div class="section-head-split" data-reveal>
+                    <div class="section-index-label">
+                        <span class="num">01</span>
+                        <span>// <span data-lang="es">SISTEMA DE JUEGO</span><span data-lang="en">GAME SYSTEM</span></span>
+                    </div>
+                    <div class="section-title-wrap">
+                        <h2 class="section-title">
+                            <span data-lang="es">Un alquimista que <span class="serif-italic">entiende cada mezcla</span>.</span>
+                            <span data-lang="en">An alchemist that <span class="serif-italic">understands every mix</span>.</span>
+                        </h2>
+                        <p class="section-desc">
+                            <span data-lang="es">Sin cuentas, sin conexión obligatoria y sin prisas. Tu grimorio se organiza en cajones y estantes a medida que desbloqueas el atlas completo.</span>
+                            <span data-lang="en">No accounts, no internet required, no rush. Your grimoire is filed by drawers and shelves as you reveal the full atlas.</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="research-bento" data-reveal>
+                    <article class="bento-panel">
+                        <div>
+                            <span class="bento-panel-kicker"><span data-lang="es">HISTORIA EN 12 CAPÍTULOS</span><span data-lang="en">12-CHAPTER STORY</span></span>
+                            <h3>
+                                <span data-lang="es">Un aprendiz con un encargo imposible</span>
+                                <span data-lang="en">An apprentice with an impossible task</span>
+                            </h3>
+                            <p style="margin-top: 12px;">
+                                <span data-lang="es">Doce capítulos te llevan de mesa en mesa, del barro y el fuego a la vida misma. Completa encargos que pagan <strong>Éter</strong> e <strong>Intuición</strong> con un termómetro semántico que te orienta cuando te acercas al descubrimiento.</span>
+                                <span data-lang="en">Twelve chapters take you from workbench to workbench, from mud and fire to life itself. Fulfill commissions that pay <strong>Aether</strong> and <strong>Insight</strong> with a semantic thermometer that guides you as you get closer.</span>
+                            </p>
+                        </div>
+
+                        <div class="academic-timeline">
+                            <div class="timeline-row">
+                                <span class="timeline-period current">4.180 CARTAS</span>
+                                <div>
+                                    <div class="timeline-role"><span data-lang="es">Grimorio Ilustrado y Coleccionable</span><span data-lang="en">Illustrated Collectible Grimoire</span></div>
+                                    <div class="timeline-inst"><span data-lang="es">Cada carta tiene ilustración propia, descripción, nivel de maestría y posición en el Atlas.</span><span data-lang="en">Every card has its own artwork, description, mastery level and place in the Atlas.</span></div>
+                                </div>
+                            </div>
+                            <div class="timeline-row">
+                                <span class="timeline-period">5.000+ RECETAS</span>
+                                <div>
+                                    <div class="timeline-role"><span data-lang="es">Recetas Artesanales + IA Semántica</span><span data-lang="en">Hand-Crafted Recipes + Semantic AI</span></div>
+                                    <div class="timeline-inst"><span data-lang="es">Más de 5.000 recetas escritas a mano combinadas con inferencia local sobre el significado de cada carta.</span><span data-lang="en">Over 5,000 hand-written recipes paired with on-device inference over each card's meaning.</span></div>
+                                </div>
+                            </div>
+                            <div class="timeline-row">
+                                <span class="timeline-period">100% LOCAL</span>
+                                <div>
+                                    <div class="timeline-role"><span data-lang="es">Sin Conexión y Anuncios Opcionales</span><span data-lang="en">Offline &amp; Optional Rewarded Ads</span></div>
+                                    <div class="timeline-inst"><span data-lang="es">Funciona en modo avión. Solo ves un anuncio si tú decides pedir una recompensa de Éter.</span><span data-lang="en">Works in airplane mode. You only watch an ad if you choose to claim an Aether reward.</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <aside class="bento-panel" style="padding: 18px;">
+                        <img src="img/orbit.jpg" alt="Órbita de cartas de How to Build a Platypus" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">
+                    </aside>
+                </div>
+            </section>
+
+            <!-- SECTION 02: THE 7 LABORATORY TABLES (#mesas) -->
+            <section id="mesas" class="editorial-section section-rule">
+                <div class="section-head-split" data-reveal>
+                    <div class="section-index-label">
+                        <span class="num">02</span>
+                        <span>// <span data-lang="es">EL LABORATORIO</span><span data-lang="en">THE LABORATORY</span></span>
+                    </div>
+                    <div class="section-title-wrap">
+                        <h2 class="section-title">
+                            <span data-lang="es">Siete mesas, <span class="serif-italic">siete ramas del mundo</span>.</span>
+                            <span data-lang="en">Seven tables, <span class="serif-italic">seven branches of the world</span>.</span>
+                        </h2>
+                        <p class="section-desc">
+                            <span data-lang="es">La misma pareja de cartas produce resultados distintos en el Mortero, el Atanor o el Alambique. Haz clic en cada punto del mapa para inspeccionar la mesa.</span>
+                            <span data-lang="en">The same pair of cards yields different results at the Mortar, the Athanor or the Alembic. Click any pin on the map to inspect the workbench.</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="lab-map-frame" data-reveal>
+                    <img src="img/lab.jpg" alt="Mapa de las 7 mesas del laboratorio" loading="lazy">
+                    <div class="lab-pin active" style="left:8.4%;top:72%" data-table="1">
+                        <span class="lab-pin-dot">1</span>
+                        <span class="lab-pin-tag"><span data-lang="es">Mortero</span><span data-lang="en">Mortar</span></span>
+                    </div>
+                    <div class="lab-pin" style="left:22.6%;top:58%" data-table="2">
+                        <span class="lab-pin-dot">2</span>
+                        <span class="lab-pin-tag">Atanor</span>
+                    </div>
+                    <div class="lab-pin" style="left:35.6%;top:68%" data-table="3">
+                        <span class="lab-pin-dot">3</span>
+                        <span class="lab-pin-tag"><span data-lang="es">Vivero</span><span data-lang="en">Nursery</span></span>
+                    </div>
+                    <div class="lab-pin" style="left:62.4%;top:58%" data-table="4">
+                        <span class="lab-pin-dot">4</span>
+                        <span class="lab-pin-tag"><span data-lang="es">Alambique</span><span data-lang="en">Alembic</span></span>
+                    </div>
+                    <div class="lab-pin" style="left:79%;top:50%" data-table="5">
+                        <span class="lab-pin-dot">5</span>
+                        <span class="lab-pin-tag"><span data-lang="es">Taller</span><span data-lang="en">Workshop</span></span>
+                    </div>
+                    <div class="lab-pin" style="left:79.5%;top:83%" data-table="6">
+                        <span class="lab-pin-dot">6</span>
+                        <span class="lab-pin-tag"><span data-lang="es">Círculo arcano</span><span data-lang="en">Arcane Circle</span></span>
+                    </div>
+                    <div class="lab-pin" style="left:93%;top:66%" data-table="7">
+                        <span class="lab-pin-dot">7</span>
+                        <span class="lab-pin-tag">???</span>
+                    </div>
+                </div>
+
+                <div class="hero-bottom-bar" style="grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); margin-top: 24px;" data-reveal>
+                    <div class="index-stat">
+                        <span class="index-stat-num">MESA 01</span>
+                        <span class="index-stat-title"><span data-lang="es">Mortero</span><span data-lang="en">Mortar</span></span>
+                        <span class="index-stat-desc"><span data-lang="es">Elementos y flora</span><span data-lang="en">Elements and flora</span></span>
+                    </div>
+                    <div class="index-stat">
+                        <span class="index-stat-num">MESA 02</span>
+                        <span class="index-stat-title">Atanor</span>
+                        <span class="index-stat-desc"><span data-lang="es">Materiales, oficios y acero</span><span data-lang="en">Materials, crafts &amp; steel</span></span>
+                    </div>
+                    <div class="index-stat">
+                        <span class="index-stat-num">MESA 03</span>
+                        <span class="index-stat-title"><span data-lang="es">Vivero</span><span data-lang="en">Nursery</span></span>
+                        <span class="index-stat-desc"><span data-lang="es">Bestias y personas</span><span data-lang="en">Beasts and people</span></span>
+                    </div>
+                    <div class="index-stat">
+                        <span class="index-stat-num">MESA 04</span>
+                        <span class="index-stat-title"><span data-lang="es">Alambique</span><span data-lang="en">Alembic</span></span>
+                        <span class="index-stat-desc"><span data-lang="es">Ciencia, lugares y banquetes</span><span data-lang="en">Science, places &amp; feasts</span></span>
+                    </div>
+                    <div class="index-stat">
+                        <span class="index-stat-num">MESA 05</span>
+                        <span class="index-stat-title"><span data-lang="es">Taller</span><span data-lang="en">Workshop</span></span>
+                        <span class="index-stat-desc"><span data-lang="es">Arte, atuendos y joyas</span><span data-lang="en">Art, attire &amp; jewels</span></span>
+                    </div>
+                    <div class="index-stat">
+                        <span class="index-stat-num">MESA 06</span>
+                        <span class="index-stat-title"><span data-lang="es">Círculo Arcano</span><span data-lang="en">Arcane Circle</span></span>
+                        <span class="index-stat-desc"><span data-lang="es">Magia y mito</span><span data-lang="en">Magic and myth</span></span>
+                    </div>
+                    <div class="index-stat">
+                        <span class="index-stat-num">MESA 07</span>
+                        <span class="index-stat-title">???</span>
+                        <span class="index-stat-desc"><span data-lang="es">La Gran Obra</span><span data-lang="en">The Great Work</span></span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 03: SCREENSHOTS (#shots) -->
+            <section id="shots" class="editorial-section section-rule" style="padding-bottom: 84px;">
+                <div class="section-head-split" data-reveal>
+                    <div class="section-index-label">
+                        <span class="num">03</span>
+                        <span>// <span data-lang="es">CAPTURAS OFICIALES</span><span data-lang="en">OFFICIAL SCREENSHOTS</span></span>
+                    </div>
+                    <div class="section-title-wrap">
+                        <h2 class="section-title">
+                            <span data-lang="es">Así se juega en <span class="serif-italic">el laboratorio</span>.</span>
+                            <span data-lang="en">Inside <span class="serif-italic">the laboratory</span>.</span>
+                        </h2>
+                    </div>
+                </div>
+
+                <div class="shots-carousel" data-reveal>
+                    <figure class="shot-card">
+                        <img src="img/shots/1_laboratorio.jpg" alt="El laboratorio" loading="lazy">
+                        <figcaption class="shot-caption"><span>01</span><span><span data-lang="es">El laboratorio</span><span data-lang="en">The laboratory</span></span></figcaption>
+                    </figure>
+                    <figure class="shot-card">
+                        <img src="img/shots/2_nueva_carta.jpg" alt="Una carta nueva" loading="lazy">
+                        <figcaption class="shot-caption"><span>02</span><span><span data-lang="es">Una carta nueva</span><span data-lang="en">A new card</span></span></figcaption>
+                    </figure>
+                    <figure class="shot-card">
+                        <img src="img/shots/3_objetivos.jpg" alt="Historia y encargos" loading="lazy">
+                        <figcaption class="shot-caption"><span>03</span><span><span data-lang="es">Historia y encargos</span><span data-lang="en">Story &amp; commissions</span></span></figcaption>
+                    </figure>
+                    <figure class="shot-card">
+                        <img src="img/shots/4_mesa_nueva.jpg" alt="Mesas nuevas" loading="lazy">
+                        <figcaption class="shot-caption"><span>04</span><span><span data-lang="es">Mesas nuevas</span><span data-lang="en">New tables</span></span></figcaption>
+                    </figure>
+                    <figure class="shot-card">
+                        <img src="img/shots/5_atlas.jpg" alt="El atlas" loading="lazy">
+                        <figcaption class="shot-caption"><span>05</span><span><span data-lang="es">El atlas</span><span data-lang="en">The atlas</span></span></figcaption>
+                    </figure>
+                    <figure class="shot-card">
+                        <img src="img/shots/6_carta.jpg" alt="Cada carta, su historia" loading="lazy">
+                        <figcaption class="shot-caption"><span>06</span><span><span data-lang="es">Cada carta, su historia</span><span data-lang="en">Every card, its story</span></span></figcaption>
+                    </figure>
+                    <figure class="shot-card">
+                        <img src="img/shots/7_nivel.jpg" alt="Sube de nivel" loading="lazy">
+                        <figcaption class="shot-caption"><span>07</span><span><span data-lang="es">Sube de nivel</span><span data-lang="en">Level up</span></span></figcaption>
+                    </figure>
+                </div>
+            </section>
+        </main>
+
+        <footer class="site-footer">
+            <div class="footer-grid">
+                <div class="brand-cluster">
+                    <a href="../index.html" class="brand-mark">
+                        <span class="brand-mark-flask">
+                            <img src="../images/fiuva_labs_icon.png" alt="Fiuva Labs">
+                        </span>
+                        <span>Fiuva Labs</span>
                     </a>
-                    <a class="btn ghost" href="#shots"><span data-lang="es">Ver el juego</span><span data-lang="en">See the game</span></a>
+                    <span class="footer-meta">
+                        © 2026 Fiuva Labs · <span data-lang="es">Ilustraciones:</span><span data-lang="en">Card artwork:</span>
+                        <a href="https://game-icons.net" target="_blank" rel="noopener" style="text-decoration: underline;">game-icons.net</a> (CC BY 3.0)
+                    </span>
                 </div>
-                <div class="stats">
-                    <div><b>4.180</b><span data-lang="es">cartas</span><span data-lang="en">cards</span></div>
-                    <div><b>7</b><span data-lang="es">mesas</span><span data-lang="en">tables</span></div>
-                    <div><b>12</b><span data-lang="es">capítulos</span><span data-lang="en">chapters</span></div>
-                </div>
+
+                <nav class="footer-links" aria-label="Enlaces de pie de página">
+                    <a href="../index.html">Inicio Fiuva Labs</a>
+                    <a href="https://play.google.com/store/apps/details?id=com.fiuva.buildaplatypus" target="_blank" rel="noopener">Google Play</a>
+                    <a href="privacy-policy.html"><span data-lang="es">Política de Privacidad</span><span data-lang="en">Privacy Policy</span></a>
+                    <a href="app-ads.txt">app-ads.txt</a>
+                    <a href="mailto:fiuvalabs@gmail.com">fiuvalabs@gmail.com</a>
+                </nav>
             </div>
-        </div>
+        </footer>
     </div>
 
-    <main>
-        <section class="wrap center">
-            <div class="ornament reveal"><i></i></div>
-            <h2 class="reveal"><span data-lang="es">Mezcla. Descubre. Crea lo imposible.</span><span data-lang="en">Mix. Discover. Make the impossible.</span></h2>
-            <p class="lead reveal">
-                <span data-lang="es">Empiezas con cuatro elementos y un mortero. Cada pareja de cartas puede dar algo nuevo… o nada. Ve llenando tu grimorio hasta reunir lo necesario para la Gran Obra.</span>
-                <span data-lang="en">You start with four elements and a mortar. Every pair of cards may give something new… or nothing at all. Fill your grimoire until you have what the Great Work needs.</span>
-            </p>
-            <div class="grid" style="text-align:left">
-                <div class="card reveal">
-                    <div class="glyph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><rect x="3" y="5" width="11" height="15" rx="2" transform="rotate(-10 8.5 12.5)"/><rect x="10" y="4" width="11" height="15" rx="2" transform="rotate(8 15.5 11.5)"/></svg></div>
-                    <h3><span data-lang="es">4.180 cartas</span><span data-lang="en">4,180 cards</span></h3>
-                    <p><span data-lang="es">Cada una con su ilustración, nombre y descripción, ordenadas en un grimorio por cajones y estantes.</span><span data-lang="en">Each with its own artwork, name and description, filed in a grimoire by drawers and shelves.</span></p>
-                </div>
-                <div class="card reveal">
-                    <div class="glyph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v6l-5.6 9.4A2 2 0 0 0 6.1 21.5h11.8a2 2 0 0 0 1.7-3.1L14 9V3"/><path d="M7.2 15h9.6"/></svg></div>
-                    <h3><span data-lang="es">Un alquimista que entiende</span><span data-lang="en">An alchemist that understands</span></h3>
-                    <p><span data-lang="es">Más de 5.000 recetas escritas a mano y una inteligencia artificial que lee el significado de cada carta para decidir qué sale de cualquier mezcla.</span><span data-lang="en">Over 5,000 hand-written recipes and an AI that reads the meaning of every card to decide what any mix gives.</span></p>
-                </div>
-                <div class="card reveal">
-                    <div class="glyph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M12 2.8c1 3.2 5.5 5.2 5.5 10.4a5.5 5.5 0 0 1-11 0c0-2.3 1-3.8 2.2-4.8 0 2 1 3.2 2.1 3.2 0-3.2-.9-5.3 1.2-8.8Z"/></svg></div>
-                    <h3><span data-lang="es">Siete mesas</span><span data-lang="en">Seven tables</span></h3>
-                    <p><span data-lang="es">La misma pareja da cosas distintas en el Mortero, el Atanor o el Alambique. Cada mesa abre ramas nuevas del mundo.</span><span data-lang="en">The same pair gives different things at the Mortar, the Athanor or the Alembic. Each table opens new branches of the world.</span></p>
-                </div>
-                <div class="card reveal">
-                    <div class="glyph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M5 4h11a3 3 0 0 1 3 3v13H8a3 3 0 0 1-3-3Z"/><path d="M5 17a3 3 0 0 1 3-3h11M9 8h6M9 11h4"/></svg></div>
-                    <h3><span data-lang="es">Sin conexión, sin prisas</span><span data-lang="en">Offline, no rush</span></h3>
-                    <p><span data-lang="es">Sin cuentas y sin internet. Los anuncios son siempre opcionales: solo los ves si quieres una recompensa.</span><span data-lang="en">No account, no internet needed. Ads are always optional: you only watch one if you want a reward.</span></p>
-                </div>
-            </div>
-        </section>
-
-        <section class="wrap">
-            <div class="split">
-                <div class="reveal" style="position:relative">
-                    <div class="glow"></div>
-                    <div class="frame"><img src="img/orbit.jpg" alt="" loading="lazy"></div>
-                </div>
-                <div class="reveal">
-                    <div class="eyebrow fell"><span data-lang="es">La historia</span><span data-lang="en">The story</span></div>
-                    <h2><span data-lang="es">Un aprendiz con un encargo imposible</span><span data-lang="en">An apprentice with an impossible task</span></h2>
-                    <p style="color:#C9CEE4"><span data-lang="es">Doce capítulos te llevan de mesa en mesa, del barro y el fuego a la vida misma, hasta la criatura que nadie cree posible.</span><span data-lang="en">Twelve chapters take you from table to table, from mud and fire to life itself, all the way to the creature nobody believes in.</span></p>
-                    <ul class="list">
-                        <li><span data-lang="es"><b>Encargos</b> que pagan <span class="aether">Éter</span> e <span class="insight">Intuición</span>, con un termómetro que te dice si vas por buen camino.</span><span data-lang="en"><b>Commissions</b> that pay <span class="aether">Aether</span> and <span class="insight">Insight</span>, with a thermometer that tells you whether you're on track.</span></li>
-                        <li><span data-lang="es"><b>Tu grimorio:</b> colecciona, sube de nivel y domina tus cartas favoritas.</span><span data-lang="en"><b>Your grimoire:</b> collect, level up and master your favourite cards.</span></li>
-                        <li><span data-lang="es"><b>El atlas:</b> un mapa de todas las cartas que se revela a medida que descubres.</span><span data-lang="en"><b>The atlas:</b> a map of every card, revealed as you discover.</span></li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <section class="wrap center">
-            <div class="ornament reveal"><i></i></div>
-            <h2 class="reveal"><span data-lang="es">Las mesas del laboratorio</span><span data-lang="en">The laboratory tables</span></h2>
-            <p class="lead reveal"><span data-lang="es">Cada mesa crea sus propias ramas del mundo. La última… mejor descúbrela tú.</span><span data-lang="en">Each table makes its own branches of the world. The last one… you'd better find out yourself.</span></p>
-            <div class="pano reveal">
-                <img src="img/lab.jpg" alt="" loading="lazy">
-                <div class="pin" style="left:8.4%;top:72%"><b>1</b><span data-lang="es">Mortero</span><span data-lang="en">Mortar</span></div>
-                <div class="pin" style="left:22.6%;top:58%"><b>2</b><span>Atanor</span></div>
-                <div class="pin" style="left:35.6%;top:68%"><b>3</b><span data-lang="es">Vivero</span><span data-lang="en">Nursery</span></div>
-                <div class="pin" style="left:62.4%;top:58%"><b>4</b><span data-lang="es">Alambique</span><span data-lang="en">Alembic</span></div>
-                <div class="pin" style="left:79%;top:50%"><b>5</b><span data-lang="es">Taller</span><span data-lang="en">Workshop</span></div>
-                <div class="pin" style="left:79.5%;top:83%"><b>6</b><span data-lang="es">Círculo arcano</span><span data-lang="en">Arcane Circle</span></div>
-                <div class="pin" style="left:93%;top:66%"><b>7</b><span>?</span></div>
-            </div>
-            <ol class="legend reveal">
-                <li><strong data-lang="es">Mortero</strong><strong data-lang="en">Mortar</strong><span data-lang="es">elementos y flora</span><span data-lang="en">elements and flora</span></li>
-                <li><strong>Atanor</strong><span data-lang="es">materiales, oficios y acero</span><span data-lang="en">materials, crafts and steel</span></li>
-                <li><strong data-lang="es">Vivero</strong><strong data-lang="en">Nursery</strong><span data-lang="es">bestias y personas</span><span data-lang="en">beasts and people</span></li>
-                <li><strong data-lang="es">Alambique</strong><strong data-lang="en">Alembic</strong><span data-lang="es">ciencia, lugares y banquetes</span><span data-lang="en">science, places and feasts</span></li>
-                <li><strong data-lang="es">Taller</strong><strong data-lang="en">Workshop</strong><span data-lang="es">arte, atuendos y joyas</span><span data-lang="en">art, attire and jewels</span></li>
-                <li><strong data-lang="es">Círculo arcano</strong><strong data-lang="en">Arcane Circle</strong><span data-lang="es">magia y mito</span><span data-lang="en">magic and myth</span></li>
-                <li><strong>???</strong><span data-lang="es">un secreto</span><span data-lang="en">a secret</span></li>
-            </ol>
-        </section>
-
-        <section id="shots">
-            <div class="wrap center">
-                <div class="ornament reveal"><i></i></div>
-                <h2 class="reveal"><span data-lang="es">Así se juega</span><span data-lang="en">How it plays</span></h2>
-                <p class="lead reveal"><span data-lang="es">Pon dos cartas en la mesa, pulsa el sello y mira qué sale.</span><span data-lang="en">Put two cards on the table, press the seal and see what comes out.</span></p>
-            </div>
-            <div class="shots-wrap reveal">
-                <div class="shots">
-                    <figure><img src="img/shots/1_laboratorio.jpg" alt="" loading="lazy"><figcaption><span data-lang="es">El laboratorio</span><span data-lang="en">The laboratory</span></figcaption></figure>
-                    <figure><img src="img/shots/2_nueva_carta.jpg" alt="" loading="lazy"><figcaption><span data-lang="es">Una carta nueva</span><span data-lang="en">A new card</span></figcaption></figure>
-                    <figure><img src="img/shots/3_objetivos.jpg" alt="" loading="lazy"><figcaption><span data-lang="es">Historia y encargos</span><span data-lang="en">Story and commissions</span></figcaption></figure>
-                    <figure><img src="img/shots/4_mesa_nueva.jpg" alt="" loading="lazy"><figcaption><span data-lang="es">Mesas nuevas</span><span data-lang="en">New tables</span></figcaption></figure>
-                    <figure><img src="img/shots/5_atlas.jpg" alt="" loading="lazy"><figcaption><span data-lang="es">El atlas</span><span data-lang="en">The atlas</span></figcaption></figure>
-                    <figure><img src="img/shots/6_carta.jpg" alt="" loading="lazy"><figcaption><span data-lang="es">Cada carta, su historia</span><span data-lang="en">Every card, its story</span></figcaption></figure>
-                    <figure><img src="img/shots/7_nivel.jpg" alt="" loading="lazy"><figcaption><span data-lang="es">Sube de nivel</span><span data-lang="en">Level up</span></figcaption></figure>
-                </div>
-            </div>
-        </section>
-
-        <section class="wrap">
-            <div class="final reveal">
-                <img src="img/app-icon.png" alt="How to Build a Platypus">
-                <h2><span data-lang="es">La Gran Obra te espera</span><span data-lang="en">The Great Work awaits</span></h2>
-                <p><span data-lang="es">Gratis en Android, en tu móvil, tableta y en el PC con Google Play Juegos.</span><span data-lang="en">Free on Android: phone, tablet and PC with Google Play Games.</span></p>
-                <div class="cta">
-                    <a class="btn primary" href="https://play.google.com/store/apps/details?id=com.fiuva.buildaplatypus" target="_blank" rel="noopener">
-                        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.6 2.4 13.8 12l-9.2 9.6c-.4-.2-.6-.6-.6-1.1V3.5c0-.5.2-.9.6-1.1Zm10.6 8.1 2.6-2.7-11-6.3 8.4 9Zm0 3-8.4 9 11-6.3-2.6-2.7Zm4.1-4.8 2.4 1.4c.8.5.8 1.4 0 1.9l-2.4 1.4-2.8-2.9 2.8-1.8Z"/></svg>
-                        <span data-lang="es">Descargar en Google Play</span><span data-lang="en">Get it on Google Play</span>
-                    </a>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <div class="wrap">
-            <p>&copy; 2026 Fiuva Labs · <a href="privacy-policy.html"><span data-lang="es">Política de privacidad</span><span data-lang="en">Privacy policy</span></a> · <a href="mailto:fiuvalabs@gmail.com">fiuvalabs@gmail.com</a></p>
-            <p><span data-lang="es">Ilustraciones de las cartas:</span><span data-lang="en">Card artwork:</span>
-                <a href="https://game-icons.net" target="_blank" rel="noopener">game-icons.net</a>
-                (Lorc, Delapouite <span data-lang="es">y otros</span><span data-lang="en">and others</span>),
-                <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="noopener">CC BY 3.0</a>.</p>
-        </div>
-    </footer>
-
+    <script src="../main.js"></script>
     <script>
         function setLang(l) {
             document.body.classList.toggle('en', l === 'en');
             document.documentElement.lang = l;
-            document.getElementById('b-es').classList.toggle('on', l === 'es');
-            document.getElementById('b-en').classList.toggle('on', l === 'en');
-            try { localStorage.setItem('lang', l); } catch (e) {}
+            document.getElementById('b-es').classList.toggle('active', l === 'es');
+            document.getElementById('b-en').classList.toggle('active', l === 'en');
+            try { localStorage.setItem('platypus_lang', l); } catch (e) {}
         }
-        let saved = null;
-        try { saved = localStorage.getItem('lang'); } catch (e) {}
-        setLang(saved || ((navigator.language || 'es').startsWith('es') ? 'es' : 'en'));
-
-        const bar = document.getElementById('topbar');
-        const onScroll = () => bar.classList.toggle('solid', window.scrollY > 40);
-        window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
-
-        if ('IntersectionObserver' in window) {
-            const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: 0.12 });
-            document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
-        } else {
-            document.querySelectorAll('.reveal').forEach((el) => el.classList.add('in'));
-        }
+        let savedLang = null;
+        try { savedLang = localStorage.getItem('platypus_lang'); } catch (e) {}
+        setLang(savedLang || ((navigator.language || 'es').startsWith('es') ? 'es' : 'en'));
     </script>
 </body>
 </html>

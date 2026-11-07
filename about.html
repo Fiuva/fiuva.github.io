@@ -1,134 +1,382 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sobre Fiuva &amp; Fiuva Labs — Ingeniería, Videojuegos e IA</title>
-    <meta name="description" content="Conoce a Fiuva, fundador de Fiuva Labs: Ingeniero Informático, Desarrollador de Videojuegos e Investigador en Modelos Generativos de Imagen (IA).">
+    <title>Sobre Fiuva — Investigador PhD en la UPNA &amp; Fundador de Fiuva Labs</title>
+    <meta name="description" content="Biografía y trayectoria de Fiuva: Investigador y Doctorando (PhD Student) en la UPNA en Modelos Generativos de Imagen, Máster en Ingeniería Informática, Desarrollador de Videojuegos y fundador de Fiuva Labs.">
     <link rel="icon" type="image/png" href="images/fiuva_labs_icon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- NAVBAR -->
-    <header class="navbar">
-        <div class="navbar-inner">
-            <a href="index.html" class="brand-logo">
-                <img src="images/fiuva_labs_icon.png" alt="Logo de Fiuva Labs">
-                <span>Fiuva <span class="labs-accent">Labs</span></span>
-            </a>
+    <!-- CUSTOM SPRING CURSOR -->
+    <div class="cursor-dot" aria-hidden="true"></div>
+    <div class="cursor-ring" aria-hidden="true"></div>
 
-            <nav>
-                <ul class="nav-menu">
-                    <li><a href="index.html#proyectos" class="nav-link">Apps y Juegos</a></li>
-                    <li><a href="index.html#laboratorio" class="nav-link">El Laboratorio</a></li>
-                    <li><a href="about.html" class="nav-link active">Sobre Fiuva</a></li>
-                    <li>
-                        <a href="https://play.google.com/store/apps/dev?id=7870183180556281898" target="_blank" rel="noopener" class="nav-cta">
-                            <span>▶ Google Play</span>
-                        </a>
-                    </li>
-                </ul>
+    <!-- STICKY ARCHITECTURAL HEADER -->
+    <header class="site-header">
+        <div class="header-inner">
+            <div class="brand-cluster">
+                <a href="index.html" class="brand-mark" data-magnetic>
+                    <span class="brand-mark-flask">
+                        <img src="images/fiuva_labs_icon.png" alt="Emblema de Fiuva Labs">
+                    </span>
+                    <span>Fiuva Labs</span>
+                </a>
+                <span class="brand-divider"></span>
+                <div class="status-beacon">
+                    <span class="status-dot"></span>
+                    <span>UPNA · PHD RESEARCH</span>
+                    <span>//</span>
+                    <span id="pamplona-clock">PAMPLONA</span>
+                </div>
+            </div>
+
+            <nav class="nav-cluster" aria-label="Navegación principal">
+                <a href="index.html#proyectos" class="nav-item"><span class="nav-idx">01</span>Catálogo</a>
+                <a href="index.html#investigacion" class="nav-item"><span class="nav-idx">02</span>Investigación</a>
+                <a href="about.html" class="nav-item active"><span class="nav-idx">03</span>Sobre Fiuva</a>
+                <a href="birdia.html#privacidad" class="nav-item"><span class="nav-idx">04</span>Privacidad</a>
+
+                <button type="button" id="theme-toggle" class="theme-btn" aria-label="Cambiar tema claro/oscuro">
+                    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="4"></circle>
+                        <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
+                    </svg>
+                    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+
+                <a href="https://play.google.com/store/apps/dev?id=7870183180556281898" target="_blank" rel="noopener" class="header-cta" data-magnetic>
+                    <span>Google Play</span>
+                    <span>↗</span>
+                </a>
             </nav>
         </div>
     </header>
 
-    <main class="container">
-        <section style="padding-top: 64px; padding-bottom: 40px;">
-            <div class="about-banner">
-                <div class="avatar-stack">
-                    <img src="images/ornitorrinco.jpg" alt="Fiuva" class="main-avatar">
-                    <img src="images/fiuva_labs_icon.png" alt="Fiuva Labs" class="badge-avatar">
-                </div>
-
-                <div class="about-content">
-                    <div class="eyebrow" style="margin-bottom: 10px;">🧪 Fundador de Fiuva Labs</div>
-                    <h2>¡Hola! Soy Fiuva</h2>
-                    <p>
-                        Apasionado por la tecnología, la programación, la inteligencia artificial y los videojuegos. Creé <strong>Fiuva Labs</strong> como mi estudio independiente y laboratorio experimental para transformar ideas creativas en videojuegos y aplicaciones reales que miles de personas puedan llevar en su bolsillo.
-                    </p>
-                    <p style="margin-bottom: 0;">
-                        ¿Por qué un ornitorrinco en un matraz de laboratorio? Porque igual que el ornitorrinco mezcla rasgos que parecen de mundos distintos, en <strong>Fiuva Labs</strong> mezclamos ciencia de datos, investigación en IA, diseño de videojuegos y desarrollo móvil bajo un mismo sello.
-                    </p>
-                </div>
-            </div>
-
-            <div class="profile-grid">
-                <article class="info-card">
-                    <h3>🎓 Formación e Investigación</h3>
-                    <ul class="timeline-list">
-                        <li><strong>Graduado en Ingeniería Informática</strong>, con base sólida en arquitectura de software, algoritmos y sistemas.</li>
-                        <li><strong>Titulado en Desarrollo de Videojuegos</strong>, especializado en motores como Unity, diseño de mecánicas 2D/3D y optimización móvil.</li>
-                        <li><strong>Investigador en Modelos Generativos de Imagen (IA)</strong> y finalizando estudios de <strong>Máster</strong>, explorando el estado del arte en aprendizaje profundo y visión por computador.</li>
-                    </ul>
-                </article>
-
-                <article class="info-card">
-                    <h3>🚀 Proyectos en Fiuva Labs</h3>
-                    <ul class="timeline-list">
-                        <li><strong>Soy una línea (I'm a Line):</strong> Plataformas 2D y speedrun dibujado en un cuaderno escolar con disparo direccional y modo mosca.</li>
-                        <li><strong>BeeTune:</strong> Afinador polifónico y monofónico de guitarra con Inteligencia Artificial (<code>BeeNet-8 CQT</code>), capaz de escuchar las 6 cuerdas a la vez o afinar con precisión sub-centésima.</li>
-                        <li><strong>Birdia:</strong> Identificador de aves por su canto en tiempo real mediante redes neuronales acústicas y espectrogramas en vivo.</li>
-                        <li><strong>Dayli:</strong> Aplicación de cultura general, efemérides históricas, widgets y Palabra del Día conectada con la RAE.</li>
-                    </ul>
-                </article>
-
-                <article class="info-card">
-                    <h3>💜 Comunidad y Trayectoria en Streaming</h3>
-                    <p style="color: var(--text-secondary); margin-bottom: 14px;">
-                        Además del desarrollo de software, he formado parte activa de grandes comunidades de creación de contenido en español, ejerciendo durante años como moderador en canales de Twitch de referencia como:
-                    </p>
-                    <ul class="timeline-list">
-                        <li><strong>Godeik</strong></li>
-                        <li><strong>Alvaro845</strong></li>
-                        <li><strong>Spiuk</strong></li>
-                    </ul>
-                </article>
-
-                <article class="info-card">
-                    <h3>🌐 Conecta con Fiuva Labs</h3>
-                    <p style="color: var(--text-secondary); margin-bottom: 16px;">
-                        ¿Tienes alguna sugerencia para las apps, has encontrado un récord imposible en <em>Soy una línea</em> o quieres charlar sobre desarrollo e IA? Encuéntrame en cualquiera de mis redes oficiales:
-                    </p>
-                    <div class="social-pills" style="justify-content: flex-start;">
-                        <a href="https://github.com/fiuva" target="_blank" rel="noopener" class="social-pill">🐙 GitHub</a>
-                        <a href="https://play.google.com/store/apps/dev?id=7870183180556281898" target="_blank" rel="noopener" class="social-pill">▶️ Google Play</a>
-                        <a href="https://x.com/fiuva5" target="_blank" rel="noopener" class="social-pill">🐦 X / Twitter</a>
-                        <a href="https://www.instagram.com/fiuva2/" target="_blank" rel="noopener" class="social-pill">📸 Instagram</a>
-                        <a href="https://twitch.tv/fiuva2" target="_blank" rel="noopener" class="social-pill">🟣 Twitch</a>
-                        <a href="https://www.youtube.com/@fiuva8675" target="_blank" rel="noopener" class="social-pill">🔴 YouTube</a>
-                        <a href="https://discord.gg/NJf5ewazMk" target="_blank" rel="noopener" class="social-pill">💬 Discord</a>
-                        <a href="mailto:fiuvalabs@gmail.com" class="social-pill">✉️ Email</a>
+    <div class="page-shell">
+        <main>
+            <!-- EDITORIAL BIO HERO -->
+            <section class="editorial-section" style="padding-bottom: 64px;">
+                <div class="hero-top-meta" style="margin-bottom: 44px;">
+                    <div class="meta-pill">
+                        <span class="tag-dot"></span>
+                        <span data-scramble>DOSSIER BIOGRÁFICO // FIUVA</span>
                     </div>
-                </article>
+                    <div class="telemetry-readout">
+                        <span>UNIVERSIDAD PÚBLICA DE NAVARRA (UPNA)</span>
+                    </div>
+                </div>
+
+                <div class="hero-main-grid" style="padding: 0; align-items: start;">
+                    <div class="hero-headline-block">
+                        <div class="hero-kicker">Sobre mí — Investigador &amp; Creador</div>
+                        <h1 class="hero-title" style="font-size: clamp(2.6rem, 5.5vw, 4.6rem);">
+                            Hola, soy <span class="serif-italic">Fiuva</span>.
+                        </h1>
+                        <p class="hero-lead" style="max-width: 680px;">
+                            Soy <strong>Ingeniero Informático</strong>, <strong>Máster en Ingeniería Informática</strong> y titulado en <strong>Desarrollo de Videojuegos</strong>. Actualmente trabajo en la <strong>UPNA (Universidad Pública de Navarra)</strong> como <strong>investigador y estudiante de doctorado (PhD Student)</strong>, investigando en el campo de los <strong>Modelos Generativos de Imagen</strong> y la Inteligencia Artificial.
+                        </p>
+                        <p class="hero-lead" style="max-width: 680px; margin-top: 18px;">
+                            En paralelo a mi labor científica en la universidad, fundé <strong>Fiuva Labs</strong> como mi estudio independiente y laboratorio de experimentación: un lugar donde convertir ideas propias en videojuegos desafiantes y herramientas móviles con IA en tiempo real.
+                        </p>
+                    </div>
+
+                    <aside class="hero-dossier-card" id="flask-trigger" style="cursor: pointer;">
+                        <div class="dossier-header">
+                            <span class="dossier-id" id="flask-status-text">IDENTIDAD // ORNITORRINCO</span>
+                            <span class="dossier-id">UPNA · PHD</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 16px;">
+                            <div class="flask-avatar-box" id="flask-box" style="width: 84px; height: 84px; border-radius: 50%; overflow: hidden; padding: 0;">
+                                <img src="images/ornitorrinco.jpg" alt="Avatar de Fiuva" style="width: 100%; height: 100%; object-fit: cover;">
+                            </div>
+                            <div class="dossier-identity">
+                                <h2>¿Por qué un ornitorrinco?</h2>
+                                <p>¿Por qué no? Porque es mi animal favorito y poco más. Una vez me compré un peluche de ornitorrinco pero resultó ser un castor, y desde entonces investigué mucho más sobre los ornitorrincos y me acabaron fascinando.</p>
+                            </div>
+                        </div>
+                        <div class="dossier-specs">
+                            <div class="spec-cell">
+                                <div class="spec-label">Puesto Actual</div>
+                                <div class="spec-val">Investigador &amp; PhD</div>
+                            </div>
+                            <div class="spec-cell">
+                                <div class="spec-label">Institución</div>
+                                <div class="spec-val">UPNA</div>
+                            </div>
+                            <div class="spec-cell">
+                                <div class="spec-label">Posgrado</div>
+                                <div class="spec-val">Máster Ing. Inf.</div>
+                            </div>
+                            <div class="spec-cell">
+                                <div class="spec-label">Grado</div>
+                                <div class="spec-val">Ing. Inf. + Juegos</div>
+                            </div>
+                        </div>
+                    </aside>
+                </div>
+            </section>
+
+            <!-- SECTION 01: ACADEMIC & RESEARCH TRAJECTORY -->
+            <section class="editorial-section section-rule">
+                <div class="section-head-split" data-reveal>
+                    <div class="section-index-label">
+                        <span class="num">01</span>
+                        <span>// FORMACIÓN E INVESTIGACIÓN</span>
+                    </div>
+                    <div class="section-title-wrap">
+                        <h2 class="section-title">
+                            Del código de bajo nivel al <span class="serif-italic">doctorado en IA</span>.
+                        </h2>
+                    </div>
+                </div>
+
+                <div class="research-bento" data-reveal>
+                    <article class="bento-panel">
+                        <div>
+                            <span class="bento-panel-kicker">ETAPA ACTUAL · UNIVERSIDAD PÚBLICA DE NAVARRA</span>
+                            <h3>Doctorado (PhD Student) e Investigación en la UPNA</h3>
+                            <p style="margin-top: 14px;">
+                                Tras finalizar el <strong>Máster en Ingeniería Informática</strong>, di el salto a la carrera investigadora en la <strong>Universidad Pública de Navarra (UPNA)</strong>, donde trabajo como investigador mientras desarrollo mi tesis doctoral (PhD).
+                            </p>
+                            <p style="margin-top: 12px;">
+                                Mi investigación explora las arquitecturas de <strong>Modelos Generativos de Imagen</strong>, difusión latente y visión por computador, buscando modelos más controlables, eficientes y capaces de comprender representaciones complejas.
+                            </p>
+                        </div>
+
+                        <div class="academic-timeline" style="margin-top: 16px;">
+                            <div class="timeline-row">
+                                <span class="timeline-period current">ACTUALIDAD</span>
+                                <div>
+                                    <div class="timeline-role">Investigador y Estudiante de Doctorado (PhD Student)</div>
+                                    <div class="timeline-inst">Universidad Pública de Navarra (UPNA) · Inteligencia Artificial y Modelos Generativos</div>
+                                </div>
+                            </div>
+                            <div class="timeline-row">
+                                <span class="timeline-period">POSGRADO</span>
+                                <div>
+                                    <div class="timeline-role">Máster Universitario en Ingeniería Informática</div>
+                                    <div class="timeline-inst">Completado · Profundización en sistemas inteligentes, computación avanzada y aprendizaje profundo</div>
+                                </div>
+                            </div>
+                            <div class="timeline-row">
+                                <span class="timeline-period">GRADO</span>
+                                <div>
+                                    <div class="timeline-role">Graduado en Ingeniería Informática</div>
+                                    <div class="timeline-inst">Completado · Arquitectura de software, algoritmia y sistemas</div>
+                                </div>
+                            </div>
+                            <div class="timeline-row">
+                                <span class="timeline-period">ESPECIALIDAD</span>
+                                <div>
+                                    <div class="timeline-role">Titulado en Desarrollo de Videojuegos</div>
+                                    <div class="timeline-inst">Completado · Motores gráficos (Unity 2D/3D), física en tiempo real y diseño de mecánicas</div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <div style="display: flex; flex-direction: column; gap: 24px;">
+                        <article class="bento-panel">
+                            <div>
+                                <span class="bento-panel-kicker">EL ESTUDIO · FIUVA LABS</span>
+                                <h3>5 proyectos publicados en Google Play</h3>
+                                <p style="margin-top: 12px;">
+                                    Cada proyecto publicado bajo <strong>Fiuva Labs</strong> responde a una pregunta técnica distinta:
+                                </p>
+                                <div class="academic-timeline" style="margin-top: 16px;">
+                                    <div class="timeline-row">
+                                        <span class="timeline-period">ALQUIMIA + IA</span>
+                                        <div>
+                                            <div class="timeline-role"><a href="/BuildAPlatypus">How to Build a Platypus ↗</a></div>
+                                            <div class="timeline-inst">4.180 cartas ilustradas, +5.000 recetas y síntesis semántica con EmbeddingGemma</div>
+                                        </div>
+                                    </div>
+                                    <div class="timeline-row">
+                                        <span class="timeline-period">UNITY 2D</span>
+                                        <div>
+                                            <div class="timeline-role"><a href="/SoyUnaLinea">Soy una línea (I'm a Line) ↗</a></div>
+                                            <div class="timeline-inst">Plataformas de precisión, disparo por los ojos y modo mosca en un cuaderno escolar</div>
+                                        </div>
+                                    </div>
+                                    <div class="timeline-row">
+                                        <span class="timeline-period">DSP + ONNX</span>
+                                        <div>
+                                            <div class="timeline-role"><a href="/BeeTune">BeeTune ↗</a></div>
+                                            <div class="timeline-inst">Afinador polifónico de 6 cuerdas simultáneas y monofónico (&lt;1c) con red BeeNet-8 CQT</div>
+                                        </div>
+                                    </div>
+                                    <div class="timeline-row">
+                                        <span class="timeline-period">BIOACÚSTICA</span>
+                                        <div>
+                                            <div class="timeline-role"><a href="birdia.html">Birdia →</a></div>
+                                            <div class="timeline-inst">Reconocimiento de aves por su canto en tiempo real con espectrograma en vivo</div>
+                                        </div>
+                                    </div>
+                                    <div class="timeline-row">
+                                        <span class="timeline-period">CULTURA</span>
+                                        <div>
+                                            <div class="timeline-role"><a href="/Dayli">Dayli ↗</a></div>
+                                            <div class="timeline-inst">Palabra del Día conectada con la RAE, efemérides históricas y widgets nativos</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="bento-panel">
+                            <div>
+                                <span class="bento-panel-kicker">ORÍGENES DIGITALES · COMUNIDAD</span>
+                                <h3>Trayectoria en comunidades de Twitch</h3>
+                                <p style="margin-top: 10px;">
+                                    Mucho antes de publicar mis propios juegos e investigar en el doctorado, pasé años formando parte activa de algunas de las mayores comunidades hispanohablantes de creación de contenido en directo, ejerciendo como moderador principal para creadores de referencia como <strong>Godeik</strong>, <strong>Alvaro845</strong> y <strong>Spiuk</strong>.
+                                </p>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 02: SOCIAL DIRECTORY -->
+            <section class="editorial-section section-rule" style="padding-bottom: 72px;">
+                <div class="section-head-split" data-reveal>
+                    <div class="section-index-label">
+                        <span class="num">02</span>
+                        <span>// REDES &amp; CONTACTO</span>
+                    </div>
+                    <div class="section-title-wrap">
+                        <h2 class="section-title">
+                            Hablemos de <span class="serif-italic">investigación, código o juegos</span>.
+                        </h2>
+                    </div>
+                </div>
+
+                <div class="network-grid" data-reveal>
+                    <a href="https://github.com/fiuva" target="_blank" rel="noopener" class="network-cell">
+                        <div class="network-cell-top">
+                            <span>01 / REPOSITORIOS</span>
+                            <span class="network-arrow">↗</span>
+                        </div>
+                        <div>
+                            <div class="network-name">GitHub</div>
+                            <div class="network-handle">github.com/fiuva</div>
+                        </div>
+                    </a>
+
+                    <a href="https://play.google.com/store/apps/dev?id=7870183180556281898" target="_blank" rel="noopener" class="network-cell">
+                        <div class="network-cell-top">
+                            <span>02 / GOOGLE PLAY</span>
+                            <span class="network-arrow">↗</span>
+                        </div>
+                        <div>
+                            <div class="network-name">Fiuva Labs</div>
+                            <div class="network-handle">Catálogo de Desarrollador</div>
+                        </div>
+                    </a>
+
+                    <a href="https://x.com/fiuva5" target="_blank" rel="noopener" class="network-cell">
+                        <div class="network-cell-top">
+                            <span>03 / X (TWITTER)</span>
+                            <span class="network-arrow">↗</span>
+                        </div>
+                        <div>
+                            <div class="network-name">X / Twitter</div>
+                            <div class="network-handle">@fiuva5</div>
+                        </div>
+                    </a>
+
+                    <a href="https://discord.gg/NJf5ewazMk" target="_blank" rel="noopener" class="network-cell">
+                        <div class="network-cell-top">
+                            <span>04 / COMUNIDAD</span>
+                            <span class="network-arrow">↗</span>
+                        </div>
+                        <div>
+                            <div class="network-name">Discord</div>
+                            <div class="network-handle">discord.gg/NJf5ewazMk</div>
+                        </div>
+                    </a>
+
+                    <a href="https://twitch.tv/fiuva2" target="_blank" rel="noopener" class="network-cell">
+                        <div class="network-cell-top">
+                            <span>05 / STREAMING</span>
+                            <span class="network-arrow">↗</span>
+                        </div>
+                        <div>
+                            <div class="network-name">Twitch</div>
+                            <div class="network-handle">twitch.tv/fiuva2</div>
+                        </div>
+                    </a>
+
+                    <a href="https://www.youtube.com/@fiuva8675" target="_blank" rel="noopener" class="network-cell">
+                        <div class="network-cell-top">
+                            <span>06 / CANAL</span>
+                            <span class="network-arrow">↗</span>
+                        </div>
+                        <div>
+                            <div class="network-name">YouTube</div>
+                            <div class="network-handle">@fiuva8675</div>
+                        </div>
+                    </a>
+
+                    <a href="https://www.instagram.com/fiuva2/" target="_blank" rel="noopener" class="network-cell">
+                        <div class="network-cell-top">
+                            <span>07 / SOCIAL</span>
+                            <span class="network-arrow">↗</span>
+                        </div>
+                        <div>
+                            <div class="network-name">Instagram</div>
+                            <div class="network-handle">@fiuva2</div>
+                        </div>
+                    </a>
+
+                    <a href="mailto:fiuvalabs@gmail.com" class="network-cell">
+                        <div class="network-cell-top">
+                            <span>08 / EMAIL</span>
+                            <span class="network-arrow">✉</span>
+                        </div>
+                        <div>
+                            <div class="network-name">Contacto Directo</div>
+                            <div class="network-handle">fiuvalabs@gmail.com</div>
+                        </div>
+                    </a>
+                </div>
+            </section>
+        </main>
+
+        <!-- ARCHITECTURAL FOOTER -->
+        <footer class="site-footer">
+            <div class="footer-grid">
+                <div class="brand-cluster">
+                    <a href="index.html" class="brand-mark">
+                        <span class="brand-mark-flask">
+                            <img src="images/fiuva_labs_icon.png" alt="Fiuva Labs">
+                        </span>
+                        <span>Fiuva Labs</span>
+                    </a>
+                    <span class="footer-meta">© 2026 Fiuva Labs · Pamplona, Navarra</span>
+                </div>
+
+                <nav class="footer-links" aria-label="Enlaces de pie de página">
+                    <a href="index.html">Inicio</a>
+                    <a href="/BuildAPlatypus">How to Build a Platypus</a>
+                    <a href="/SoyUnaLinea">Soy una línea</a>
+                    <a href="/BeeTune">BeeTune</a>
+                    <a href="birdia.html">Birdia</a>
+                    <a href="/Dayli">Dayli</a>
+                    <a href="app-ads.txt">app-ads.txt</a>
+                    <a href="mailto:fiuvalabs@gmail.com">fiuvalabs@gmail.com</a>
+                </nav>
             </div>
-        </section>
-    </main>
+        </footer>
+    </div>
 
-    <!-- FOOTER -->
-    <footer>
-        <div class="footer-inner">
-            <a href="index.html" class="brand-logo">
-                <img src="images/fiuva_labs_icon.png" alt="Fiuva Labs">
-                <span>Fiuva <span class="labs-accent">Labs</span></span>
-            </a>
-
-            <nav class="footer-nav">
-                <a href="index.html">Inicio</a>
-                <a href="/SoyUnaLinea">Soy una línea</a>
-                <a href="/BeeTune">BeeTune</a>
-                <a href="birdia.html">Birdia</a>
-                <a href="/Dayli">Dayli</a>
-                <a href="about.html">Sobre Fiuva</a>
-                <a href="app-ads.txt">app-ads.txt</a>
-            </nav>
-
-            <p class="footer-copy">&copy; 2026 Fiuva Labs. Todos los derechos reservados.</p>
-        </div>
-    </footer>
-
+    <script src="main.js"></script>
 </body>
 </html>
