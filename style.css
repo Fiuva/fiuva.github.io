@@ -875,6 +875,95 @@ body.cursor-hover .cursor-ring {
     gap: 32px;
 }
 
+.catalog-group-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 14px 20px;
+    border-radius: 12px;
+    background: var(--bg-subtle);
+    border: 1px solid var(--border-strong);
+    margin-bottom: -8px;
+}
+
+.catalog-group-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.76rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text);
+}
+
+.catalog-group-sub {
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+}
+
+.release-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.66rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 999px;
+    border: 1px solid var(--border-strong);
+}
+
+.release-pill.prod {
+    color: var(--emerald);
+    border-color: rgba(5, 150, 105, 0.35);
+    background: rgba(5, 150, 105, 0.08);
+}
+
+.release-pill.review {
+    color: var(--amber);
+    border-color: rgba(217, 119, 6, 0.4);
+    background: rgba(217, 119, 6, 0.09);
+}
+
+.release-pill.beta {
+    color: var(--accent);
+    border-color: rgba(230, 62, 17, 0.4);
+    background: rgba(230, 62, 17, 0.09);
+}
+
+.discord-beta-callout {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 24px 28px;
+    border-radius: 16px;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-strong);
+    box-shadow: var(--shadow-card);
+}
+
+.discord-beta-callout h3 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 4px;
+}
+
+.discord-beta-callout p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    max-width: 640px;
+    line-height: 1.55;
+}
+
 .project-showcase {
     --mx: 50%;
     --my: 50%;
