@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Política de Privacidad — Birdia | Fiuva Labs</title>
+    <meta name="description" content="Política de privacidad oficial de Birdia, identificador acústico de aves desarrollado por Fiuva Labs.">
+    <link rel="icon" type="image/png" href="img/birdia_icon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+    <div class="cursor-dot" aria-hidden="true"></div>
+    <div class="cursor-ring" aria-hidden="true"></div>
+
+    <header class="site-header">
+        <div class="header-inner">
+            <div class="brand-cluster">
+                <a href="index.html" class="brand-mark" data-magnetic>
+                    <span class="brand-mark-flask">
+                        <img src="img/birdia_icon.png" alt="Birdia">
+                    </span>
+                    <span>← Volver a Birdia</span>
+                </a>
+                <span class="brand-divider"></span>
+                <div class="status-beacon">
+                    <span class="status-dot"></span>
+                    <span>DOCUMENTO LEGAL // PRIVACIDAD</span>
+                </div>
+            </div>
+
+            <nav class="nav-cluster">
+                <a href="../index.html" class="nav-item"><span class="nav-idx">01</span>Fiuva Labs</a>
+                <a href="index.html" class="nav-item"><span class="nav-idx">02</span>Birdia</a>
+
+                <button type="button" id="theme-toggle" class="theme-btn" aria-label="Cambiar tema claro/oscuro">
+                    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="4"></circle>
+                        <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
+                    </svg>
+                    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="page-shell">
+        <main class="legal-doc-wrap">
+            <div class="legal-doc-card">
+                <span class="bento-panel-kicker">FIUVA LABS · COM.FIUVA.BIRDIA</span>
+                <h1>Política de Privacidad — <span class="serif-italic">Birdia</span></h1>
+                <span class="legal-updated">Última actualización: 2026</span>
+
+                <h2>1. Procesamiento Local de Audio (Permiso RECORD_AUDIO)</h2>
+                <p>
+                    <strong>Birdia</strong> solicita acceso al micrófono del dispositivo (<code>android.permission.RECORD_AUDIO</code>) única y exclusivamente mientras el usuario pulsa activamente el botón de escucha para identificar cantos de aves en tiempo real.
+                </p>
+                <ul>
+                    <li><strong>Procesamiento 100% en memoria local:</strong> Las muestras de sonido se transforman en espectrogramas y se evalúan mediante el modelo neuronal directamente en la memoria RAM del teléfono.</li>
+                    <li><strong>Sin grabación ni envío a servidores:</strong> Birdia no graba de forma permanente tus conversaciones ni el audio ambiental, ni transmite ningún archivo de sonido a servidores de Fiuva Labs ni de terceros.</li>
+                </ul>
+
+                <h2>2. Servicios de Terceros y Publicidad</h2>
+                <p>
+                    La aplicación se distribuye de forma gratuita e integra los siguientes servicios externos:
+                </p>
+                <ul>
+                    <li><strong>Google AdMob:</strong> Para mostrar anuncios publicitarios que permiten mantener la aplicación gratuita. AdMob puede emplear identificadores publicitarios del dispositivo conforme a la <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Política de Privacidad de Google</a>.</li>
+                    <li><strong>Wikipedia REST API:</strong> Para mostrar fotografías públicas y extractos enciclopédicos de las especies de aves identificadas.</li>
+                </ul>
+
+                <h2>3. Contacto</h2>
+                <p>
+                    Si tienes cualquier pregunta sobre esta Política de Privacidad o sobre el funcionamiento de Birdia, puedes contactar con <strong>Fiuva Labs</strong> en <a href="mailto:fiuvalabs@gmail.com"><strong>fiuvalabs@gmail.com</strong></a>.
+                </p>
+            </div>
+        </main>
+
+        <footer class="site-footer">
+            <div class="footer-grid">
+                <div class="brand-cluster">
+                    <a href="../index.html" class="brand-mark">
+                        <span class="brand-mark-flask">
+                            <img src="../images/fiuva_labs_icon.png" alt="Fiuva Labs">
+                        </span>
+                        <span>Fiuva Labs</span>
+                    </a>
+                    <span class="footer-meta">© 2026 Fiuva Labs · Todos los derechos reservados</span>
+                </div>
+
+                <nav class="footer-links">
+                    <a href="index.html">Volver a Birdia</a>
+                    <a href="../index.html">Inicio Fiuva Labs</a>
+                    <a href="app-ads.txt">app-ads.txt</a>
+                    <a href="mailto:fiuvalabs@gmail.com">fiuvalabs@gmail.com</a>
+                </nav>
+            </div>
+        </footer>
+    </div>
+
+    <script src="../main.js"></script>
+</body>
+</html>

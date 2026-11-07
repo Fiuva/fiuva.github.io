@@ -872,7 +872,213 @@ body.cursor-hover .cursor-ring {
 .projects-stack {
     display: flex;
     flex-direction: column;
+    gap: 28px;
+}
+
+/* Filter Tabs Bar for App Catalog */
+.catalog-filter-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-bottom: 28px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--border);
+}
+
+.catalog-filter-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.filter-pill-btn {
+    background: var(--surface);
+    border: 1px solid var(--border-strong);
+    color: var(--text-secondary);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    font-weight: 500;
+    padding: 7px 14px;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.filter-pill-btn:hover {
+    color: var(--text);
+    border-color: var(--text-muted);
+}
+
+.filter-pill-btn.active {
+    background: var(--text);
+    color: var(--bg);
+    border-color: var(--text);
+}
+
+/* Editorial App Card (No Toy Demos — Clean Architectural Bento) */
+.app-editorial-card {
+    --mx: 50%;
+    --my: 50%;
+    position: relative;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: clamp(24px, 3.2vw, 38px);
+    display: flex;
+    flex-direction: column;
+    gap: 26px;
+    overflow: hidden;
+    transition: border-color 0.3s ease, transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+}
+
+.app-editorial-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+        700px circle at var(--mx) var(--my),
+        var(--project-glow, rgba(230, 62, 17, 0.06)),
+        transparent 45%
+    );
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0;
+    transition: opacity 0.35s ease;
+}
+
+.app-editorial-card:hover::before {
+    opacity: 1;
+}
+
+.app-editorial-card:hover {
+    border-color: var(--border-strong);
+    box-shadow: var(--shadow-card);
+    transform: translateY(-2px);
+}
+
+.app-editorial-card[data-project="beetune"]  { --project-accent: var(--amber); --project-glow: rgba(217, 119, 6, 0.08); }
+.app-editorial-card[data-project="birdia"]   { --project-accent: var(--emerald); --project-glow: rgba(5, 150, 105, 0.08); }
+.app-editorial-card[data-project="dayli"]    { --project-accent: var(--sky); --project-glow: rgba(2, 132, 199, 0.08); }
+.app-editorial-card[data-project="soy-linea"] { --project-accent: var(--text); --project-glow: rgba(20, 20, 19, 0.05); }
+.app-editorial-card[data-project="platypus"] { --project-accent: var(--gold); --project-glow: rgba(180, 123, 24, 0.09); }
+
+.app-card-top-grid {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
     gap: 32px;
+    align-items: start;
+}
+
+@media (max-width: 900px) {
+    .app-card-top-grid {
+        grid-template-columns: 1fr;
+        gap: 22px;
+    }
+}
+
+.app-pillars-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+}
+
+.app-pillar-box {
+    background: var(--bg-subtle);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 13px 16px;
+    transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.app-editorial-card:hover .app-pillar-box {
+    border-color: var(--border-strong);
+}
+
+.app-pillar-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 4px;
+}
+
+.app-pillar-kicker {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.63rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--project-accent, var(--accent));
+}
+
+.app-pillar-title {
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: -0.01em;
+}
+
+.app-pillar-desc {
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+    line-height: 1.48;
+    margin-top: 2px;
+}
+
+.app-card-bottom {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+}
+
+/* Tech Dossier Right Column for Individual App Heroes */
+.app-tech-dossier {
+    position: relative;
+    z-index: 2;
+    background: var(--bg-subtle);
+    padding: clamp(24px, 3vw, 36px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.tech-dossier-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.tech-dossier-cell {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 12px 14px;
+}
+
+.tech-dossier-cell .label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.63rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-muted);
+}
+
+.tech-dossier-cell .value {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--text);
+    margin-top: 4px;
 }
 
 .catalog-group-header {

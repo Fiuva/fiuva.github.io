@@ -120,8 +120,8 @@
             reveals.forEach((el) => el.classList.add('is-visible'));
         }
 
-        // Mouse spotlight tracking on .project-showcase and .bento-panel
-        document.querySelectorAll('.project-showcase, .bento-panel').forEach((card) => {
+        // Mouse spotlight tracking on .project-showcase, .app-editorial-card and .bento-panel
+        document.querySelectorAll('.project-showcase, .app-editorial-card, .bento-panel').forEach((card) => {
             card.addEventListener('mousemove', (e) => {
                 const rect = card.getBoundingClientRect();
                 card.style.setProperty('--mx', `${e.clientX - rect.left}px`);
@@ -364,9 +364,41 @@
     };
 
     /* ----------------------------------------------------------------------
-       7. SANDBOX 01: HOW TO BUILD A PLATYPUS (7 Laboratory Tables Pins)
+       7. CATALOG FILTER TABS & LABORATORY TABLE PINS
        ---------------------------------------------------------------------- */
-    const initPlatypusSandbox = () => {
+    const initCatalogAndPins = () => {
+        // Filter buttons on index.html
+        const filterBtns = document.querySelectorAll('.filter-pill-btn');
+        const cards = document.querySelectorAll('.app-editorial-card');
+        const groupHeaders = document.querySelectorAll('.catalog-group-header');
+
+        if (filterBtns.length && cards.length) {
+            filterBtns.forEach((btn) => {
+                btn.addEventListener('click', () => {
+                    const filter = btn.dataset.filter;
+                    filterBtns.forEach((b) => b.classList.toggle('active', b === btn));
+
+                    cards.forEach((card) => {
+                        const status = card.dataset.status;
+                        const show = filter === 'all' || status === filter;
+                        card.style.display = show ? '' : 'none';
+                    });
+
+                    groupHeaders.forEach((header) => {
+                        const grp = header.dataset.group;
+                        if (filter === 'all') {
+                            header.style.display = '';
+                        } else if (filter === 'beta') {
+                            header.style.display = grp === 'beta' ? '' : 'none';
+                        } else {
+                            header.style.display = grp === 'prod' ? '' : 'none';
+                        }
+                    });
+                });
+            });
+        }
+
+        // Interactive pins on the 7 Laboratory Tables map (/BuildAPlatypus/)
         const labPins = document.querySelectorAll('.lab-pin');
         if (labPins.length) {
             labPins.forEach((pin) => {
@@ -383,448 +415,6 @@
     };
 
     /* ----------------------------------------------------------------------
-       8. SANDBOX 02: SOY UNA LÍNEA (Interactive Notebook Stick-Runner)
-       ---------------------------------------------------------------------- */
-    const initSoyUnaLineaSandbox = () => {
-        const canvas = document.getElementById('linea-canvas');
-        if (!canvas) return;
-        const ctx = canvas.getContext('2d');
-        const timerEl = document.getElementById('linea-timer');
-
-        let w = 0, h = 0, dpr = 1;
-        const resize = () => {
-            const rect = canvas.parentElement.getBoundingClientRect();
-            dpr = Math.min(window.devicePixelRatio || 1, 2);
-            w = rect.width;
-            h = rect.height;
-            canvas.width = w * dpr;
-            canvas.height = h * dpr;
-            ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-        };
-        resize();
-        window.addEventListener('resize', resize, { passive: true });
-
-        const groundY = () => h - 34;
-        const player = { x: 64, y: 0, vy: 0, jumping: false, flyMode: false };
-        const obstacles = [{ x: 260, w: 16, h: 24 }, { x: 440, w: 18, h: 28 }];
-        const lasers = [];
-        let pointer = { x: 220, y: 80, active: false };
-        let startTime = performance.now();
-
-        const jump = () => {
-            if (!player.jumping) {
-                player.vy = -8.2;
-                player.jumping = true;
-            }
-        };
-
-        canvas.parentElement.addEventListener('click', (e) => {
-            const rect = canvas.getBoundingClientRect();
-            const tx = e.clientX - rect.left;
-            const ty = e.clientY - rect.top;
-            jump();
-            lasers.push({ x: player.x + 6, y: player.y - 36, tx, ty, life: 1 });
-        });
-
-        canvas.parentElement.addEventListener('mousemove', (e) => {
-            const rect = canvas.getBoundingClientRect();
-            pointer.x = e.clientX - rect.left;
-            pointer.y = e.clientY - rect.top;
-            pointer.active = true;
-        }, { passive: true });
-
-        canvas.parentElement.addEventListener('mouseleave', () => {
-            pointer.active = false;
-        });
-
-        let tickCount = 0;
-        const loop = (now) => {
-            tickCount++;
-            ctx.clearRect(0, 0, w, h);
-
-            // 1. Notebook grid background
-            ctx.fillStyle = '#f8fafc';
-            ctx.fillRect(0, 0, w, h);
-
-            ctx.strokeStyle = 'rgba(59, 130, 246, 0.16)';
-            ctx.lineWidth = 1;
-            const grid = 20;
-            for (let gx = (tickCount * -2.2) % grid; gx < w; gx += grid) {
-                ctx.beginPath();
-                ctx.moveTo(gx, 0);
-                ctx.lineTo(gx, h);
-                ctx.stroke();
-            }
-            for (let gy = 0; gy < h; gy += grid) {
-                ctx.beginPath();
-                ctx.moveTo(0, gy);
-                ctx.lineTo(w, gy);
-                ctx.stroke();
-            }
-
-            // Red notebook margin line
-            ctx.strokeStyle = 'rgba(239, 68, 68, 0.35)';
-            ctx.beginPath();
-            ctx.moveTo(36, 0);
-            ctx.lineTo(36, h);
-            ctx.stroke();
-
-            const gy = groundY();
-
-            // Hand-drawn ground line
-            ctx.strokeStyle = '#0f172a';
-            ctx.lineWidth = 2.5;
-            ctx.beginPath();
-            ctx.moveTo(0, gy);
-            ctx.lineTo(w, gy);
-            ctx.stroke();
-
-            // Update & draw spikes
-            for (let i = 0; i < obstacles.length; i++) {
-                const ob = obstacles[i];
-                ob.x -= 3.2;
-                if (ob.x < -30) {
-                    ob.x = w + 60 + Math.random() * 90;
-                }
-                // Auto-reflex jump if user isn't manually jumping right now
-                if (ob.x - player.x > 18 && ob.x - player.x < 52 && !player.jumping) {
-                    jump();
-                }
-
-                // Draw hand-drawn triangle spike
-                ctx.strokeStyle = '#0f172a';
-                ctx.lineWidth = 2.2;
-                ctx.beginPath();
-                ctx.moveTo(ob.x, gy);
-                ctx.lineTo(ob.x + ob.w * 0.5, gy - ob.h);
-                ctx.lineTo(ob.x + ob.w, gy);
-                ctx.closePath();
-                ctx.stroke();
-            }
-
-            // Player physics
-            if (player.y === 0) player.y = gy;
-            player.vy += 0.44;
-            player.y += player.vy;
-            if (player.y >= gy) {
-                player.y = gy;
-                player.vy = 0;
-                player.jumping = false;
-            }
-
-            // Draw stick figure (matching soy_linea_icon.png)
-            const px = player.x;
-            const py = player.y;
-            const stride = player.jumping ? 7 : Math.sin(tickCount * 0.28) * 9;
-
-            ctx.strokeStyle = '#0f172a';
-            ctx.lineWidth = 3;
-            ctx.lineCap = 'round';
-
-            // Head
-            ctx.beginPath();
-            ctx.arc(px, py - 38, 9, 0, Math.PI * 2);
-            ctx.stroke();
-
-            // Eyes
-            ctx.beginPath();
-            ctx.moveTo(px + 2, py - 41);
-            ctx.lineTo(px + 2, py - 36);
-            ctx.moveTo(px + 5, py - 40);
-            ctx.lineTo(px + 5, py - 37);
-            ctx.stroke();
-
-            // Torso
-            ctx.beginPath();
-            ctx.moveTo(px, py - 29);
-            ctx.lineTo(px, py - 10);
-            ctx.stroke();
-
-            // Arms
-            ctx.beginPath();
-            ctx.moveTo(px, py - 23);
-            ctx.lineTo(px + 11, py - 18 + stride * 0.3);
-            ctx.moveTo(px, py - 21);
-            ctx.lineTo(px - 9, py - 16 - stride * 0.3);
-            ctx.stroke();
-
-            // Legs
-            ctx.beginPath();
-            ctx.moveTo(px, py - 10);
-            ctx.lineTo(px + stride, py);
-            ctx.moveTo(px, py - 10);
-            ctx.lineTo(px - stride, py);
-            ctx.stroke();
-
-            // Eye laser if pointer is active or clicked
-            if (pointer.active && tickCount % 45 < 8) {
-                lasers.push({ x: px + 5, y: py - 38, tx: pointer.x, ty: pointer.y, life: 0.7 });
-            }
-
-            for (let i = lasers.length - 1; i >= 0; i--) {
-                const l = lasers[i];
-                ctx.strokeStyle = `rgba(239, 68, 68, ${l.life.toFixed(2)})`;
-                ctx.lineWidth = 1.8;
-                ctx.beginPath();
-                ctx.moveTo(px + 5, py - 38);
-                ctx.lineTo(l.tx, l.ty);
-                ctx.stroke();
-                l.life -= 0.08;
-                if (l.life <= 0) lasers.splice(i, 1);
-            }
-
-            // Update speedrun timer
-            if (timerEl) {
-                const elapsed = ((now - startTime) / 1000) % 60;
-                timerEl.textContent = `00:${elapsed.toFixed(3).padStart(6, '0')}`;
-            }
-
-            requestAnimationFrame(loop);
-        };
-        requestAnimationFrame(loop);
-    };
-
-    /* ----------------------------------------------------------------------
-       9. SANDBOX 03: BEETUNE (Polyphonic 6-String Tuner + Web Audio Synth)
-       ---------------------------------------------------------------------- */
-    const initBeeTuneSandbox = () => {
-        const rows = document.querySelectorAll('.guitar-string-row');
-        const noteEl = document.getElementById('tuner-note');
-        const freqEl = document.getElementById('tuner-freq');
-        const centsBar = document.getElementById('tuner-cents-dot');
-        const strumBtn = document.getElementById('strum-all-btn');
-        if (!rows.length) return;
-
-        let audioCtx = null;
-
-        const playPluck = (freq) => {
-            try {
-                const AudioContextClass = window.AudioContext || window.webkitAudioContext;
-                if (!AudioContextClass) return;
-                if (!audioCtx) audioCtx = new AudioContextClass();
-                if (audioCtx.state === 'suspended') audioCtx.resume();
-
-                const osc = audioCtx.createOscillator();
-                const gain = audioCtx.createGain();
-                osc.type = 'triangle';
-                osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
-
-                gain.gain.setValueAtTime(0.12, audioCtx.currentTime);
-                gain.gain.exponentialRampToValueAtTime(0.0008, audioCtx.currentTime + 1.15);
-
-                osc.connect(gain);
-                gain.connect(audioCtx.destination);
-                osc.start();
-                osc.stop(audioCtx.currentTime + 1.2);
-            } catch (_) {
-                // Ignore audio errors if blocked by browser autoplay policy
-            }
-        };
-
-        const activateString = (row, withSound = false, tuneOnClick = false) => {
-            const note = row.dataset.note;
-            const baseFreq = parseFloat(row.dataset.freq);
-            let cents = parseFloat(row.dataset.cents || '0');
-            const statusEl = row.querySelector('.string-status');
-
-            // If user clicks an out-of-tune string directly, calibrate it to OK (0c)
-            if (tuneOnClick && cents !== 0) {
-                cents = 0;
-                row.dataset.cents = '0';
-                row.dataset.state = 'ok';
-                if (statusEl) {
-                    statusEl.textContent = 'OK';
-                    statusEl.className = 'string-status ok';
-                }
-            }
-
-            row.classList.remove('plucked');
-            void row.offsetWidth;
-            row.classList.add('plucked');
-
-            const actualFreq = baseFreq * Math.pow(2, cents / 1200);
-            const centsLabel = cents === 0 ? 'OK (0.0c)' : (cents > 0 ? `+${cents}c` : `${cents}c`);
-
-            if (noteEl) noteEl.textContent = note;
-            if (freqEl) freqEl.textContent = `${actualFreq.toFixed(1)} Hz · ${centsLabel}`;
-            if (centsBar) {
-                const offsetPx = Math.max(-42, Math.min(42, cents * 2.2));
-                centsBar.style.transform = `translateX(${offsetPx.toFixed(1)}px)`;
-                centsBar.style.backgroundColor =
-                    cents === 0 ? 'var(--emerald)' : (cents < 0 ? 'var(--amber)' : 'var(--accent)');
-            }
-            if (withSound && actualFreq) playPluck(actualFreq);
-        };
-
-        rows.forEach((row) => {
-            row.addEventListener('mouseenter', () => activateString(row, false, false));
-            row.addEventListener('click', () => activateString(row, true, true));
-        });
-
-        if (strumBtn) {
-            strumBtn.addEventListener('click', () => {
-                // Reset polyphonic showcase state on full strum (-11c on D3, +14c on B3)
-                rows.forEach((row) => {
-                    const note = row.dataset.note;
-                    const statusEl = row.querySelector('.string-status');
-                    if (note === 'D3') {
-                        row.dataset.cents = '-11';
-                        row.dataset.state = 'flat';
-                        if (statusEl) { statusEl.textContent = '-11c'; statusEl.className = 'string-status flat'; }
-                    } else if (note === 'B3') {
-                        row.dataset.cents = '14';
-                        row.dataset.state = 'sharp';
-                        if (statusEl) { statusEl.textContent = '+14c'; statusEl.className = 'string-status sharp'; }
-                    } else {
-                        row.dataset.cents = '0';
-                        row.dataset.state = 'ok';
-                        if (statusEl) { statusEl.textContent = 'OK'; statusEl.className = 'string-status ok'; }
-                    }
-                });
-                rows.forEach((row, idx) => {
-                    setTimeout(() => activateString(row, true, false), idx * 65);
-                });
-            });
-        }
-    };
-
-    /* ----------------------------------------------------------------------
-       10. SANDBOX 04: BIRDIA (Real-Time Acoustic Spectrogram Canvas)
-       ---------------------------------------------------------------------- */
-    const initBirdiaSpectrogram = () => {
-        const canvas = document.getElementById('birdia-spec-canvas');
-        if (!canvas) return;
-        const ctx = canvas.getContext('2d');
-        const commonEl = document.getElementById('birdia-common-name');
-        const latinEl = document.getElementById('birdia-latin-name');
-        const confEl = document.getElementById('birdia-conf');
-
-        const species = [
-            { common: 'Petirrojo europeo', latin: 'Erithacus rubecula', conf: '98.4%', peak: 0.35 },
-            { common: 'Ruiseñor común', latin: 'Luscinia megarhynchos', conf: '96.9%', peak: 0.55 },
-            { common: 'Mirlo común', latin: 'Turdus merula', conf: '95.2%', peak: 0.22 },
-            { common: 'Herrerillo común', latin: 'Cyanistes caeruleus', conf: '94.7%', peak: 0.78 }
-        ];
-
-        let w = 0, h = 0, dpr = 1;
-        const resize = () => {
-            const rect = canvas.parentElement.getBoundingClientRect();
-            dpr = Math.min(window.devicePixelRatio || 1, 2);
-            w = rect.width;
-            h = rect.height;
-            canvas.width = w * dpr;
-            canvas.height = h * dpr;
-            ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-        };
-        resize();
-        window.addEventListener('resize', resize, { passive: true });
-
-        let targetPeak = 0.35;
-        canvas.parentElement.addEventListener('mousemove', (e) => {
-            const rect = canvas.getBoundingClientRect();
-            const ratio = Math.max(0.05, Math.min(0.95, (e.clientX - rect.left) / rect.width));
-            targetPeak = ratio;
-            const idx = Math.min(species.length - 1, Math.floor(ratio * species.length));
-            const sp = species[idx];
-            if (commonEl) commonEl.textContent = sp.common;
-            if (latinEl) latinEl.textContent = sp.latin;
-            if (confEl) confEl.textContent = sp.conf;
-        }, { passive: true });
-
-        let phase = 0;
-        const bars = 42;
-        const draw = () => {
-            phase += 0.06;
-            ctx.clearRect(0, 0, w, h);
-
-            // Subtle frequency reference lines
-            ctx.strokeStyle = 'rgba(52, 211, 153, 0.1)';
-            ctx.lineWidth = 1;
-            for (let y = 24; y < h; y += 28) {
-                ctx.beginPath();
-                ctx.moveTo(0, y);
-                ctx.lineTo(w, y);
-                ctx.stroke();
-            }
-
-            const barW = (w - 24) / bars;
-            for (let i = 0; i < bars; i++) {
-                const norm = i / bars;
-                const dist = Math.abs(norm - targetPeak);
-                const harmonic = Math.exp(-dist * dist * 18);
-                const chirp = Math.sin(phase * 2.2 + i * 0.45) * 0.5 + 0.5;
-                const amp = Math.max(0.08, Math.min(0.95, harmonic * 0.68 + chirp * 0.28));
-
-                const bh = amp * (h - 28);
-                const x = 12 + i * barW;
-                const y = h - bh - 10;
-
-                const grad = ctx.createLinearGradient(0, y, 0, h);
-                grad.addColorStop(0, '#34d399');
-                grad.addColorStop(0.6, '#10b981');
-                grad.addColorStop(1, 'rgba(16, 185, 129, 0.15)');
-
-                ctx.fillStyle = grad;
-                ctx.fillRect(x, y, Math.max(2, barW - 3), bh);
-            }
-
-            requestAnimationFrame(draw);
-        };
-        requestAnimationFrame(draw);
-    };
-
-    /* ----------------------------------------------------------------------
-       11. SANDBOX 05: DAYLI (RAE Word of the Day & Ephemeris Switcher)
-       ---------------------------------------------------------------------- */
-    const initDayliSandbox = () => {
-        const card = document.getElementById('dayli-interactive-card');
-        const dateEl = document.getElementById('dayli-date-badge');
-        const kindEl = document.getElementById('dayli-kind-badge');
-        const wordEl = document.getElementById('dayli-title');
-        const defEl = document.getElementById('dayli-desc');
-        if (!card || !wordEl || !defEl) return;
-
-        // Dynamic real current date
-        if (dateEl) {
-            const months = ['ENE', 'FEB', 'MAR', 'ABR', 'MAY', 'JUN', 'JUL', 'AGO', 'SEP', 'OCT', 'NOV', 'DIC'];
-            const d = new Date();
-            dateEl.textContent = `${String(d.getDate()).padStart(2, '0')} ${months[d.getMonth()]}`;
-        }
-
-        const entries = [
-            {
-                kind: 'PALABRA DEL DÍA · RAE',
-                title: 'Serendipia',
-                desc: 'f. Hallazgo valioso que se produce de manera accidental o casual, como descubrir un ornitorrinco buscando nutrias.'
-            },
-            {
-                kind: 'PALABRA DEL DÍA · RAE',
-                title: 'Arrebol',
-                desc: 'm. Color rojo que se advierte en las nubes iluminadas por los rayos del sol, especialmente al amanecer o a la caída de la tarde.'
-            },
-            {
-                kind: 'EFEMÉRIDE CIENTÍFICA',
-                title: '1867 · Marie Curie',
-                desc: 'Nace en Varsovia la física y química pionera en el estudio de la radiactividad y primera persona en recibir dos Premios Nobel.'
-            },
-            {
-                kind: 'PALABRA DEL DÍA · RAE',
-                title: 'Ataraxia',
-                desc: 'f. Fil. Imperturbabilidad, serenidad de ánimo frente al código que compila a la primera.'
-            }
-        ];
-
-        let idx = 0;
-        card.addEventListener('click', () => {
-            idx = (idx + 1) % entries.length;
-            const item = entries[idx];
-            if (kindEl) kindEl.textContent = item.kind;
-            wordEl.textContent = item.title;
-            defEl.textContent = item.desc;
-        });
-    };
-
-    /* ----------------------------------------------------------------------
        BOOT ALL MODULES ON DOM READY
        ---------------------------------------------------------------------- */
     document.addEventListener('DOMContentLoaded', () => {
@@ -834,10 +424,6 @@
         initRevealAndSpotlights();
         initLatentCanvas();
         initFlaskEasterEgg();
-        initPlatypusSandbox();
-        initSoyUnaLineaSandbox();
-        initBeeTuneSandbox();
-        initBirdiaSpectrogram();
-        initDayliSandbox();
+        initCatalogAndPins();
     });
 })();

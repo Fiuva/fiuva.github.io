@@ -40,7 +40,6 @@
                 <a href="#proyectos" class="nav-item active"><span class="nav-idx">01</span>Catálogo</a>
                 <a href="#investigacion" class="nav-item"><span class="nav-idx">02</span>Investigación</a>
                 <a href="about.html" class="nav-item"><span class="nav-idx">03</span>Sobre Fiuva</a>
-                <a href="birdia.html#privacidad" class="nav-item"><span class="nav-idx">04</span>Privacidad</a>
 
                 <button type="button" id="theme-toggle" class="theme-btn" aria-label="Cambiar tema claro/oscuro">
                     <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
@@ -165,39 +164,52 @@
                 </div>
             </section>
 
-            <!-- SECTION 01: INTERACTIVE ARCHIVE OF PROJECTS -->
+            <!-- SECTION 01: CATALOG OF APPS & GAMES -->
             <section id="proyectos" class="editorial-section section-rule">
                 <div class="section-head-split" data-reveal>
                     <div class="section-index-label">
                         <span class="num">01</span>
-                        <span>// ARCHIVO INTERACTIVO</span>
+                        <span>// CATÁLOGO DEL ESTUDIO</span>
                     </div>
                     <div class="section-title-wrap">
                         <h2 class="section-title">
                             Videojuegos y aplicaciones <span class="serif-italic">con alma propia</span>.
                         </h2>
                         <p class="section-desc">
-                            Videojuegos y utilidades creados desde cero en el estudio. Explora el laboratorio alquímico de <em>How to Build a Platypus</em>, salta en el cuaderno de <em>Soy una línea</em>, prueba el afinador de <em>BeeTune</em> o inspecciona el espectrograma de <em>Birdia</em>.
+                            Proyectos creados íntegramente desde cero combinando inteligencia artificial en el dispositivo, procesamiento de señal en tiempo real y diseño de videojuegos.
                         </p>
                     </div>
+                </div>
+
+                <!-- Interactive Filter Tabs -->
+                <div class="catalog-filter-bar" data-reveal>
+                    <div class="catalog-filter-pills" role="tablist" aria-label="Filtrar catálogo por estado">
+                        <button type="button" class="filter-pill-btn active" data-filter="all">Todos (5)</button>
+                        <button type="button" class="filter-pill-btn" data-filter="prod">● En Producción (3)</button>
+                        <button type="button" class="filter-pill-btn" data-filter="review">◐ En Revisión (1)</button>
+                        <button type="button" class="filter-pill-btn" data-filter="beta">★ Prueba Cerrada (1)</button>
+                    </div>
+                    <a href="https://discord.gg/aBZ5tqEJWN" target="_blank" rel="noopener" class="mono" style="font-size: 0.72rem; color: var(--accent);">
+                        Probar apps antes de su salida en Discord ↗
+                    </a>
                 </div>
 
                 <div class="projects-stack">
 
                     <!-- =================================================================
-                         BLOQUE A: EN PRODUCCIÓN & LANZAMIENTO INMINENTE EN GOOGLE PLAY
+                         BLOQUE A: EN PRODUCCIÓN & EN REVISIÓN FINAL
                          ================================================================= -->
-                    <div class="catalog-group-header" data-reveal>
+                    <div class="catalog-group-header" data-group="prod" data-reveal>
                         <div class="catalog-group-title">
                             <span class="release-pill prod">● En Producción</span>
                             <span>01.A // Publicadas en Google Play &amp; En Revisión Final</span>
                         </div>
-                        <span class="catalog-group-sub">3 aplicaciones disponibles en abierto + 1 juego en revisión final</span>
+                        <span class="catalog-group-sub">3 aplicaciones disponibles en Google Play + 1 videojuego en revisión final</span>
                     </div>
 
                     <!-- PROJECT 01 (PROD): BEETUNE -->
-                    <article class="project-showcase" data-project="beetune" data-reveal>
-                        <div class="project-info-col">
+                    <article class="app-editorial-card" data-project="beetune" data-status="prod" data-reveal>
+                        <div class="app-card-top-grid">
                             <div>
                                 <div class="project-meta-top">
                                     <span class="release-pill prod">● En Producción · Google Play</span>
@@ -215,96 +227,67 @@
                                 </div>
 
                                 <p class="project-body">
-                                    Impulsado por la arquitectura neuronal propia <strong>BeeNet-8 (Constant-Q Transform)</strong> ejecutada localmente en ONNX. Permite <strong>rasguear las 6 cuerdas a la vez</strong> en modo polifónico para comprobar al instante cuáles están afinadas (<code>OK</code>) y la desviación exacta en centésimas (<code>-11c</code>, <code>+14c</code>) de las que necesitan ajuste, o afinar en modo monofónico con <strong>precisión sub-centésima (&lt;1c)</strong>.
+                                    Impulsado por la arquitectura neuronal propia <strong>BeeNet-8 (Constant-Q Transform)</strong> ejecutada localmente en ONNX. Permite <strong>rasguear las 6 cuerdas a la vez</strong> en modo polifónico para comprobar al instante cuáles están afinadas (<code>OK</code>) y la desviación exacta en centésimas (<code>-11c</code>, <code>+14c</code>) de las que necesitan ajuste, o afinar cuerda a cuerda con <strong>precisión sub-centésima (&lt;1c)</strong>.
                                 </p>
+                            </div>
 
-                                <div class="project-specs-list">
-                                    <span class="spec-chip">BeeNet-8 (CQT)</span>
-                                    <span class="spec-chip">Polifonía 6 Cuerdas</span>
-                                    <span class="spec-chip">Precisión &lt;1 Cent</span>
-                                    <span class="spec-chip">ONNX Runtime Local</span>
-                                    <span class="spec-chip">Drop D / DADGAD</span>
+                            <div class="app-pillars-grid">
+                                <div class="app-pillar-box">
+                                    <div class="app-pillar-head">
+                                        <span class="app-pillar-kicker">01 / POLIFONÍA</span>
+                                        <span class="mono" style="font-size: 0.65rem; color: var(--text-muted);">6 CUERDAS</span>
+                                    </div>
+                                    <div class="app-pillar-title">Lectura Simultánea en Centésimas</div>
+                                    <p class="app-pillar-desc">Rasguea todas las cuerdas a la vez y comprueba cuáles están <code>OK</code> y los cents exactos (<code>-11c</code>, <code>+14c</code>) de cada clavija.</p>
                                 </div>
+                                <div class="app-pillar-box">
+                                    <div class="app-pillar-head">
+                                        <span class="app-pillar-kicker">02 / MONOFONÍA</span>
+                                        <span class="mono" style="font-size: 0.65rem; color: var(--text-muted);">&lt; 1 CENT</span>
+                                    </div>
+                                    <div class="app-pillar-title">Aguja de Calibración Sub-Centésima</div>
+                                    <p class="app-pillar-desc">Modo monofónico de estudio con detección automática de cuerda, ganancia regulable y confirmación háptica.</p>
+                                </div>
+                                <div class="app-pillar-box">
+                                    <div class="app-pillar-head">
+                                        <span class="app-pillar-kicker">03 / ARQUITECTURA</span>
+                                        <span class="mono" style="font-size: 0.65rem; color: var(--text-muted);">ONNX LOCAL</span>
+                                    </div>
+                                    <div class="app-pillar-title">Red BeeNet-8 CQT + Conmutación Auto</div>
+                                    <p class="app-pillar-desc">Alterna sola entre vista polifónica y monofónica según rasguees un acorde o puntees una nota. Soporta Drop D, DADGAD y Open G.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="app-card-bottom">
+                            <div class="project-specs-list">
+                                <span class="spec-chip">BeeNet-8 (CQT)</span>
+                                <span class="spec-chip">Polifonía 6 Cuerdas</span>
+                                <span class="spec-chip">Precisión &lt;1 Cent</span>
+                                <span class="spec-chip">ONNX Runtime</span>
+                                <span class="spec-chip">Afinaciones Abiertas</span>
                             </div>
 
                             <div class="project-links-row">
+                                <a href="/BeeTune" class="project-btn secondary" data-magnetic>
+                                    <span>Web oficial</span>
+                                    <span>→</span>
+                                </a>
                                 <a href="https://play.google.com/store/apps/details?id=com.fiuva.beetune" target="_blank" rel="noopener" class="project-btn primary" data-magnetic>
                                     <span>Google Play</span>
                                     <span>↗</span>
                                 </a>
-                                <a href="/BeeTune" class="project-btn secondary" data-magnetic>
-                                    <span>Web Oficial (/BeeTune)</span>
-                                    <span>→</span>
-                                </a>
-                            </div>
-                        </div>
-
-                        <!-- Interactive 6-String Polyphonic Tuner Sandbox -->
-                        <div class="project-sandbox-col">
-                            <div class="sandbox-top-bar">
-                                <span class="sandbox-live-badge">MOTOR BEENET-8 CQT</span>
-                                <button type="button" id="strum-all-btn" class="alchemy-el-btn" style="padding: 2px 8px; font-size: 0.65rem;">[ RASGUEAR 6 CUERDAS ]</button>
-                            </div>
-
-                            <div class="tuner-stage">
-                                <div class="tuner-meter">
-                                    <div class="tuner-note-display">
-                                        <span class="tuner-note-big" id="tuner-note">E4</span>
-                                        <span class="tuner-freq" id="tuner-freq">329.6 Hz · 0.0c</span>
-                                    </div>
-                                    <div class="tuner-cents-bar" aria-hidden="true">
-                                        <div class="tuner-cents-indicator" id="tuner-cents-dot"></div>
-                                    </div>
-                                </div>
-
-                                <div class="guitar-strings-list">
-                                    <div class="guitar-string-row" data-note="E4" data-freq="329.6" data-cents="0" data-state="ok">
-                                        <span class="string-label">1·E4</span>
-                                        <div class="string-wire"></div>
-                                        <span class="string-status ok">OK</span>
-                                    </div>
-                                    <div class="guitar-string-row" data-note="B3" data-freq="246.9" data-cents="14" data-state="sharp">
-                                        <span class="string-label">2·B3</span>
-                                        <div class="string-wire"></div>
-                                        <span class="string-status sharp">+14c</span>
-                                    </div>
-                                    <div class="guitar-string-row" data-note="G3" data-freq="196.0" data-cents="0" data-state="ok">
-                                        <span class="string-label">3·G3</span>
-                                        <div class="string-wire"></div>
-                                        <span class="string-status ok">OK</span>
-                                    </div>
-                                    <div class="guitar-string-row" data-note="D3" data-freq="146.8" data-cents="-11" data-state="flat">
-                                        <span class="string-label">4·D3</span>
-                                        <div class="string-wire"></div>
-                                        <span class="string-status flat">-11c</span>
-                                    </div>
-                                    <div class="guitar-string-row" data-note="A2" data-freq="110.0" data-cents="0" data-state="ok">
-                                        <span class="string-label">5·A2</span>
-                                        <div class="string-wire"></div>
-                                        <span class="string-status ok">OK</span>
-                                    </div>
-                                    <div class="guitar-string-row" data-note="E2" data-freq="82.4" data-cents="0" data-state="ok">
-                                        <span class="string-label">6·E2</span>
-                                        <div class="string-wire"></div>
-                                        <span class="string-status ok">OK</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="sandbox-footer-hint">
-                                <span>Toca cualquier cuerda para escuchar el armónico y medir fase</span>
-                                <span>WEB AUDIO SYNTH</span>
                             </div>
                         </div>
                     </article>
 
                     <!-- PROJECT 02 (PROD): BIRDIA -->
-                    <article class="project-showcase" data-project="birdia" data-reveal>
-                        <div class="project-info-col">
+                    <article class="app-editorial-card" data-project="birdia" data-status="prod" data-reveal>
+                        <div class="app-card-top-grid">
                             <div>
                                 <div class="project-meta-top">
                                     <span class="release-pill prod">● En Producción · Google Play</span>
-                                    <span class="project-kind">REDES NEURONALES &amp; NATURALEZA</span>
+                                    <span class="project-kind">BIOACÚSTICA · REDES NEURONALES</span>
                                 </div>
 
                                 <div class="project-identity">
@@ -318,60 +301,62 @@
                                 </div>
 
                                 <p class="project-body">
-                                    Escucha el bosque o tu parque cercano y descubre qué especie está cantando. Birdia analiza las ventanas acústicas directamente en la memoria del teléfono mediante <strong>redes neuronales bioacústicas</strong>, renderiza el <strong>espectrograma en tiempo real</strong> y enlaza cada especie con fotografías verificadas y nomenclatura en español, inglés y latín científico.
+                                    Escucha el bosque o tu parque cercano y descubre qué especie está cantando. Birdia analiza las ventanas acústicas directamente en la memoria del teléfono mediante <strong>redes neuronales bioacústicas</strong>, traza el <strong>espectrograma en tiempo real</strong> y enlaza cada especie con fotografías verificadas y nomenclatura en español, inglés y latín científico.
                                 </p>
+                            </div>
 
-                                <div class="project-specs-list">
-                                    <span class="spec-chip">Inferencia Acústica Local</span>
-                                    <span class="spec-chip">Espectrograma FFT</span>
-                                    <span class="spec-chip">Taxonomía ES / EN / Latín</span>
-                                    <span class="spec-chip">Privacidad Total de Micrófono</span>
+                            <div class="app-pillars-grid">
+                                <div class="app-pillar-box">
+                                    <div class="app-pillar-head">
+                                        <span class="app-pillar-kicker">01 / BIOACÚSTICA</span>
+                                        <span class="mono" style="font-size: 0.65rem; color: var(--text-muted);">TIEMPO REAL</span>
+                                    </div>
+                                    <div class="app-pillar-title">Reconocimiento Neuronal de Cantos</div>
+                                    <p class="app-pillar-desc">Clasifica decenas de especies de aves europeas e internacionales procesando el audio 100% en la memoria de tu dispositivo.</p>
                                 </div>
+                                <div class="app-pillar-box">
+                                    <div class="app-pillar-head">
+                                        <span class="app-pillar-kicker">02 / ESPECTROGRAMA</span>
+                                        <span class="mono" style="font-size: 0.65rem; color: var(--text-muted);">FFT EN VIVO</span>
+                                    </div>
+                                    <div class="app-pillar-title">Monitor de Frecuencias en Directo</div>
+                                    <p class="app-pillar-desc">Visualiza las bandas armónicas de cada reclamo en pantalla y ajusta el umbral de sensibilidad según el ruido ambiental.</p>
+                                </div>
+                                <div class="app-pillar-box">
+                                    <div class="app-pillar-head">
+                                        <span class="app-pillar-kicker">03 / TAXONOMÍA</span>
+                                        <span class="mono" style="font-size: 0.65rem; color: var(--text-muted);">ES · EN · LATÍN</span>
+                                    </div>
+                                    <div class="app-pillar-title">Fichas Fotográficas y Wikipedia</div>
+                                    <p class="app-pillar-desc">Alterna entre nombre común en español, inglés o latín científico y consulta fotografías reales e información enciclopédica.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="app-card-bottom">
+                            <div class="project-specs-list">
+                                <span class="spec-chip">IA Bioacústica Local</span>
+                                <span class="spec-chip">Espectrograma FFT</span>
+                                <span class="spec-chip">Taxonomía ES / EN / Latín</span>
+                                <span class="spec-chip">Privacidad de Micrófono</span>
                             </div>
 
                             <div class="project-links-row">
+                                <a href="/Birdia" class="project-btn secondary" data-magnetic>
+                                    <span>Web oficial</span>
+                                    <span>→</span>
+                                </a>
                                 <a href="https://play.google.com/store/apps/details?id=com.fiuva.birdia" target="_blank" rel="noopener" class="project-btn primary" data-magnetic>
                                     <span>Google Play</span>
                                     <span>↗</span>
                                 </a>
-                                <a href="birdia.html" class="project-btn secondary" data-magnetic>
-                                    <span>Web Oficial &amp; Privacidad (birdia.html)</span>
-                                    <span>→</span>
-                                </a>
-                            </div>
-                        </div>
-
-                        <!-- Interactive Spectrogram Sandbox -->
-                        <div class="project-sandbox-col">
-                            <div class="sandbox-top-bar">
-                                <span class="sandbox-live-badge">ESPECTROGRAMA BIOACÚSTICO (2–8 kHz)</span>
-                                <span>LOCAL DSP</span>
-                            </div>
-
-                            <div class="spectrogram-stage">
-                                <div class="spectrogram-canvas-box">
-                                    <canvas id="birdia-spec-canvas"></canvas>
-                                </div>
-
-                                <div class="species-prediction-row">
-                                    <div class="species-names">
-                                        <span class="species-common" id="birdia-common-name">Petirrojo europeo</span>
-                                        <span class="species-latin" id="birdia-latin-name">Erithacus rubecula</span>
-                                    </div>
-                                    <span class="species-conf" id="birdia-conf">98.4%</span>
-                                </div>
-                            </div>
-
-                            <div class="sandbox-footer-hint">
-                                <span>Desliza el cursor por el espectrograma para modular la especie</span>
-                                <span>WIKIPEDIA TAXONOMY</span>
                             </div>
                         </div>
                     </article>
 
                     <!-- PROJECT 03 (PROD): DAYLI -->
-                    <article class="project-showcase" data-project="dayli" data-reveal>
-                        <div class="project-info-col">
+                    <article class="app-editorial-card" data-project="dayli" data-status="prod" data-reveal>
+                        <div class="app-card-top-grid">
                             <div>
                                 <div class="project-meta-top">
                                     <span class="release-pill prod">● En Producción · Google Play</span>
@@ -389,59 +374,62 @@
                                 </div>
 
                                 <p class="project-body">
-                                    Una cápsula diaria de cultura general diseñada para leerse en menos de un minuto. Descubre cada mañana la <strong>Palabra del Día</strong> enlazada con el diccionario de la <strong>Real Academia Española (RAE)</strong>, explora los hitos históricos y nacimientos de tu fecha, y lleva el aprendizaje a la pantalla de inicio con <strong>widgets nativos personalizables</strong>.
+                                    Una cápsula diaria de cultura general diseñada para leerse en menos de un minuto. Descubre cada mañana la <strong>Palabra del Día</strong> enlazada con el diccionario oficial de la <strong>Real Academia Española (RAE)</strong>, explora los hitos históricos y nacimientos de tu fecha, y lleva el aprendizaje a la pantalla de inicio con <strong>widgets nativos personalizables</strong>.
                                 </p>
+                            </div>
 
-                                <div class="project-specs-list">
-                                    <span class="spec-chip">Palabra del Día (RAE)</span>
-                                    <span class="spec-chip">Efemérides Verificadas</span>
-                                    <span class="spec-chip">Widgets Android</span>
-                                    <span class="spec-chip">Diseño Editorial</span>
+                            <div class="app-pillars-grid">
+                                <div class="app-pillar-box">
+                                    <div class="app-pillar-head">
+                                        <span class="app-pillar-kicker">01 / LÉXICO</span>
+                                        <span class="mono" style="font-size: 0.65rem; color: var(--text-muted);">DICCIONARIO RAE</span>
+                                    </div>
+                                    <div class="app-pillar-title">Palabra del Día Verificada</div>
+                                    <p class="app-pillar-desc">Amplía tu vocabulario con una palabra diaria, su acepción clara y acceso directo a la entrada oficial en la RAE.</p>
                                 </div>
+                                <div class="app-pillar-box">
+                                    <div class="app-pillar-head">
+                                        <span class="app-pillar-kicker">02 / HISTORIA</span>
+                                        <span class="mono" style="font-size: 0.65rem; color: var(--text-muted);">365 DÍAS</span>
+                                    </div>
+                                    <div class="app-pillar-title">Efemérides, Nacimientos y Celebraciones</div>
+                                    <p class="app-pillar-desc">Descubre qué ocurrió un día como hoy en la historia, días internacionales ilustrados y el santoral del día.</p>
+                                </div>
+                                <div class="app-pillar-box">
+                                    <div class="app-pillar-head">
+                                        <span class="app-pillar-kicker">03 / ANDROID</span>
+                                        <span class="mono" style="font-size: 0.65rem; color: var(--text-muted);">HOME SCREEN</span>
+                                    </div>
+                                    <div class="app-pillar-title">Widgets Nativos y Avisos Locales</div>
+                                    <p class="app-pillar-desc">Consulta la palabra del día y las efemérides desde tu pantalla de inicio en modo claro u oscuro sin abrir la aplicación.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="app-card-bottom">
+                            <div class="project-specs-list">
+                                <span class="spec-chip">Palabra del Día (RAE)</span>
+                                <span class="spec-chip">Efemérides Históricas</span>
+                                <span class="spec-chip">Widgets Android</span>
+                                <span class="spec-chip">Días Internacionales</span>
                             </div>
 
                             <div class="project-links-row">
+                                <a href="/Dayli" class="project-btn secondary" data-magnetic>
+                                    <span>Web oficial</span>
+                                    <span>→</span>
+                                </a>
                                 <a href="https://play.google.com/store/apps/details?id=com.fiuva.dayli" target="_blank" rel="noopener" class="project-btn primary" data-magnetic>
                                     <span>Google Play</span>
                                     <span>↗</span>
                                 </a>
-                                <a href="/Dayli" class="project-btn secondary" data-magnetic>
-                                    <span>Web Oficial (/Dayli)</span>
-                                    <span>→</span>
-                                </a>
-                            </div>
-                        </div>
-
-                        <!-- Interactive Dayli Card Sandbox -->
-                        <div class="project-sandbox-col">
-                            <div class="sandbox-top-bar">
-                                <span class="sandbox-live-badge">WIDGET INTERACTIVO</span>
-                                <span id="dayli-date-badge">HOY</span>
-                            </div>
-
-                            <div class="dayli-widget-stage">
-                                <div class="dayli-card-preview" id="dayli-interactive-card">
-                                    <div class="dayli-card-head">
-                                        <span id="dayli-kind-badge">PALABRA DEL DÍA · RAE</span>
-                                        <span>[ PULSAR ↻ ]</span>
-                                    </div>
-                                    <div class="dayli-word-title" id="dayli-title">Serendipia</div>
-                                    <p class="dayli-word-def" id="dayli-desc">
-                                        f. Hallazgo valioso que se produce de manera accidental o casual, como descubrir un ornitorrinco buscando nutrias.
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div class="sandbox-footer-hint">
-                                <span>Haz clic en la tarjeta para alternar léxico y efemérides</span>
-                                <span>DICCIONARIO RAE</span>
                             </div>
                         </div>
                     </article>
 
                     <!-- PROJECT 04 (IN REVIEW / LAUNCHING): SOY UNA LÍNEA (I'M A LINE) -->
-                    <article class="project-showcase" data-project="soy-linea" data-reveal>
-                        <div class="project-info-col">
+                    <article class="app-editorial-card" data-project="soy-linea" data-status="review" data-reveal>
+                        <div class="app-card-top-grid">
                             <div>
                                 <div class="project-meta-top">
                                     <span class="release-pill review">◐ En Revisión · Salida Inminente</span>
@@ -459,48 +447,56 @@
                                 </div>
 
                                 <p class="project-body">
-                                    Controla a un trazo que cobra vida en una hoja de cuaderno donde cualquier roce reinicia el intento. Esquiva pinchos, ventiladores y rocas traicioneras, <strong>dispara por los ojos</strong> para activar interruptores en pleno salto y <strong>transfórmate en mosca</strong> para atravesar abismos imposibles. Actualmente en <strong>revisión final en Google Play</strong> para su lanzamiento público.
+                                    Controla a un trazo que cobra vida en una hoja de cuaderno donde cualquier roce reinicia el intento al instante. Esquiva pinchos, ventiladores y rocas traicioneras, <strong>dispara por los ojos</strong> para activar interruptores en pleno salto y <strong>transfórmate en mosca</strong> para cruzar abismos imposibles. Actualmente en <strong>revisión final en Google Play</strong> para su salida inminente.
                                 </p>
-
-                                <div class="project-specs-list">
-                                    <span class="spec-chip">Unity 2D</span>
-                                    <span class="spec-chip">Timer al Milisegundo</span>
-                                    <span class="spec-chip">Disparo Ocular</span>
-                                    <span class="spec-chip">Modo Mosca</span>
-                                    <span class="spec-chip">HUD Editable</span>
-                                </div>
                             </div>
 
-                            <div class="project-links-row">
-                                <a href="/SoyUnaLinea" class="project-btn primary" data-magnetic>
-                                    <span>Web Oficial (/SoyUnaLinea)</span>
-                                    <span>→</span>
-                                </a>
-                                <a href="https://play.google.com/store/apps/details?id=com.fiuva.imaline" target="_blank" rel="noopener" class="project-btn secondary" data-magnetic>
-                                    <span>Ficha Google Play</span>
-                                    <span>↗</span>
-                                </a>
+                            <div class="app-pillars-grid">
+                                <div class="app-pillar-box">
+                                    <div class="app-pillar-head">
+                                        <span class="app-pillar-kicker">01 / SPEEDRUN</span>
+                                        <span class="mono" style="font-size: 0.65rem; color: var(--text-muted);">00:00.000</span>
+                                    </div>
+                                    <div class="app-pillar-title">Cronómetro al Milisegundo y Rankings</div>
+                                    <p class="app-pillar-desc">Reaparición instantánea tras cada muerte y tablas de clasificación mundiales en Google Play Juegos para cada nivel.</p>
+                                </div>
+                                <div class="app-pillar-box">
+                                    <div class="app-pillar-head">
+                                        <span class="app-pillar-kicker">02 / MECÁNICAS</span>
+                                        <span class="mono" style="font-size: 0.65rem; color: var(--text-muted);">ACCIÓN 2D</span>
+                                    </div>
+                                    <div class="app-pillar-title">Disparo Ocular y Modo Mosca</div>
+                                    <p class="app-pillar-desc">Activa botones a distancia en mitad del salto y transfórmate en mosca en el aire sin rozar nunca el suelo.</p>
+                                </div>
+                                <div class="app-pillar-box">
+                                    <div class="app-pillar-head">
+                                        <span class="app-pillar-kicker">03 / ERGONOMÍA</span>
+                                        <span class="mono" style="font-size: 0.65rem; color: var(--text-muted);">3 ESQUEMAS</span>
+                                    </div>
+                                    <div class="app-pillar-title">Controles Táctiles 100% Editables</div>
+                                    <p class="app-pillar-desc">Juega en Modo Pro sin botones por gestos, con joystick híbrido o mueve y escala cada botón en el editor visual.</p>
+                                </div>
                             </div>
                         </div>
 
-                        <!-- Interactive Notebook Runner Sandbox -->
-                        <div class="project-sandbox-col">
-                            <div class="sandbox-top-bar">
-                                <span class="sandbox-live-badge">SIMULACIÓN DE CUADERNO EN VIVO</span>
-                                <span>60 FPS PHYSICS</span>
+                        <div class="app-card-bottom">
+                            <div class="project-specs-list">
+                                <span class="spec-chip">Unity 2D</span>
+                                <span class="spec-chip">Timer al Milisegundo</span>
+                                <span class="spec-chip">Disparo Ocular</span>
+                                <span class="spec-chip">Modo Mosca</span>
+                                <span class="spec-chip">HUD Editable</span>
                             </div>
 
-                            <div class="notebook-canvas-wrap">
-                                <canvas id="linea-canvas"></canvas>
-                                <div class="notebook-hud">
-                                    <span>RUN // NIVEL 01</span>
-                                    <span id="linea-timer">00:00.000</span>
-                                </div>
-                            </div>
-
-                            <div class="sandbox-footer-hint">
-                                <span>Haz clic en el cuaderno para saltar y disparar por los ojos</span>
-                                <span>SPEEDRUN MODE</span>
+                            <div class="project-links-row">
+                                <a href="/SoyUnaLinea" class="project-btn secondary" data-magnetic>
+                                    <span>Web oficial</span>
+                                    <span>→</span>
+                                </a>
+                                <a href="https://play.google.com/store/apps/details?id=com.fiuva.imaline" target="_blank" rel="noopener" class="project-btn primary" data-magnetic>
+                                    <span>Google Play</span>
+                                    <span>↗</span>
+                                </a>
                             </div>
                         </div>
                     </article>
@@ -508,7 +504,7 @@
                     <!-- =================================================================
                          BLOQUE B: EN PRUEBA CERRADA & ACCESO ANTICIPADO (DISCORD)
                          ================================================================= -->
-                    <div class="catalog-group-header" style="margin-top: 24px;" data-reveal>
+                    <div class="catalog-group-header" data-group="beta" style="margin-top: 20px;" data-reveal>
                         <div class="catalog-group-title">
                             <span class="release-pill beta">★ Prueba Cerrada</span>
                             <span>01.B // Acceso Anticipado en el Discord de Fiuva Labs</span>
@@ -517,8 +513,8 @@
                     </div>
 
                     <!-- PROJECT 05 (CLOSED BETA): HOW TO BUILD A PLATYPUS -->
-                    <article class="project-showcase" data-project="platypus" data-reveal>
-                        <div class="project-info-col">
+                    <article class="app-editorial-card" data-project="platypus" data-status="beta" data-reveal>
+                        <div class="app-card-top-grid">
                             <div>
                                 <div class="project-meta-top">
                                     <span class="release-pill beta">★ En Prueba Cerrada · Acceso en Discord</span>
@@ -536,48 +532,56 @@
                                 </div>
 
                                 <p class="project-body">
-                                    Empiezas con cuatro elementos básicos y un mortero. Con <strong>4.180 cartas ilustradas</strong>, más de <strong>5.000 recetas escritas a mano</strong> y un modelo <strong>EmbeddingGemma</strong> entrenado sobre el significado de cada concepto, el juego decide qué nace de cada mezcla a lo largo de <strong>siete mesas de trabajo</strong> y doce capítulos de historia hasta completar la Gran Obra. <strong>Actualmente en prueba cerrada: entra al Discord de Fiuva Labs para jugarlo antes de su salida oficial.</strong>
+                                    Empiezas con cuatro elementos básicos y un mortero. Con <strong>4.180 cartas ilustradas</strong>, más de <strong>5.000 recetas escritas a mano</strong> y un modelo <strong>EmbeddingGemma</strong> entrenado sobre el significado de cada concepto, el juego decide qué nace de cada mezcla a lo largo de <strong>siete mesas de trabajo</strong> y doce capítulos de historia hasta completar la Gran Obra. <strong>Actualmente en prueba cerrada: entra al Discord de Fiuva Labs para jugarlo antes de su salida.</strong>
                                 </p>
-
-                                <div class="project-specs-list">
-                                    <span class="spec-chip">4.180 Cartas</span>
-                                    <span class="spec-chip">EmbeddingGemma Local</span>
-                                    <span class="spec-chip">5.000+ Recetas</span>
-                                    <span class="spec-chip">7 Mesas de Trabajo</span>
-                                    <span class="spec-chip">100% Offline</span>
-                                </div>
                             </div>
 
-                            <div class="project-links-row">
-                                <a href="https://discord.gg/aBZ5tqEJWN" target="_blank" rel="noopener" class="project-btn primary" data-magnetic>
-                                    <span>Probar antes en Discord (Fiuva Labs)</span>
-                                    <span>↗</span>
-                                </a>
-                                <a href="/BuildAPlatypus" class="project-btn secondary" data-magnetic>
-                                    <span>Web Oficial (/BuildAPlatypus)</span>
-                                    <span>→</span>
-                                </a>
-                                <a href="https://play.google.com/store/apps/details?id=com.fiuva.buildaplatypus" target="_blank" rel="noopener" class="project-btn secondary" data-magnetic>
-                                    <span>Google Play (Testers)</span>
-                                    <span>↗</span>
-                                </a>
+                            <div class="app-pillars-grid">
+                                <div class="app-pillar-box">
+                                    <div class="app-pillar-head">
+                                        <span class="app-pillar-kicker">01 / GRIMORIO</span>
+                                        <span class="mono" style="font-size: 0.65rem; color: var(--text-muted);">4.180 CARTAS</span>
+                                    </div>
+                                    <div class="app-pillar-title">Colección Ilustrada y Atlas Completo</div>
+                                    <p class="app-pillar-desc">Cada carta tiene su propia ilustración, historia y nivel de maestría, organizadas por cajones y estantes.</p>
+                                </div>
+                                <div class="app-pillar-box">
+                                    <div class="app-pillar-head">
+                                        <span class="app-pillar-kicker">02 / SÍNTESIS IA</span>
+                                        <span class="mono" style="font-size: 0.65rem; color: var(--text-muted);">5.000+ RECETAS</span>
+                                    </div>
+                                    <div class="app-pillar-title">Recetas Artesanales + EmbeddingGemma</div>
+                                    <p class="app-pillar-desc">Más de 5.000 recetas escritas a mano combinadas con un modelo semántico local que funciona 100% sin conexión.</p>
+                                </div>
+                                <div class="app-pillar-box">
+                                    <div class="app-pillar-head">
+                                        <span class="app-pillar-kicker">03 / LABORATORIO</span>
+                                        <span class="mono" style="font-size: 0.65rem; color: var(--text-muted);">7 MESAS · 12 CAP.</span>
+                                    </div>
+                                    <div class="app-pillar-title">Siete Mesas y Termómetro de Intuición</div>
+                                    <p class="app-pillar-desc">La misma pareja da resultados distintos en el Mortero, el Atanor, el Vivero, el Alambique, el Taller o el Círculo Arcano.</p>
+                                </div>
                             </div>
                         </div>
 
-                        <!-- Official Artwork Showcase -->
-                        <div class="project-sandbox-col">
-                            <div class="sandbox-top-bar">
-                                <span class="sandbox-live-badge">EL LABORATORIO ALQUÍMICO</span>
-                                <span>4.180 CARTAS · 7 MESAS</span>
+                        <div class="app-card-bottom">
+                            <div class="project-specs-list">
+                                <span class="spec-chip">4.180 Cartas</span>
+                                <span class="spec-chip">EmbeddingGemma Local</span>
+                                <span class="spec-chip">5.000+ Recetas</span>
+                                <span class="spec-chip">7 Mesas de Trabajo</span>
+                                <span class="spec-chip">100% Offline</span>
                             </div>
 
-                            <div style="flex: 1; margin: 12px 0; border-radius: 10px; overflow: hidden; border: 1px solid var(--border); position: relative; min-height: 195px;">
-                                <img src="BuildAPlatypus/img/hero.jpg" alt="Arte oficial de How to Build a Platypus" style="width: 100%; height: 100%; object-fit: cover; display: block;" loading="lazy">
-                            </div>
-
-                            <div class="sandbox-footer-hint">
-                                <span>Mortero · Atanor · Vivero · Alambique · Taller · Círculo Arcano</span>
-                                <span>PRUEBA CERRADA</span>
+                            <div class="project-links-row">
+                                <a href="/BuildAPlatypus" class="project-btn secondary" data-magnetic>
+                                    <span>Web oficial</span>
+                                    <span>→</span>
+                                </a>
+                                <a href="https://discord.gg/aBZ5tqEJWN" target="_blank" rel="noopener" class="project-btn primary" data-magnetic>
+                                    <span>Probar en Discord</span>
+                                    <span>↗</span>
+                                </a>
                             </div>
                         </div>
                     </article>
@@ -802,12 +806,11 @@
                 </div>
 
                 <nav class="footer-links" aria-label="Enlaces de pie de página">
-                    <a href="/BuildAPlatypus">How to Build a Platypus</a>
-                    <a href="/SoyUnaLinea">Soy una línea</a>
                     <a href="/BeeTune">BeeTune</a>
-                    <a href="birdia.html">Birdia</a>
-                    <a href="birdia.html#privacidad">Privacidad Birdia</a>
+                    <a href="/Birdia">Birdia</a>
                     <a href="/Dayli">Dayli</a>
+                    <a href="/SoyUnaLinea">Soy una línea</a>
+                    <a href="/BuildAPlatypus">How to Build a Platypus</a>
                     <a href="about.html">Sobre Fiuva</a>
                     <a href="app-ads.txt">app-ads.txt</a>
                     <a href="mailto:fiuvalabs@gmail.com">fiuvalabs@gmail.com</a>

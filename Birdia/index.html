@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birdia — Identificador Acústico de Aves por Canto con IA | Fiuva Labs</title>
+    <meta name="description" content="Birdia identifica aves en tiempo real escuchando su canto mediante Inteligencia Artificial local y espectrogramas en vivo. Desarrollado por Fiuva Labs.">
+    <link rel="icon" type="image/png" href="img/birdia_icon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+    <div class="cursor-dot" aria-hidden="true"></div>
+    <div class="cursor-ring" aria-hidden="true"></div>
+
+    <header class="site-header">
+        <div class="header-inner">
+            <div class="brand-cluster">
+                <a href="../index.html" class="brand-mark" data-magnetic>
+                    <span class="brand-mark-flask">
+                        <img src="../images/fiuva_labs_icon.png" alt="Fiuva Labs">
+                    </span>
+                    <span>← Fiuva Labs</span>
+                </a>
+                <span class="brand-divider"></span>
+                <div class="status-beacon">
+                    <span class="status-dot"></span>
+                    <span>BIRDIA // BIOACOUSTIC AI</span>
+                </div>
+            </div>
+
+            <nav class="nav-cluster" aria-label="Navegación de Birdia">
+                <a href="#funciones" class="nav-item"><span class="nav-idx">01</span>Funciones</a>
+                <a href="privacy-policy.html" class="nav-item"><span class="nav-idx">02</span>Privacidad</a>
+
+                <button type="button" id="theme-toggle" class="theme-btn" aria-label="Cambiar tema claro/oscuro">
+                    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="4"></circle>
+                        <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
+                    </svg>
+                    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+
+                <a href="https://play.google.com/store/apps/details?id=com.fiuva.birdia" target="_blank" rel="noopener" class="header-cta" data-magnetic>
+                    <span>Google Play</span>
+                    <span>↗</span>
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="page-shell">
+        <main>
+            <!-- HERO SECTION -->
+            <section class="editorial-section" style="padding-bottom: 64px;">
+                <div class="project-showcase" data-project="birdia" style="border-radius: 20px;">
+                    <div class="project-info-col">
+                        <div>
+                            <div class="project-meta-top">
+                                <span class="release-pill prod">● En Producción · Google Play</span>
+                                <span class="project-kind">ANDROID · IA BIOACÚSTICA LOCAL</span>
+                            </div>
+
+                            <div class="project-identity">
+                                <div class="project-icon-frame" style="width: 82px; height: 82px;">
+                                    <img src="img/birdia_icon.png" alt="Icono oficial de Birdia">
+                                </div>
+                                <div class="project-title-group">
+                                    <h1 style="font-size: clamp(2.2rem, 4vw, 3.2rem); font-weight: 700; letter-spacing: -0.035em; line-height: 1.02;">
+                                        Birdia <span class="serif-italic">Bioacústica</span>
+                                    </h1>
+                                    <p class="project-tagline">Identificador de aves por su canto en tiempo real con espectrograma en vivo</p>
+                                </div>
+                            </div>
+
+                            <p class="project-body">
+                                Escucha tu entorno y descubre qué especie de ave está cantando a tu alrededor en tiempo real. Birdia analiza las frecuencias acústicas mediante <strong>redes neuronales ejecutadas 100% en tu dispositivo</strong> y dibuja el <strong>espectrograma en vivo</strong> directamente en la pantalla de tu teléfono, sin subir grabaciones a servidores externos.
+                            </p>
+
+                            <div class="project-specs-list">
+                                <span class="spec-chip">Inferencia Neuronal Local</span>
+                                <span class="spec-chip">Espectrograma FFT en Vivo</span>
+                                <span class="spec-chip">Taxonomía ES / EN / Latín</span>
+                                <span class="spec-chip">Wikipedia API</span>
+                            </div>
+                        </div>
+
+                        <div class="project-links-row">
+                            <a href="https://play.google.com/store/apps/details?id=com.fiuva.birdia" target="_blank" rel="noopener" class="project-btn primary" data-magnetic>
+                                <span>Descargar en Google Play</span>
+                                <span>↗</span>
+                            </a>
+                            <a href="privacy-policy.html" class="project-btn secondary" data-magnetic>
+                                <span>Política de Privacidad</span>
+                                <span>→</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="app-tech-dossier">
+                        <div class="sandbox-top-bar">
+                            <span class="sandbox-live-badge">FICHA TÉCNICA // BIRDIA</span>
+                            <span>COM.FIUVA.BIRDIA</span>
+                        </div>
+
+                        <div class="tech-dossier-grid">
+                            <div class="tech-dossier-cell">
+                                <div class="label">Motor de IA</div>
+                                <div class="value">Clasificador Bioacústico</div>
+                            </div>
+                            <div class="tech-dossier-cell">
+                                <div class="label">Análisis de Señal</div>
+                                <div class="value">Espectrograma FFT en Vivo</div>
+                            </div>
+                            <div class="tech-dossier-cell">
+                                <div class="label">Nomenclatura</div>
+                                <div class="value">Español, Inglés y Latín</div>
+                            </div>
+                            <div class="tech-dossier-cell">
+                                <div class="label">Sensibilidad</div>
+                                <div class="value">Umbral Configurable</div>
+                            </div>
+                            <div class="tech-dossier-cell">
+                                <div class="label">Privacidad de Audio</div>
+                                <div class="value">100% en Memoria RAM</div>
+                            </div>
+                            <div class="tech-dossier-cell">
+                                <div class="label">Fichas de Especies</div>
+                                <div class="value">Fotos + Wikipedia</div>
+                            </div>
+                        </div>
+
+                        <div class="sandbox-footer-hint">
+                            <span>Disponible gratis en Google Play Store</span>
+                            <span>ON-DEVICE AI</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 01: FEATURES (#funciones) -->
+            <section id="funciones" class="editorial-section section-rule" style="padding-bottom: 84px;">
+                <div class="section-head-split" data-reveal>
+                    <div class="section-index-label">
+                        <span class="num">01</span>
+                        <span>// CARACTERÍSTICAS</span>
+                    </div>
+                    <div class="section-title-wrap">
+                        <h2 class="section-title">
+                            Ingeniería bioacústica <span class="serif-italic">en tu bolsillo</span>.
+                        </h2>
+                        <p class="section-desc">
+                            Diseñada para salidas al campo, rutas de senderismo o parques urbanos con procesamiento local instantáneo.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="research-bento" style="grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));" data-reveal>
+                    <article class="bento-panel">
+                        <div>
+                            <span class="bento-panel-kicker">01 / MODELO NEURONAL</span>
+                            <h3>IA Acústica en Tiempo Real</h3>
+                            <p style="margin-top: 10px;">
+                                Identifica decenas de especies de aves europeas e internacionales a partir de su canto y reclamo mediante redes neuronales ejecutadas íntegramente en tu dispositivo.
+                            </p>
+                        </div>
+                    </article>
+
+                    <article class="bento-panel">
+                        <div>
+                            <span class="bento-panel-kicker">02 / VISUALIZACIÓN</span>
+                            <h3>Espectrograma en Vivo</h3>
+                            <p style="margin-top: 10px;">
+                                Observa cómo se trazan las bandas de frecuencia del canto de cada pájaro en tiempo real mientras Birdia segmenta y analiza las ventanas acústicas.
+                            </p>
+                        </div>
+                    </article>
+
+                    <article class="bento-panel">
+                        <div>
+                            <span class="bento-panel-kicker">03 / DOCUMENTACIÓN</span>
+                            <h3>Fotos y Fichas de Especies</h3>
+                            <p style="margin-top: 10px;">
+                                Consulta fotografías reales de cada ave detectada, su porcentaje de precisión y abre su artículo completo en Wikipedia con un solo toque.
+                            </p>
+                        </div>
+                    </article>
+
+                    <article class="bento-panel">
+                        <div>
+                            <span class="bento-panel-kicker">04 / TAXONOMÍA</span>
+                            <h3>Nombres en ES, EN y Científico</h3>
+                            <p style="margin-top: 10px;">
+                                Alterna al instante entre nombres comunes en español, nombres en inglés o la nomenclatura científica oficial en latín.
+                            </p>
+                        </div>
+                    </article>
+
+                    <article class="bento-panel">
+                        <div>
+                            <span class="bento-panel-kicker">05 / CALIBRACIÓN</span>
+                            <h3>Sensibilidad Configurable</h3>
+                            <p style="margin-top: 10px;">
+                                Ajusta el umbral mínimo de confianza para adaptar la detección tanto a bosques silenciosos como a parques urbanos con ruido ambiental.
+                            </p>
+                        </div>
+                    </article>
+
+                    <article class="bento-panel">
+                        <div>
+                            <span class="bento-panel-kicker">06 / PRIVACIDAD</span>
+                            <h3>Procesamiento 100% Local</h3>
+                            <p style="margin-top: 10px;">
+                                El micrófono se analiza exclusivamente en la memoria volátil de tu móvil: tus grabaciones de audio nunca se suben ni se almacenan en servidores externos.
+                            </p>
+                        </div>
+                    </article>
+                </div>
+            </section>
+        </main>
+
+        <footer class="site-footer">
+            <div class="footer-grid">
+                <div class="brand-cluster">
+                    <a href="../index.html" class="brand-mark">
+                        <span class="brand-mark-flask">
+                            <img src="../images/fiuva_labs_icon.png" alt="Fiuva Labs">
+                        </span>
+                        <span>Fiuva Labs</span>
+                    </a>
+                    <span class="footer-meta">© 2026 Fiuva Labs · Todos los derechos reservados</span>
+                </div>
+
+                <nav class="footer-links" aria-label="Enlaces de pie de página">
+                    <a href="../index.html">Inicio Fiuva Labs</a>
+                    <a href="https://play.google.com/store/apps/details?id=com.fiuva.birdia" target="_blank" rel="noopener">Google Play</a>
+                    <a href="privacy-policy.html">Política de Privacidad</a>
+                    <a href="app-ads.txt">app-ads.txt</a>
+                    <a href="mailto:fiuvalabs@gmail.com">fiuvalabs@gmail.com</a>
+                </nav>
+            </div>
+        </footer>
+    </div>
+
+    <script src="../main.js"></script>
+</body>
+</html>
