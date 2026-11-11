@@ -3,13 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f5f3ec">
     <title>Sobre Fiuva — Investigador PhD en la UPNA &amp; Fundador de Fiuva Labs</title>
     <meta name="description" content="Biografía y trayectoria de Fiuva: Investigador y Doctorando (PhD Student) en la UPNA en Modelos Generativos de Imagen, Máster en Ingeniería Informática, Desarrollador de Videojuegos y fundador de Fiuva Labs.">
     <link rel="icon" type="image/png" href="images/fiuva_labs_icon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=3">
+    <link rel="stylesheet" href="style.css?v=4">
+    <script>(function(){var d=document.documentElement;try{var t=localStorage.getItem('fiuva_theme_v2')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');d.setAttribute('data-theme',t)}catch(e){}d.classList.add('js')})()</script>
 </head>
 <body>
 
@@ -23,7 +25,7 @@
             <div class="brand-cluster">
                 <a href="index.html" class="brand-mark" data-magnetic>
                     <span class="brand-mark-flask">
-                        <img src="images/fiuva_labs_icon.png" alt="Emblema de Fiuva Labs">
+                        <img src="images/opt/fiuva-labs-96.webp" width="96" height="96" alt="Emblema de Fiuva Labs">
                     </span>
                     <span>Fiuva Labs</span>
                 </a>
@@ -94,7 +96,7 @@
                         </div>
                         <div class="flask-interactive-stage" style="align-items: flex-start;">
                             <div class="flask-avatar-box" id="flask-box" style="width: 72px; height: 72px; border-radius: 50%; overflow: hidden; padding: 0;">
-                                <img src="images/ornitorrinco.jpg" alt="Avatar de Fiuva" style="width: 100%; height: 100%; object-fit: cover;">
+                                <img src="images/opt/ornitorrinco.webp" alt="Avatar de Fiuva" width="288" height="288" style="width: 100%; height: 100%; object-fit: cover;">
                             </div>
                             <div class="dossier-identity">
                                 <h2>¿Por qué un ornitorrinco?</h2>
@@ -188,7 +190,7 @@
                                 <span class="bento-panel-kicker">EL ESTUDIO · FIUVA LABS</span>
                                 <h3>Catálogo en Producción &amp; Pruebas Cerradas</h3>
                                 <p style="margin-top: 12px;">
-                                    Actualmente <strong>3 aplicaciones están en producción en Google Play</strong>, 1 juego en revisión final y 1 juego en prueba cerrada accesible desde el Discord de Fiuva Labs:
+                                    Actualmente <strong>4 aplicaciones y juegos están en producción en Google Play</strong> y 1 juego en prueba cerrada accesible desde el Discord de Fiuva Labs:
                                 </p>
                                 <div class="academic-timeline" style="margin-top: 16px;">
                                     <div class="timeline-row">
@@ -213,10 +215,10 @@
                                         </div>
                                     </div>
                                     <div class="timeline-row">
-                                        <span class="timeline-period">EN REVISIÓN</span>
+                                        <span class="timeline-period current">PRODUCCIÓN</span>
                                         <div>
                                             <div class="timeline-role"><a href="/SoyUnaLinea">Soy una línea (I'm a Line) ↗</a></div>
-                                            <div class="timeline-inst">Plataformas 2D y speedrun en un cuaderno escolar (salida inminente en Google Play)</div>
+                                            <div class="timeline-inst">Plataformas 2D y speedrun en un cuaderno escolar, con disparo ocular y Modo Mosca</div>
                                         </div>
                                     </div>
                                     <div class="timeline-row">
@@ -350,32 +352,59 @@
         </main>
 
         <!-- ARCHITECTURAL FOOTER -->
-        <footer class="site-footer">
-            <div class="footer-grid">
-                <div class="brand-cluster">
+        <footer class="site-footer footer-mega">
+            <div class="footer-cols">
+                <div class="footer-brand">
                     <a href="index.html" class="brand-mark">
                         <span class="brand-mark-flask">
-                            <img src="images/fiuva_labs_icon.png" alt="Fiuva Labs">
+                            <img src="images/opt/fiuva-labs-96.webp" alt="" width="96" height="96" loading="lazy">
                         </span>
                         <span>Fiuva Labs</span>
                     </a>
-                    <span class="footer-meta">© 2026 Fiuva Labs · Pamplona, Navarra</span>
+                    <p>Estudio independiente y laboratorio de IA. Apps y videojuegos hechos a pulso en Pamplona, Navarra.</p>
                 </div>
 
-                <nav class="footer-links" aria-label="Enlaces de pie de página">
-                    <a href="index.html">Inicio</a>
-                    <a href="/BeeTune">BeeTune</a>
-                    <a href="/Birdia">Birdia</a>
-                    <a href="/Dayli">Dayli</a>
-                    <a href="/SoyUnaLinea">Soy una línea</a>
-                    <a href="/BuildAPlatypus">How to Build a Platypus</a>
-                    <a href="app-ads.txt">app-ads.txt</a>
-                    <a href="mailto:fiuvalabs@gmail.com">fiuvalabs@gmail.com</a>
+                <nav class="footer-col" aria-label="Apps y juegos">
+                    <h2>Apps y juegos</h2>
+                    <ul>
+                        <li><a href="/BeeTune">BeeTune</a></li>
+                        <li><a href="/Birdia">Birdia</a></li>
+                        <li><a href="/Dayli">Dayli</a></li>
+                        <li><a href="/SoyUnaLinea">Soy una línea</a></li>
+                        <li><a href="/BuildAPlatypus">How to Build a Platypus</a></li>
+                    </ul>
+                </nav>
+
+                <nav class="footer-col" aria-label="Estudio">
+                    <h2>Estudio</h2>
+                    <ul>
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="index.html#proyectos">Catálogo</a></li>
+                        <li><a href="https://play.google.com/store/apps/dev?id=7870183180556281898" target="_blank" rel="noopener">Google Play</a></li>
+                        <li><a href="https://discord.gg/aBZ5tqEJWN" target="_blank" rel="noopener">Discord (betas)</a></li>
+                    </ul>
+                </nav>
+
+                <nav class="footer-col" aria-label="Contacto">
+                    <h2>Contacto</h2>
+                    <ul>
+                        <li><a href="mailto:fiuvalabs@gmail.com">fiuvalabs@gmail.com</a></li>
+                        <li><a href="https://github.com/fiuva" target="_blank" rel="noopener">GitHub</a></li>
+                        <li><a href="https://x.com/fiuva5" target="_blank" rel="noopener">X / Twitter</a></li>
+                        <li><a href="app-ads.txt">app-ads.txt</a></li>
+                    </ul>
                 </nav>
             </div>
+
+            <div class="footer-base">
+                <span class="footer-meta">© 2026 Fiuva Labs · Pamplona, Navarra</span>
+                <span class="footer-meta">Ingeniería, IA y videojuegos hechos a pulso</span>
+            </div>
+
+            <div class="footer-wordmark" aria-hidden="true">Fiuva Labs</div>
         </footer>
     </div>
 
-    <script src="main.js?v=3"></script>
+    <script src="main.js?v=4"></script>
 </body>
 </html>
