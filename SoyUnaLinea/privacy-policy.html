@@ -53,7 +53,7 @@
         <main class="editorial-section">
             <article class="legal-sheet" id="es" lang="es">
                 <h1>Política de Privacidad</h1>
-                <div class="legal-meta">Aplicación: Soy una línea (I'm a Line) · Última actualización: 27 de octubre de 2026</div>
+                <div class="legal-meta">Aplicación: Soy una línea (I'm a Line) · Última actualización: 12 de noviembre de 2026</div>
 
                 <p>
                     Esta política de privacidad se aplica a la aplicación móvil y videojuego <strong>Soy una línea</strong> (también distribuido internacionalmente como <strong>I'm a Line</strong>, paquete <code>com.fiuva.imaline</code>), desarrollado por <strong>Fiuva (Fiuva Labs)</strong> como un servicio gratuito con publicidad integrada.
@@ -61,21 +61,23 @@
 
                 <h2>1. Información que se recopila</h2>
                 <p>
-                    <strong>Soy una línea</strong> no te pide crear una cuenta propia ni recopila directamente datos personales como tu nombre real, dirección o teléfono. Fiuva Labs <strong>no tiene servidores propios</strong> y no almacena ningún dato tuyo.
+                    <strong>Soy una línea</strong> no te pide registrarte con correo ni contraseña, y no recopila datos personales como tu nombre real, dirección o teléfono. Fiuva Labs <strong>no tiene servidores propios</strong>: los pocos datos que salen de tu dispositivo los tratan los servicios de terceros indicados abajo.
                 </p>
                 <p>
-                    Tus tiempos récord, los niveles desbloqueados y la configuración de los controles se guardan <strong>en tu dispositivo</strong>. Si inicias sesión en Google Play Juegos, además se guarda una copia de tu progreso en tu cuenta de Google (ver apartado 3).
+                    Tus tiempos récord, los niveles desbloqueados y la configuración de los controles se guardan <strong>en tu dispositivo</strong>. Al completar un nivel, tu mejor tiempo se envía a las clasificaciones del juego (ver apartado 3). Si inicias sesión en Google Play Juegos, además se guarda una copia de tu progreso en tu cuenta de Google.
                 </p>
                 <p>
-                    La aplicación usa estos servicios de Google, que pueden recopilar datos según sus propias políticas:
+                    La aplicación usa estos servicios de terceros, que pueden recopilar datos según sus propias políticas:
                 </p>
                 <ul>
                     <li><strong>Google AdMob</strong> y <strong>User Messaging Platform (UMP)</strong>: anuncios y consentimiento de privacidad.</li>
-                    <li><strong>Servicios de juegos de Google Play (Google Play Juegos)</strong>: inicio de sesión, clasificaciones y guardado en la nube.</li>
+                    <li><strong>Servicios de juegos de Google Play (Google Play Juegos)</strong>: inicio de sesión y guardado en la nube.</li>
+                    <li><strong>Unity Gaming Services</strong> (Authentication y Leaderboards, de Unity Technologies): las clasificaciones del juego.</li>
                 </ul>
                 <p>
-                    Más información: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Política de privacidad de Google</a> y
-                    <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener">cómo usa Google los datos de las apps que utilizan sus servicios</a>.
+                    Más información: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Política de privacidad de Google</a>,
+                    <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener">cómo usa Google los datos de las apps que utilizan sus servicios</a> y
+                    <a href="https://unity.com/legal/privacy-policy" target="_blank" rel="noopener">Política de privacidad de Unity</a>.
                 </p>
 
                 <h2>2. Publicidad y consentimiento (Google AdMob)</h2>
@@ -89,22 +91,31 @@
                     En el Espacio Económico Europeo, Reino Unido y otras regiones donde se exige, la aplicación muestra el formulario oficial de consentimiento de Google (UMP) antes de cargar anuncios. Puedes cambiar tu elección en cualquier momento desde el enlace <strong>«Privacidad»</strong> del menú principal del juego.
                 </p>
 
-                <h2>3. Google Play Juegos (clasificaciones y guardado en la nube)</h2>
+                <h2>3. Clasificaciones y guardado en la nube</h2>
                 <p>
-                    Si tu dispositivo tiene Google Play Juegos, la aplicación puede iniciar sesión automáticamente con tu perfil de jugador. En ese caso:
+                    <strong>Clasificaciones del juego (Unity Gaming Services).</strong> Cuando completas un nivel, tu mejor tiempo se envía a clasificaciones públicas alojadas en Unity Gaming Services. Para ello:
                 </p>
                 <ul>
-                    <li><strong>Clasificaciones:</strong> tus mejores tiempos de cada nivel se envían a clasificaciones públicas, donde aparecen junto a tu <strong>nombre de jugador de Play Juegos</strong>. Puedes controlar quién ve tu perfil desde la configuración de Google Play Juegos.</li>
-                    <li><strong>Guardado en la nube:</strong> tus tiempos récord se guardan en tu cuenta de Google para recuperarlos si cambias de móvil o reinstalas el juego.</li>
+                    <li>Se crea automáticamente un <strong>identificador de jugador</strong>. Si tienes sesión en Google Play Juegos, se vincula a tu perfil de Play Juegos para que seas el mismo jugador en todos tus dispositivos (Unity recibe un identificador de Play Juegos, nunca tu correo ni tu contraseña). Si no, es un identificador anónimo guardado en tu dispositivo.</li>
+                    <li>Se guardan ese identificador, tu <strong>apodo</strong>, tus <strong>mejores tiempos</strong> de cada nivel y la fecha en que los conseguiste.</li>
+                    <li>El apodo lo eliges tú (el juego te lo pregunta y puedes cambiarlo cuando quieras desde el botón «Tu nombre» de la clasificación); hasta que elijas uno, se usa uno generado al azar. <strong>El apodo y los tiempos son públicos</strong>: los ven todos los jugadores. No uses tu nombre real si no quieres que se vea.</li>
+                    <li>Para prestar el servicio, Unity también trata datos técnicos como la dirección IP. Los datos viajan cifrados.</li>
+                </ul>
+                <p>
+                    <strong>Google Play Juegos.</strong> Si tu dispositivo tiene Google Play Juegos, la aplicación puede iniciar sesión automáticamente con tu perfil de jugador. En ese caso:
+                </p>
+                <ul>
+                    <li><strong>Guardado en la nube:</strong> tus tiempos récord y estadísticas de juego se guardan en tu cuenta de Google para recuperarlos si cambias de móvil o reinstalas el juego.</li>
+                    <li><strong>Clasificaciones de Play Juegos:</strong> tus mejores tiempos también se envían a las clasificaciones de Google Play Juegos, donde pueden aparecer junto a tu nombre de jugador de Play Juegos según la visibilidad que tengas configurada en tu perfil.</li>
                     <li>Google Play Juegos también recopila datos de diagnóstico y de uso para el funcionamiento de su servicio.</li>
                 </ul>
                 <p>
-                    Iniciar sesión es opcional: si no lo haces, el juego funciona igual, sin clasificaciones ni guardado en la nube.
+                    Iniciar sesión en Google Play Juegos es opcional: si no lo haces, el juego funciona igual, sin guardado en la nube, y las clasificaciones usan un jugador anónimo de ese dispositivo.
                 </p>
 
                 <h2>4. Permisos del dispositivo</h2>
                 <ul>
-                    <li><strong>Internet y estado de la red:</strong> para cargar los anuncios y usar Google Play Juegos.</li>
+                    <li><strong>Internet y estado de la red:</strong> para cargar los anuncios, las clasificaciones y Google Play Juegos.</li>
                     <li><strong>ID de publicidad:</strong> lo usa AdMob para los anuncios. Puedes restablecerlo o eliminarlo en los ajustes de tu dispositivo (Ajustes &gt; Google &gt; Anuncios).</li>
                     <li><strong>Acelerómetro:</strong> se usa solo dentro del dispositivo para un secreto del juego. Ningún dato de los sensores sale de tu dispositivo.</li>
                 </ul>
@@ -112,11 +123,12 @@
                 <h2>5. Tus derechos y cómo eliminar tus datos</h2>
                 <ul>
                     <li><strong>Datos del dispositivo:</strong> se borran al desinstalar la aplicación (o al borrar sus datos desde los ajustes de Android).</li>
-                    <li><strong>Datos de Google Play Juegos</strong> (clasificaciones y progreso en la nube): puedes eliminarlos desde tu perfil de Google Play Juegos, para este juego en concreto o para toda tu cuenta.</li>
+                    <li><strong>Datos de la clasificación del juego</strong> (identificador de jugador, apodo y tiempos, alojados en Unity Gaming Services): puedes cambiar tu apodo cuando quieras desde el juego. Para <strong>eliminar todos tus datos de la clasificación</strong>, escríbenos al correo del apartado 8 indicando tu apodo y los borraremos en un plazo máximo de 30 días.</li>
+                    <li><strong>Datos de Google Play Juegos</strong> (clasificaciones de Play Juegos y progreso en la nube): puedes eliminarlos desde tu perfil de Google Play Juegos, para este juego en concreto o para toda tu cuenta.</li>
                     <li><strong>Anuncios:</strong> puedes retirar o cambiar tu consentimiento desde «Privacidad» en el menú principal y restablecer tu ID de publicidad en los ajustes del dispositivo.</li>
                 </ul>
                 <p>
-                    Como Fiuva Labs no almacena tus datos, el resto de solicitudes sobre los datos que tratan los servicios de Google se gestionan a través de Google. Si tienes cualquier duda, escríbenos (apartado 8).
+                    El resto de solicitudes sobre los datos que tratan directamente los servicios de Google se gestionan a través de Google. Si tienes cualquier duda, escríbenos (apartado 8).
                 </p>
 
                 <h2>6. Privacidad de los menores</h2>
@@ -137,7 +149,7 @@
 
             <article class="legal-sheet" id="en" lang="en">
                 <h1>Privacy Policy</h1>
-                <div class="legal-meta">App: I'm a Line (Soy una línea) · Last updated: October 27, 2026</div>
+                <div class="legal-meta">App: I'm a Line (Soy una línea) · Last updated: November 12, 2026</div>
 
                 <p>
                     This privacy policy applies to the mobile app and video game <strong>I'm a Line</strong> (also distributed as <strong>Soy una línea</strong>, package <code>com.fiuva.imaline</code>), developed by <strong>Fiuva (Fiuva Labs)</strong> as a free, ad-supported service.
@@ -145,21 +157,23 @@
 
                 <h2>1. Information we collect</h2>
                 <p>
-                    <strong>I'm a Line</strong> does not ask you to create an account and does not directly collect personal data such as your real name, address or phone number. Fiuva Labs <strong>has no servers of its own</strong> and does not store any of your data.
+                    <strong>I'm a Line</strong> does not ask you to sign up with an email or password, and does not collect personal data such as your real name, address or phone number. Fiuva Labs <strong>has no servers of its own</strong>: the little data that leaves your device is processed by the third-party services listed below.
                 </p>
                 <p>
-                    Your best times, unlocked levels and control settings are stored <strong>on your device</strong>. If you sign in to Google Play Games, a copy of your progress is also saved to your Google account (see section 3).
+                    Your best times, unlocked levels and control settings are stored <strong>on your device</strong>. When you complete a level, your best time is sent to the game's leaderboards (see section 3). If you sign in to Google Play Games, a copy of your progress is also saved to your Google account.
                 </p>
                 <p>
-                    The app uses the following Google services, which may collect data under their own policies:
+                    The app uses the following third-party services, which may collect data under their own policies:
                 </p>
                 <ul>
                     <li><strong>Google AdMob</strong> and <strong>User Messaging Platform (UMP)</strong>: ads and privacy consent.</li>
-                    <li><strong>Google Play Games Services</strong>: sign-in, leaderboards and cloud save.</li>
+                    <li><strong>Google Play Games Services</strong>: sign-in and cloud save.</li>
+                    <li><strong>Unity Gaming Services</strong> (Authentication and Leaderboards, by Unity Technologies): the game's leaderboards.</li>
                 </ul>
                 <p>
-                    More information: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy Policy</a> and
-                    <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener">how Google uses information from apps that use its services</a>.
+                    More information: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy Policy</a>,
+                    <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener">how Google uses information from apps that use its services</a> and
+                    <a href="https://unity.com/legal/privacy-policy" target="_blank" rel="noopener">Unity Privacy Policy</a>.
                 </p>
 
                 <h2>2. Advertising and consent (Google AdMob)</h2>
@@ -173,22 +187,31 @@
                     In the European Economic Area, the United Kingdom and other regions where it is required, the app shows Google's official consent form (UMP) before loading ads. You can change your choice at any time from the <strong>"Privacy"</strong> link in the game's main menu.
                 </p>
 
-                <h2>3. Google Play Games (leaderboards and cloud save)</h2>
+                <h2>3. Leaderboards and cloud save</h2>
                 <p>
-                    If your device has Google Play Games, the app may sign in automatically with your player profile. In that case:
+                    <strong>In-game leaderboards (Unity Gaming Services).</strong> When you complete a level, your best time is sent to public leaderboards hosted on Unity Gaming Services. To do this:
                 </p>
                 <ul>
-                    <li><strong>Leaderboards:</strong> your best time on each level is sent to public leaderboards, where it appears next to your <strong>Play Games player name</strong>. You can control who sees your profile in your Google Play Games settings.</li>
-                    <li><strong>Cloud save:</strong> your best times are saved to your Google account so you can recover them if you change phones or reinstall the game.</li>
+                    <li>A <strong>player identifier</strong> is created automatically. If you are signed in to Google Play Games, it is linked to your Play Games profile so you are the same player on all your devices (Unity receives a Play Games identifier, never your email or password). Otherwise, it is an anonymous identifier stored on your device.</li>
+                    <li>That identifier, your <strong>nickname</strong>, your <strong>best times</strong> on each level and the date you set them are stored.</li>
+                    <li>You choose the nickname (the game asks you, and you can change it at any time from the "Your name" button on the leaderboard); until you choose one, a randomly generated one is used. <strong>Your nickname and times are public</strong>: all players can see them. Don't use your real name if you don't want it to be visible.</li>
+                    <li>To provide the service, Unity also processes technical data such as your IP address. Data is encrypted in transit.</li>
+                </ul>
+                <p>
+                    <strong>Google Play Games.</strong> If your device has Google Play Games, the app may sign in automatically with your player profile. In that case:
+                </p>
+                <ul>
+                    <li><strong>Cloud save:</strong> your best times and gameplay statistics are saved to your Google account so you can recover them if you change phones or reinstall the game.</li>
+                    <li><strong>Play Games leaderboards:</strong> your best times are also sent to Google Play Games leaderboards, where they may appear next to your Play Games player name depending on the visibility settings of your profile.</li>
                     <li>Google Play Games also collects diagnostic and usage data to run its service.</li>
                 </ul>
                 <p>
-                    Signing in is optional: if you don't, the game works the same, just without leaderboards or cloud save.
+                    Signing in to Google Play Games is optional: if you don't, the game works the same, without cloud save, and the leaderboards use an anonymous player for that device.
                 </p>
 
                 <h2>4. Device permissions</h2>
                 <ul>
-                    <li><strong>Internet and network state:</strong> to load ads and use Google Play Games.</li>
+                    <li><strong>Internet and network state:</strong> to load ads, the leaderboards and Google Play Games.</li>
                     <li><strong>Advertising ID:</strong> used by AdMob for ads. You can reset or delete it in your device settings (Settings &gt; Google &gt; Ads).</li>
                     <li><strong>Accelerometer:</strong> used only on the device for an in-game secret. No sensor data leaves your device.</li>
                 </ul>
@@ -196,11 +219,12 @@
                 <h2>5. Your rights and how to delete your data</h2>
                 <ul>
                     <li><strong>On-device data:</strong> deleted when you uninstall the app (or clear its data in Android settings).</li>
-                    <li><strong>Google Play Games data</strong> (leaderboards and cloud progress): you can delete it from your Google Play Games profile, for this game only or for your whole account.</li>
+                    <li><strong>In-game leaderboard data</strong> (player identifier, nickname and times, hosted on Unity Gaming Services): you can change your nickname at any time from the game. To <strong>delete all your leaderboard data</strong>, email us at the address in section 8 with your nickname and we will delete it within 30 days.</li>
+                    <li><strong>Google Play Games data</strong> (Play Games leaderboards and cloud progress): you can delete it from your Google Play Games profile, for this game only or for your whole account.</li>
                     <li><strong>Ads:</strong> you can withdraw or change your consent from "Privacy" in the main menu, and reset your advertising ID in your device settings.</li>
                 </ul>
                 <p>
-                    Since Fiuva Labs does not store your data, other requests about data processed by Google services are handled through Google. If you have any questions, contact us (section 8).
+                    Other requests about data processed directly by Google services are handled through Google. If you have any questions, contact us (section 8).
                 </p>
 
                 <h2>6. Children's privacy</h2>
